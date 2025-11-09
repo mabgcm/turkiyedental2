@@ -1,22 +1,29 @@
 // app/thank/page.tsx
 "use client";
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function ThankPage() {
     const router = useRouter();
-    const search = useSearchParams();
-    const from = useMemo(() => search.get("from") || "/", [search]);
-
+    const [from, setFrom] = useState<string>("/");
     const [seconds, setSeconds] = useState(5);
 
+    // Read ?from= on the client (no useSearchParams)
     useEffect(() => {
-        const t = setInterval(() => setSeconds((s) => (s > 0 ? s - 1 : 0)), 1000);
+        const sp = new URLSearchParams(window.location.search);
+        setFrom(sp.get("from") || "/");
+    }, []);
+
+    // Countdown + auto-redirect after 5s
+    useEffect(() => {
+        const tick = setInterval(() => setSeconds((s) => (s > 0 ? s - 1 : 0)), 1000);
         const go = setTimeout(() => router.replace(from), 5000);
         return () => {
-            clearInterval(t);
+            clearInterval(tick);
             clearTimeout(go);
         };
     }, [from, router]);
@@ -29,7 +36,7 @@ export default function ThankPage() {
             </p>
 
             <p className="text-gray-500 mt-6">
-                You’ll be returned to where you came from in <strong>{seconds}</strong> seconds.
+                Returning you to your previous page in <strong>{seconds}</strong> seconds…
             </p>
             <p className="mt-4">
                 <Link href={from} className="text-[#3FB8FF] hover:underline">Go back now</Link>

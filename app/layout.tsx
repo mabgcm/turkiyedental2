@@ -1,6 +1,6 @@
 // app/layout.tsx
 import type { Metadata } from "next";
-import "./globals.css";
+import "@/styles/globals.css";
 import Topbar from "@/components/Topbar";
 import Navbar from "@/components/Navbar";
 import { Suspense } from "react";

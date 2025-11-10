@@ -80,23 +80,7 @@ export default function Navbar() {
                         </ul>
                     </li>
 
-                    <li className="relative group">
-                        <span className="cursor-default group-hover:text-brand-primary">About</span>
-                        <ul className="absolute left-0 mt-2 hidden group-hover:block bg-white border rounded-md shadow-md min-w-44 p-2">
-                            {[
-                                ["Our Dentists", "/our-dentists"],
-                                ["Why Second Opinion", "/why-second-opinion"],
-                                ["Help & FAQs", "/faqs"],
-                                ["Contact", "/contact-us"],
-                            ].map(([label, href]) => (
-                                <li key={href}>
-                                    <Link className="block px-3 py-2 rounded hover:bg-brand-surface" href={href as string}>
-                                        {label}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </li>
+                    <li><a href="/about" className="hover:text-[#3FB8FF]">About</a></li>
 
                     <li>
                         <Button href="/start" size="md" variant="primary">

@@ -1,28 +1,43 @@
 import HeroSection from "@/components/HeroSection";
 import SectionHeader from "@/components/SectionHeader";
+// e.g. in app/page.tsx or any section component
 import TreatmentCards, { TreatmentItem } from "@/components/TreatmentCards";
 
 const treatments: TreatmentItem[] = [
   {
-    title: "Full Mouth Implant",
+    title: "Dental Implants",
+    href: "/treatments/dental-implants",
+    image: { src: "/images/preventive.jpg", alt: "Dental implants" },
     excerpt:
-      "Achieve a complete smile transformation with our full-arch implant solutions—designed for function, comfort, and a natural look.",
-    href: "/treatments/full-mouth-implant",
-    image: { src: "/images/full-mouth.jpg", alt: "Full mouth implant" },
+      "Considering an implant? We review bone quality, materials, healing time and alternatives so you decide with confidence.",
   },
   {
-    title: "Non-Invasive Smile Aesthetics",
+    title: "Crowns & Bridges",
+    href: "/treatments/crowns-bridges",
+    image: { src: "/images/full-mouth.jpg", alt: "Crowns and bridges" },
     excerpt:
-      "Explore minimally invasive options tailored to your case. We clarify when veneers, aligners, or other options make sense.",
-    href: "/treatments/smile-aesthetics",
-    image: { src: "/images/treatments/smile-aesthetics.jpg", alt: "Smile aesthetics" },
+      "Zirconia or e.max? Single crown or bridge? We explain options, lab quality, and long-term maintenance.",
   },
   {
-    title: "Preventive Dental Care",
+    title: "Veneers / Smile Makeover",
+    href: "/treatments/veneers-smile",
+    image: { src: "/images/smile.jpeg", alt: "Veneers" },
     excerpt:
-      "Focus on long-term oral health: gum care, bite stability, and maintenance plans that protect your investment.",
-    href: "/treatments/preventive-care",
-    image: { src: "/images/treatments/preventive.jpg", alt: "Preventive dental care" },
+      "Do you really need veneers? We compare minimally invasive options like aligners, bonding and whitening.",
+  },
+  {
+    title: "Teeth Whitening",
+    href: "/treatments/teeth-whitening",
+    image: { src: "/images/preventive.jpg", alt: "Teeth whitening" },
+    excerpt:
+      "Learn about in-office vs home kits, sensitivity risk, and when whitening is (or isn’t) a good idea.",
+  },
+  {
+    title: "Full-Arch / All-on-4",
+    href: "/treatments/full-arch-all-on-4",
+    image: { src: "/images/full-mouth.jpg", alt: "All-on-4" },
+    excerpt:
+      "Big decision, big value in a second opinion. We review plan, implants/abutments, provisional wear, travel timing and costs.",
   },
 ];
 
@@ -39,7 +54,7 @@ export default function HomePage() {
           subtitleColor="text-[#000000]"
           subtitle="We review your case, provide second opinions, and connect you with trusted clinicians."
         />
-        <TreatmentCards items={treatments} className="py-10 md:py-14" />
+        <TreatmentCards items={treatments} className="py-1 md:py-1" />
       </section>
     </main>
   );

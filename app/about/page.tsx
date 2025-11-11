@@ -14,7 +14,7 @@ export default function AboutPage() {
         subtitle:
             "We’re not a clinic. We’re your clinic-independent dental guidance partner—offering education, honest advice, and second opinions from trusted clinicians in Türkiye and abroad.",
         highlight: "TürkiyeDental",
-        subtitleColor: "text-[#3FB8FF]",
+        subtitleColor: "text-[#000]",
         variant: "page" as const,
         align: "center" as const,
     };

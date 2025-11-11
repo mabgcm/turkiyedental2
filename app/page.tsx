@@ -1,3 +1,4 @@
+import CtaToStart from "@/components/CtaToStart";
 import HeroSection from "@/components/HeroSection";
 import SectionHeader from "@/components/SectionHeader";
 // e.g. in app/page.tsx or any section component
@@ -45,7 +46,9 @@ export default function HomePage() {
   return (
     <main className="relative min-h-screen overflow-hidden">
       <HeroSection />
-      <section className="max-w-5xl mx-auto px-4 py-12">
+      <div style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "100%", marginTop: "2px" }}>
+        <CtaToStart />
+      </div>      <section className="max-w-5xl mx-auto px-4 py-12">
         <SectionHeader
           variant="section"
           align="center"

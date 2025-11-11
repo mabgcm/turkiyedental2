@@ -3,6 +3,9 @@ import HeroSection from "@/components/HeroSection";
 import SectionHeader from "@/components/SectionHeader";
 // e.g. in app/page.tsx or any section component
 import TreatmentCards, { TreatmentItem } from "@/components/TreatmentCards";
+import WhyUs from "@/components/WhyUs";
+import FAQ, { FaqItem } from "@/components/FAQ";
+
 
 const treatments: TreatmentItem[] = [
   {
@@ -42,22 +45,68 @@ const treatments: TreatmentItem[] = [
   },
 ];
 
+const faqItems: FaqItem[] = [
+  {
+    q: "Are you a clinic?",
+    a: "No. TürkiyeDental is clinic-independent. We provide education and second opinions so you can decide confidently.",
+  },
+  {
+    q: "Can you help me compare two treatment plans?",
+    a: "Yes. We review your x-rays, photos, and quotes to explain differences in materials, timelines, risks, and total cost.",
+  },
+  {
+    q: "Do you work only with clinics in Türkiye?",
+    a: "We can review cases for any location. When referrals are requested, we point to verified providers in Türkiye and abroad.",
+  },
+  {
+    q: "How much does a second opinion cost?",
+    a: "We offer a free initial review and transparent pricing for more detailed case assessments when needed.",
+  },
+  {
+    q: "What files should I send?",
+    a: "OPG or CBCT (if available), recent photos, and any treatment quotes. More context helps us give clearer guidance.",
+  },
+];
+
 export default function HomePage() {
   return (
     <main className="relative min-h-screen overflow-hidden">
       <HeroSection />
       <div style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "100%", marginTop: "2px" }}>
         <CtaToStart />
-      </div>      <section className="max-w-5xl mx-auto px-4 py-12">
+      </div>
+      <section className="max-w-5xl mx-auto px-4 py-12">
         <SectionHeader
           variant="section"
           align="center"
-          title="How We Work"
-          highlight="How"
+          title="Discover the Right Treatment for Your Smile"
+          highlight="Right Treatment"
           subtitleColor="text-[#000000]"
-          subtitle="We review your case, provide second opinions, and connect you with trusted clinicians."
+          subtitle="Learn about key dental treatments and make informed choices with expert-backed insights."
         />
         <TreatmentCards items={treatments} className="py-1 md:py-1" />
+      </section>
+      <section className="max-w-5xl mx-auto px-4 py-12">
+        <SectionHeader
+          variant="section"
+          align="center"
+          title="Trusted Guidance, Proven Expertise"
+          highlight="Proven Expertise"
+          subtitleColor="text-[#000000]"
+          subtitle="Patient-first advice, clinic-independent reviews, and clarity you can rely on."
+        />
+        <WhyUs />
+        <div className="py-16">
+          <SectionHeader
+            variant="section"
+            align="center"
+            title="Questions? We’ve Got Answers."
+            highlight="Questions?"
+            subtitleColor="text-[#000000]"
+            subtitle=""
+          />
+          <FAQ items={faqItems} />
+        </div>
       </section>
     </main>
   );

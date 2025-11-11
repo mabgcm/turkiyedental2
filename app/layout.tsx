@@ -4,6 +4,7 @@ import "@/styles/globals.css";
 import Topbar from "@/components/Topbar";
 import Navbar from "@/components/Navbar";
 import { Suspense } from "react";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "TürkiyeDental",
@@ -21,6 +22,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Navbar />
         </Suspense>
         <div className="pt-16 sm:pt-28">{children}</div>
+        <Footer />
       </body>
     </html>
   );

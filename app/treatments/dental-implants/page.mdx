@@ -1,0 +1,660 @@
+import Image from "next/image";
+import Link from "next/link";
+
+
+
+<section className="bg-white">
+  <div className="max-w-6xl mx-auto px-4 md:px-6 py-12 md:py-16 space-y-12">
+    
+    <header className="grid gap-10 md:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] items-center">
+      <div>
+        <p className="uppercase tracking-[0.18em] text-xs md:text-sm text-[#1b76d1] font-semibold">
+          Treatment • Dental Implants
+        </p>
+        <h1 className="mt-2 text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-[#14233d]">
+          Dental Implants – Costs, Safety & Treatment Guide
+        </h1>
+        <p className="mt-4 text-gray-700 text-base md:text-lg leading-relaxed">
+          Thinking about dental implants but unsure about cost, pain, safety or insurance coverage?
+          On this page we answer the most common patient questions in clear language, so you can
+          feel informed before making any big decisions.
+        </p>
+        <div className="mt-5 flex flex-wrap gap-3">
+          <Link
+            href="/start?from=/treatments/dental-implants"
+            className="inline-flex items-center justify-center rounded-full bg-[#21CDC0] px-6 py-3 text-sm md:text-base font-semibold text-white shadow-sm hover:bg-[#1bb5a9] transition"
+          >
+            Get a Free Second-Opinion Review
+          </Link>
+          <a
+            href="#how-much-are-dental-implants"
+            className="inline-flex items-center justify-center rounded-full border border-[#1b76d1]/30 px-5 py-3 text-sm md:text-base font-semibold text-[#1b76d1] hover:bg-[#e9f4ff] transition"
+          >
+            Jump to Costs
+          </a>
+        </div>
+      </div>
+
+      <div className="relative h-56 md:h-72 lg:h-80 rounded-2xl overflow-hidden shadow-md">
+        <Image
+          src="/images/full-mouth.jpg"
+          alt="Smiling patient after dental implant treatment"
+          fill
+          sizes="(min-width:1024px) 30vw, 50vw"
+          className="object-cover"
+        />
+      </div>
+    </header>
+
+    <nav className="rounded-2xl bg-[#f4fbff] border border-[#cde8ff] p-6 space-y-4">
+      <p className="text-xs md:text-sm font-semibold text-[#1b2a57] tracking-[0.18em] uppercase">On this page</p>
+      <ul className="grid gap-2 md:grid-cols-2 text-sm text-[#14233d]">
+        <li>
+          <a href="#what-s-included-in-a-dental-implant-quote" className="inline-flex text-left hover:text-[#1b76d1] transition">What's included in a dental implant quote?</a>
+        </li>
+        <li>
+          <a href="#how-restoration-type-affects-the-price" className="inline-flex text-left hover:text-[#1b76d1] transition">How restoration type affects the price</a>
+        </li>
+        <li>
+          <a href="#why-personalised-cost-estimates-matter" className="inline-flex text-left hover:text-[#1b76d1] transition">Why personalised cost estimates matter?</a>
+        </li>
+        <li>
+          <a href="#who-does-dental-implants" className="inline-flex text-left hover:text-[#1b76d1] transition">Who does dental implants?</a>
+        </li>
+        <li>
+          <a href="#are-dental-implants-covered-by-insurance" className="inline-flex text-left hover:text-[#1b76d1] transition">Are dental implants covered by insurance?</a>
+        </li>
+        <li>
+          <a href="#are-dental-implants-painful" className="inline-flex text-left hover:text-[#1b76d1] transition">Are dental implants painful?</a>
+        </li>
+        <li>
+          <a href="#are-dental-implants-safe" className="inline-flex text-left hover:text-[#1b76d1] transition">Are dental implants safe?</a>
+        </li>
+        <li>
+          <a href="#how-dental-implants-are-done" className="inline-flex text-left hover:text-[#1b76d1] transition">How dental implants are done</a>
+        </li>
+        <li>
+          <a href="#how-do-dental-implants-feel-day-to-day" className="inline-flex text-left hover:text-[#1b76d1] transition">How do dental implants feel day to day?</a>
+        </li>
+        <li>
+          <a href="#still-deciding-if-dental-implants-are-right-for-you" className="inline-flex text-left hover:text-[#1b76d1] transition">Still deciding if dental implants are right for you?</a>
+        </li>
+        <li>
+          <a href="#how-long-do-dental-implants-last" className="inline-flex text-left hover:text-[#1b76d1] transition">How long do dental implants last?</a>
+        </li>
+        <li>
+          <a href="#are-dental-implants-removable" className="inline-flex text-left hover:text-[#1b76d1] transition">Are dental implants removable?</a>
+        </li>
+        <li>
+          <a href="#are-dental-implants-expensive" className="inline-flex text-left hover:text-[#1b76d1] transition">Are dental implants expensive?</a>
+        </li>
+        <li>
+          <a href="#are-dental-implants-worth-it" className="inline-flex text-left hover:text-[#1b76d1] transition">Are dental implants worth it?</a>
+        </li>
+        <li>
+          <a href="#why-are-dental-implants-so-expensive" className="inline-flex text-left hover:text-[#1b76d1] transition">Why are dental implants so expensive?</a>
+        </li>
+        <li>
+          <a href="#where-are-dental-implants-the-cheapest" className="inline-flex text-left hover:text-[#1b76d1] transition">Where are dental implants the cheapest?</a>
+        </li>
+        <li>
+          <a href="#which-dental-insurance-covers-implants" className="inline-flex text-left hover:text-[#1b76d1] transition">Which dental insurance covers implants?</a>
+        </li>
+        <li>
+          <a href="#which-dental-plans-cover-implants" className="inline-flex text-left hover:text-[#1b76d1] transition">Which dental plans cover implants?</a>
+        </li>
+        <li>
+          <a href="#can-dental-implants-be-covered-by-medical-insurance" className="inline-flex text-left hover:text-[#1b76d1] transition">Can dental implants be covered by medical insurance?</a>
+        </li>
+        <li>
+          <a href="#can-dental-implants-get-infected" className="inline-flex text-left hover:text-[#1b76d1] transition">Can dental implants get infected?</a>
+        </li>
+        <li>
+          <a href="#why-do-dental-implants-fail" className="inline-flex text-left hover:text-[#1b76d1] transition">Why do dental implants fail?</a>
+        </li>
+        <li>
+          <a href="#how-to-lower-your-risk-of-implant-failure" className="inline-flex text-left hover:text-[#1b76d1] transition">How to lower your risk of implant failure</a>
+        </li>
+        <li>
+          <a href="#which-dental-implants-are-best" className="inline-flex text-left hover:text-[#1b76d1] transition">Which dental implants are best?</a>
+        </li>
+        <li>
+          <a href="#how-dental-implants-work" className="inline-flex text-left hover:text-[#1b76d1] transition">How dental implants work</a>
+        </li>
+        <li>
+          <a href="#who-does-dental-implants-near-me" className="inline-flex text-left hover:text-[#1b76d1] transition">Who does dental implants near me?</a>
+        </li>
+      </ul>
+    </nav>
+
+
+
+
+    {/* COST SECTION */}
+    <section className="space-y-8">
+      <h2
+        id="how-much-are-dental-implants"
+        className="text-2xl md:text-3xl font-bold text-[#14233d]"
+      >
+        How much are dental implants?
+      </h2>
+      <p className="text-gray-700 leading-relaxed">
+        The price of dental implants varies widely depending on the country, clinic, materials
+        used and whether you need additional procedures such as bone grafting or sinus lifting.
+        In many European countries and North America, a single implant with crown can range from{" "}
+        <span className="font-semibold">USD 1,500–4,000+ per tooth</span>. In Türkiye, similar
+        treatments are often more affordable while still using internationally recognised implant
+        systems and laboratories.
+      </p>
+      <p className="text-gray-700 leading-relaxed">
+        When we review your case, we do not only look at the price per implant. We help you
+        understand the{" "}
+        <span className="font-semibold">total treatment cost over time</span> – including
+        temporary teeth, extractions, bone grafts, follow-up visits and possible repairs.
+      </p>
+
+            <h2 id="what-s-included-in-a-dental-implant-quote" className="text-2xl md:text-3xl font-bold text-[#14233d]">
+        What's included in a dental implant quote?
+      </h2>
+      <p className="text-gray-700 leading-relaxed">
+        Most patients asking “how much do dental implants cost?” actually want to know everything
+        that is bundled into the fee. A transparent quote should spell out each stage, not just the
+        implant fixture.
+      </p>
+      <ul className="mt-3 space-y-2 text-gray-700 list-disc list-inside">
+        <li>Consultations, imaging (OPG or CBCT) and planning</li>
+        <li>Extractions, bone grafts or sinus lifts if required</li>
+        <li>The implant, abutment and final crown or bridge</li>
+        <li>Temporary teeth during the healing phase</li>
+        <li>Check-ups and after-care instructions</li>
+      </ul>
+      <p className="mt-3 text-gray-700 leading-relaxed">
+        Our second-opinion reviews break those line items down so you can see exactly what you're
+        paying for and whether one plan leaves out an essential step.
+      </p>
+
+      <h2 id="how-restoration-type-affects-the-price" className="text-2xl md:text-3xl font-bold text-[#14233d]">
+        How restoration type affects the price
+      </h2>
+      <p className="text-gray-700 leading-relaxed">
+        Restoration type changes the amount of material, lab work and chair time required, which is
+        why fees can vary so widely between patients.
+      </p>
+      <ul className="mt-3 space-y-2 text-gray-700 list-disc list-inside">
+        <li>Single tooth implant: one implant plus a single crown.</li>
+        <li>Implant bridge: fewer implants supporting several
+          teeth.</li>
+        <li>All-on-4 / All-on-6: full arch fixed bridge
+          supported by 4–6 implants.</li>
+      </ul>
+      <p className="mt-3 text-gray-700 leading-relaxed">
+        During your review we explain how each option affects longevity, maintenance visits and
+        follow-up costs so you can match the plan to your health, timeline and budget.
+      </p>
+
+      <h2 id="why-personalised-cost-estimates-matter" className="text-2xl md:text-3xl font-bold text-[#14233d]">
+        Why personalised cost estimates matter?
+      </h2>
+      <p className="text-gray-700 leading-relaxed">
+        Online price ranges are only a starting point because bone volume, medical history and
+        aesthetic goals change the number of appointments, components and specialists involved.
+      </p>
+      <p className="mt-3 text-gray-700 leading-relaxed">
+        Sharing your x-rays, photos and current plans with us lets us show which items are
+        essential, where you might save, and what to budget for long-term maintenance.
+      </p>
+
+
+      <div className="mt-6 rounded-2xl bg-[#f4fbff] border border-[#cde8ff] px-6 py-5 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <p className="text-sm md:text-base text-[#1b2a57] max-w-xl">
+          Want a realistic estimate for <span className="font-semibold">your</span> situation?
+          Send us your current plan and imaging, and we’ll explain the costs in clear language.
+        </p>
+        <Link
+          href="/start?from=/treatments/dental-implants#cost"
+          className="inline-flex items-center justify-center rounded-full bg-[#1b76d1] px-5 py-2.5 text-sm md:text-base font-semibold text-white shadow hover:bg-[#165fa6] transition"
+        >
+          Upload My Plan for Review
+        </Link>
+      </div>
+    </section>
+
+    {/* WHO DOES IMPLANTS & INSURANCE */}
+    <section className="space-y-8">
+      <h2 id="who-does-dental-implants" className="text-2xl md:text-3xl font-bold text-[#14233d]">
+        Who does dental implants?
+      </h2>
+      <p className="text-gray-700 leading-relaxed">
+        Dental implants are usually placed by{" "}
+        <span className="font-semibold">
+          oral surgeons, periodontists or general dentists with implant training
+        </span>
+        . In many cases, the surgical and prosthetic parts of the treatment are done by different
+        professionals working as a team.
+      </p>
+      <p className="mt-3 text-gray-700 leading-relaxed">
+        When you share your current plan with us, we look at who will place the implants, who will
+        make the crowns or bridge, and whether the team structure makes sense for the complexity
+        of your case.
+      </p>
+
+      <h2 id="are-dental-implants-covered-by-insurance" className="text-2xl md:text-3xl font-bold text-[#14233d]">
+        Are dental implants covered by insurance?
+      </h2>
+      <p className="text-gray-700 leading-relaxed">
+        Many standard dental insurance policies offer{" "}
+        <span className="font-semibold">limited or no coverage</span> for implants, especially if
+        they are considered “cosmetic”. Some extended plans and medical insurances may cover part
+        of the cost when tooth loss is related to trauma, illness or specific medical conditions.
+      </p>
+      <p className="mt-3 text-gray-700 leading-relaxed">
+        Because every policy is different, we recommend:
+      </p>
+      <ul className="mt-3 space-y-2 text-gray-700 list-disc list-inside">
+        <li>Requesting a written pre-approval from your insurer before treatment</li>
+        <li>Checking annual and lifetime limits carefully</li>
+        <li>Asking if alternative treatments (bridges, dentures) are covered differently</li>
+      </ul>
+      <p className="mt-3 text-gray-700 leading-relaxed">
+        In our second-opinion reports we can help you prepare clear questions for your insurance
+        company so you know exactly what to expect.
+      </p>
+    </section>
+
+    {/* PAIN & SAFETY */}
+    <section className="space-y-8">
+      <h2 id="are-dental-implants-painful" className="text-2xl md:text-3xl font-bold text-[#14233d]">
+        Are dental implants painful?
+      </h2>
+      <p className="text-gray-700 leading-relaxed">
+        During the procedure, local anaesthesia (and in some cases sedation) is used, so you
+        should not feel sharp pain while the implants are placed. Afterwards,{" "}
+        <span className="font-semibold">mild to moderate soreness and swelling</span> are normal
+        for a few days, similar to an extraction.
+      </p>
+      <p className="mt-3 text-gray-700 leading-relaxed">
+        Good pain control, clear post-operative instructions and proper planning make the
+        experience much more comfortable. If you are anxious or have a low pain threshold, we can
+        review your options for sedation and staged treatment.
+      </p>
+
+      <h2 id="are-dental-implants-safe" className="text-2xl md:text-3xl font-bold text-[#14233d]">
+        Are dental implants safe?
+      </h2>
+      <p className="text-gray-700 leading-relaxed">
+        Dental implants have been used for decades and, in healthy patients with proper planning,
+        they have a <span className="font-semibold">very high success rate</span>. However, no
+        surgery is completely risk-free. Possible complications include infection, poor healing,
+        implant failure and aesthetic issues with the gums or crowns.
+      </p>
+      <p className="mt-3 text-gray-700 leading-relaxed">
+        Safety depends on your overall health, bone quality, surgeon’s experience and how closely
+        you follow after-care instructions. Our role is to help you understand these risk factors
+        and make sure your plan fits your medical background and expectations.
+      </p>
+
+      <div className="mt-6 rounded-2xl bg-[#fff7ed] border border-[#fed7aa] px-6 py-5">
+        <p className="text-sm md:text-base text-[#7c3414] leading-relaxed">
+          If you have conditions such as uncontrolled diabetes, heavy smoking, osteoporosis
+          medication or heart issues, implant planning must be done very carefully. Sharing your
+          full medical history with us allows us to flag questions you should raise with your
+          dental team.
+        </p>
+      </div>
+    </section>
+
+    {/* HOW IMPLANTS ARE DONE */}
+    <section className="space-y-8">
+      <h2 id="how-dental-implants-are-done" className="text-2xl md:text-3xl font-bold text-[#14233d]">
+        How dental implants are done
+      </h2>
+      <p className="text-gray-700 leading-relaxed">
+        Although every case is unique, most implant treatments follow a similar sequence:
+      </p>
+      <ol className="mt-3 space-y-2 text-gray-700 list-decimal list-inside">
+        <li>Consultation, photographs, x-rays and CBCT scan if needed</li>
+        <li>Planning of implant positions, bone grafting and final teeth</li>
+        <li>Implant placement under local anaesthesia (with or without extractions)</li>
+        <li>Healing phase where the implant integrates with the bone</li>
+        <li>Impressions or digital scans for the final crowns or bridge</li>
+        <li>Fitting and adjusting your new teeth, then regular check-ups</li>
+      </ol>
+      <p className="mt-3 text-gray-700 leading-relaxed">
+        In some full-arch cases, temporary fixed teeth are attached on the same day (often called
+        “teeth in a day”). In others, it is safer to wait for healing before loading the implants.
+      </p>
+
+            <h2 id="how-do-dental-implants-feel-day-to-day" className="text-2xl md:text-3xl font-bold text-[#14233d]">
+        How do dental implants feel day to day?
+      </h2>
+      <p className="text-gray-700 leading-relaxed">
+        Many patients search “how do dental implants feel” because they want to understand what life
+        will be like after treatment. Well-planned implants should feel very close to natural teeth
+        when you chew, speak and smile.
+      </p>
+      <p className="mt-3 text-gray-700 leading-relaxed">
+        They do, however, require meticulous cleaning and regular professional maintenance. In your
+        second-opinion review we walk through the healing milestones and daily care routine so you
+        know exactly what to expect once everything has settled.
+      </p>
+
+    </section>
+
+    {/* FINAL CTA */}
+    <section className="rounded-2xl bg-gradient-to-r from-[#3FB8FF] to-[#21CDC0] px-6 md:px-10 py-8 md:py-10 text-white flex flex-col md:flex-row items-center justify-between gap-6">
+      <div>
+        <h2 id="still-deciding-if-dental-implants-are-right-for-you" className="text-2xl md:text-3xl font-bold">
+          Still deciding if dental implants are right for you?
+        </h2>
+        <p className="mt-3 text-sm md:text-base text-white/90 max-w-xl">
+          Share your x-rays, photos and existing treatment plans with TürkiyeDental. We’ll review
+          them independently and explain costs, risks and alternatives in simple language—so you
+          can move forward with confidence, not pressure.
+        </p>
+      </div>
+      <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
+        <Link
+          href="/start?from=/treatments/dental-implants#cta"
+          className="inline-flex items-center justify-center rounded-full bg-white text-[#1b76d1] px-6 py-3 font-semibold text-sm md:text-base shadow-sm hover:bg-slate-50 transition"
+        >
+          Start Your Free Review
+        </Link>
+        <Link
+          href="/faq"
+          className="inline-flex items-center justify-center rounded-full border border-white/70 px-6 py-3 font-semibold text-sm md:text-base text-white hover:bg-white/10 transition"
+        >
+          Read More FAQs
+        </Link>
+      </div>
+    </section>
+
+        {/* LONGEVITY, VALUE, COST & REMOVABILITY */}
+    <section className="space-y-8">
+      <h2 id="how-long-do-dental-implants-last" className="text-2xl md:text-3xl font-bold text-[#14233d]">
+        How long do dental implants last?
+      </h2>
+      <p className="text-gray-700 leading-relaxed">
+        With good planning, healthy bone and proper home care, dental implants are designed to be a{" "}
+        <span className="font-semibold">long-term solution</span>. Many studies show success rates
+        over 90% at 10 years, and in healthy non-smokers implants can last decades. However, the
+        crown or bridge on top of the implant may need to be repaired or replaced earlier due to
+        wear or changes in your bite.
+      </p>
+      <p className="text-gray-700 leading-relaxed">
+        Lifespan depends heavily on:
+      </p>
+      <ul className="mt-3 space-y-2 text-gray-700 list-disc list-inside">
+        <li>Your general health and habits (smoking, teeth grinding, oral hygiene)</li>
+        <li>The quality of the surgical planning and implant placement</li>
+        <li>How well the gums are maintained around the implants</li>
+        <li>Regular professional cleanings and check-ups</li>
+      </ul>
+      <p className="mt-3 text-gray-700 leading-relaxed">
+        When we review your case, we look not only at the short-term result but also at{" "}
+        <span className="font-semibold">how stable it will be in 5–10 years</span>.
+      </p>
+
+      <h2 id="are-dental-implants-removable" className="text-2xl md:text-3xl font-bold text-[#14233d]">
+        Are dental implants removable?
+      </h2>
+      <p className="text-gray-700 leading-relaxed">
+        The titanium implant itself is <span className="font-semibold">not removable</span> by the
+        patient – it is fixed in the bone like a new tooth root. However, there are two main types
+        of restorations on top:
+      </p>
+      <ul className="mt-3 space-y-2 text-gray-700 list-disc list-inside">
+        <li>
+          <span className="font-semibold">Fixed restorations:</span> bridges or crowns that are
+          screwed or cemented to the implants and only removed by the dentist if needed.
+        </li>
+        <li>
+          <span className="font-semibold">Removable implant dentures:</span> clip onto the implants
+          using special attachments and can be taken out daily for cleaning.
+        </li>
+      </ul>
+      <p className="mt-3 text-gray-700 leading-relaxed">
+        In your treatment review we explain which option is planned for you and how it will feel in
+        daily life.
+      </p>
+
+      <h2 id="are-dental-implants-expensive" className="text-2xl md:text-3xl font-bold text-[#14233d]">
+        Are dental implants expensive?
+      </h2>
+      <p className="text-gray-700 leading-relaxed">
+        Compared to fillings or simple dentures, implants are{" "}
+        <span className="font-semibold">a higher upfront investment</span>. They involve advanced
+        imaging, surgical time, high-precision lab work and premium materials. However, implants
+        can also be cost-effective over the long term, especially when they prevent further bone
+        loss or repeated work on neighbouring teeth.
+      </p>
+      <p className="mt-3 text-gray-700 leading-relaxed">
+        The key question is not just “are dental implants expensive?” but{" "}
+        <span className="font-semibold">“do they bring enough benefit and stability for me?”</span>.
+        That balance is exactly what we explore together during a second-opinion review.
+      </p>
+
+      <h2 id="are-dental-implants-worth-it" className="text-2xl md:text-3xl font-bold text-[#14233d]">
+        Are dental implants worth it?
+      </h2>
+      <p className="text-gray-700 leading-relaxed">
+        For many patients, implants are absolutely worth it because they provide{" "}
+        <span className="font-semibold">strong, natural-feeling teeth</span> without needing to
+        grind down healthy neighbours. They can improve chewing, confidence and quality of life.
+        But they are not automatically the best choice for everyone.
+      </p>
+      <p className="mt-3 text-gray-700 leading-relaxed">
+        Dental implants are usually worth it when:
+      </p>
+      <ul className="mt-3 space-y-2 text-gray-700 list-disc list-inside">
+        <li>Your general health and bone quality are suitable</li>
+        <li>You are willing to maintain excellent oral hygiene long-term</li>
+        <li>The treatment plan is realistic, not overly aggressive</li>
+        <li>You understand the costs, risks and alternatives</li>
+      </ul>
+      <p className="mt-3 text-gray-700 leading-relaxed">
+        Our role at TürkiyeDental is to help you decide whether implants are worth it{" "}
+        <span className="font-semibold">for your specific case</span>, not in theory.
+      </p>
+
+      <h2 id="why-are-dental-implants-so-expensive" className="text-2xl md:text-3xl font-bold text-[#14233d]">
+        Why are dental implants so expensive?
+      </h2>
+      <p className="text-gray-700 leading-relaxed">
+        Dental implants seem expensive because you are not just paying for a screw in the bone.
+        You are paying for:
+      </p>
+      <ul className="mt-3 space-y-2 text-gray-700 list-disc list-inside">
+        <li>Diagnostic imaging (OPG, CBCT) and detailed planning</li>
+        <li>Surgical time, sterile equipment and experienced staff</li>
+        <li>High-quality titanium or zirconia implants and components</li>
+        <li>Laboratory work for precise, aesthetic crowns and bridges</li>
+        <li>Follow-up care and adjustments</li>
+      </ul>
+      <p className="mt-3 text-gray-700 leading-relaxed">
+        By comparing quotes carefully, we can show you where your money goes and whether the plan
+        you received is reasonably priced for the level of work involved.
+      </p>
+
+      <h2 id="where-are-dental-implants-the-cheapest" className="text-2xl md:text-3xl font-bold text-[#14233d]">
+        Where are dental implants the cheapest?
+      </h2>
+      <p className="text-gray-700 leading-relaxed">
+        Many patients search for the cheapest country or clinic for dental implants. Prices are
+        often lower in Türkiye and some other countries compared with North America or Western
+        Europe, mainly due to lower operating costs – not necessarily lower quality.
+      </p>
+      <p className="mt-3 text-gray-700 leading-relaxed">
+        However, the <span className="font-semibold">cheapest offer is not always the best value</span>.
+        Travel, follow-up, possible corrections and future maintenance all matter. Our independent
+        advice focuses on{" "}
+        <span className="font-semibold">safety, transparency and total value</span>, not just the
+        headline price.
+      </p>
+
+      <div className="mt-6 rounded-2xl bg-[#f4fbff] border border-[#cde8ff] px-6 py-5 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <p className="text-sm md:text-base text-[#1b2a57] max-w-xl leading-relaxed">
+          Comparing prices from different clinics or countries? We can review your quotes side by
+          side and highlight the real differences in materials, procedures and long-term value.
+        </p>
+        <Link
+          href="/start?from=/treatments/dental-implants#comparison"
+          className="inline-flex items-center justify-center rounded-full bg-[#1b76d1] px-5 py-2.5 text-sm md:text-base font-semibold text-white shadow hover:bg-[#165fa6] transition"
+        >
+          Get My Quotes Compared
+        </Link>
+      </div>
+    </section>
+
+    {/* INSURANCE & COVERAGE VARIANTS */}
+    <section className="space-y-8">
+      <h2 id="which-dental-insurance-covers-implants" className="text-2xl md:text-3xl font-bold text-[#14233d]">
+        Which dental insurance covers implants?
+      </h2>
+      <p className="text-gray-700 leading-relaxed">
+        Unfortunately there is no single list of “which dental insurance covers implants” because
+        every insurer and plan is different. Some offer partial coverage for the crown but not the
+        implant itself, others limit reimbursement to the price of a basic denture.
+      </p>
+      <p className="mt-3 text-gray-700 leading-relaxed">
+        The best approach is to ask your insurer for:
+      </p>
+      <ul className="mt-3 space-y-2 text-gray-700 list-disc list-inside">
+        <li>A written statement of what is covered for implant treatment</li>
+        <li>Annual and lifetime maximums for major procedures</li>
+        <li>Whether alternative treatments are covered at a different rate</li>
+      </ul>
+
+      <h2 id="which-dental-plans-cover-implants" className="text-2xl md:text-3xl font-bold text-[#14233d]">
+        Which dental plans cover implants?
+      </h2>
+      <p className="text-gray-700 leading-relaxed">
+        Some premium dental plans and employer-based policies cover implants under “major
+        restorative” benefits. Others exclude implants but will contribute towards a bridge or
+        denture instead. Carefully reading the fine print of the plan is essential before starting
+        treatment.
+      </p>
+      <p className="mt-3 text-gray-700 leading-relaxed">
+        During our review we can help you turn your treatment plan into{" "}
+        <span className="font-semibold">clear questions</span> to send to your insurer, so that you
+        get accurate answers in writing.
+      </p>
+
+      <h2 id="can-dental-implants-be-covered-by-medical-insurance" className="text-2xl md:text-3xl font-bold text-[#14233d]">
+        Can dental implants be covered by medical insurance?
+      </h2>
+      <p className="text-gray-700 leading-relaxed">
+        In some situations, medical insurance (not just dental) may contribute to implant
+        treatment – for example after accidents, tumour surgery or certain medical conditions.
+        This depends heavily on the local system and your specific policy.
+      </p>
+      <p className="mt-3 text-gray-700 leading-relaxed">
+        Because rules change frequently, we do not promise coverage. Instead, we help you describe
+        your case and treatment plan clearly to your medical insurer so they can decide correctly
+        whether it fits their criteria.
+      </p>
+    </section>
+
+    {/* SAFETY, FAILURE, BEST IMPLANTS, HOW THEY WORK */}
+    <section className="space-y-8">
+      <h2 id="can-dental-implants-get-infected" className="text-2xl md:text-3xl font-bold text-[#14233d]">
+        Can dental implants get infected?
+      </h2>
+      <p className="text-gray-700 leading-relaxed">
+        Yes. Just like natural teeth can develop gum disease, implants can suffer from{" "}
+        <span className="font-semibold">peri-implant mucositis or peri-implantitis</span>, which
+        are inflammatory conditions caused mainly by bacterial plaque. If not treated, infection
+        around implants can lead to bone loss and, in severe cases, implant failure.
+      </p>
+      <p className="mt-3 text-gray-700 leading-relaxed">
+        Good brushing, flossing or interdental brushes, regular professional cleanings and
+        avoiding smoking are key to keeping implants healthy for many years.
+      </p>
+
+            <h2 id="why-do-dental-implants-fail" className="text-2xl md:text-3xl font-bold text-[#14233d]">
+        Why do dental implants fail?
+      </h2>
+      <p className="text-gray-700 leading-relaxed">
+        Implants can fail early if they don't integrate or later if the supporting bone and gums
+        break down. Common triggers include uncontrolled medical conditions, heavy smoking, poor oral
+        hygiene, excessive bite forces, untreated infections and overly aggressive planning.
+      </p>
+      <p className="mt-3 text-gray-700 leading-relaxed">
+        During a second-opinion review we check your scans, medical history and bite to flag the risk
+        factors most relevant to you before you commit to treatment.
+      </p>
+
+      <h2 id="how-to-lower-your-risk-of-implant-failure" className="text-2xl md:text-3xl font-bold text-[#14233d]">
+        How to lower your risk of implant failure
+      </h2>
+      <p className="text-gray-700 leading-relaxed">
+        Instead of dwelling on horror stories online, we translate your x-rays and plans into
+        practical steps that make success more likely—whether that's staging the treatment,
+        improving gum health first or choosing a more suitable implant system.
+      </p>
+      <p className="mt-3 text-gray-700 leading-relaxed">
+        The goal is to give you a clear checklist of questions for your dental team so that the plan
+        fits your bone condition, lifestyle and timeline from the beginning.
+      </p>
+
+
+      <h2 id="which-dental-implants-are-best" className="text-2xl md:text-3xl font-bold text-[#14233d]">
+        Which dental implants are best?
+      </h2>
+      <p className="text-gray-700 leading-relaxed">
+        Rather than asking which brand is “best”, it is more useful to ask whether your dentist
+        uses a <span className="font-semibold">well-researched, reputable implant system</span>{" "}
+        with long-term data and reliable components. Many major brands perform very well when used
+        correctly.
+      </p>
+      <p className="mt-3 text-gray-700 leading-relaxed">
+        We focus on whether the chosen system is appropriate for your case, whether genuine parts
+        are being used and whether there is likely to be spare-part availability and support in
+        the future.
+      </p>
+
+      <h2 id="how-dental-implants-work" className="text-2xl md:text-3xl font-bold text-[#14233d]">
+        How dental implants work
+      </h2>
+      <p className="text-gray-700 leading-relaxed">
+        Dental implants work by a process called{" "}
+        <span className="font-semibold">osseointegration</span>. The titanium surface bonds
+        closely with the surrounding bone, creating a stable anchor. Once this has healed, an
+        abutment and crown or bridge are attached, so the implant functions like a strong,
+        artificial tooth root.
+      </p>
+      <p className="mt-3 text-gray-700 leading-relaxed">
+        When designed well, the forces from chewing are distributed safely through the implant and
+        bone, allowing you to eat and speak comfortably.
+      </p>
+
+      <h2 id="who-does-dental-implants-near-me" className="text-2xl md:text-3xl font-bold text-[#14233d]">
+        Who does dental implants near me?
+      </h2>
+      <p className="text-gray-700 leading-relaxed">
+        “Who does dental implants near me?” is a common search, but proximity alone does not
+        guarantee quality. Look for clinics that clearly explain their training, show real case
+        examples, use evidence-based materials and provide transparent written plans.
+      </p>
+      <p className="mt-3 text-gray-700 leading-relaxed">
+        At TürkiyeDental we don’t tell you where to go; we help you{" "}
+        <span className="font-semibold">evaluate the options you already have</span>. With a clear,
+        unbiased second opinion in hand, you can choose the clinic – near you or abroad – that
+        feels safest and most trustworthy.
+      </p>
+
+      <div className="mt-6 rounded-2xl bg-[#f4fbff] border border-[#cde8ff] px-6 py-5 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <p className="text-sm md:text-base text-[#1b2a57] max-w-xl leading-relaxed">
+          Already have a treatment quote or are you talking with a clinic near you? Share the
+          details and we’ll help you understand if the plan is realistic, safe and fairly priced.
+        </p>
+        <Link
+          href="/start?from=/treatments/dental-implants#safety"
+          className="inline-flex items-center justify-center rounded-full bg-[#21CDC0] px-5 py-2.5 text-sm md:text-base font-semibold text-white shadow hover:bg-[#1bb5a9] transition"
+        >
+          Check My Plan for Safety
+        </Link>
+      </div>
+    </section>
+
+  </div>
+</section>

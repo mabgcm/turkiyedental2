@@ -1,0 +1,8 @@
+// app/treatments/layout.tsx
+export default function TreatmentsLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="max-w-5xl mx-auto px-4 md:px-6 py-10">
+      {children}
+    </div>
+  );
+}

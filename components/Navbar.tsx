@@ -26,16 +26,23 @@ export default function Navbar() {
                     <li><Link className="hover:text-brand-primary" href="/">Home</Link></li>
 
                     <li className="relative group">
-                        <span className="cursor-default group-hover:text-brand-primary">Treatments</span>
-                        <ul className="absolute left-0 mt-2 hidden group-hover:block bg-white border rounded-md shadow-md min-w-56 p-2">
+                        <span className="cursor-default group-hover:text-brand-primary">
+                            Treatments
+                        </span>
+
+                        <ul className="absolute left-0 top-full hidden group-hover:block bg-white border rounded-md shadow-md min-w-56 p-2 z-50">
                             {[
                                 ["Dental Implants", "/treatments/dental-implants"],
-                                ["All-on-4 / All-on-6", "/treatments/all-on-4"],
+                                ["All-on-4", "/treatments/allon4"],
+                                ["All-on-6", "/treatments/allon6"],
                                 ["Veneers", "/treatments/veneers"],
                                 ["Zirconium Crowns", "/treatments/zirconium-crowns"],
                             ].map(([label, href]) => (
                                 <li key={href}>
-                                    <Link className="block px-3 py-2 rounded hover:bg-brand-surface" href={href as string}>
+                                    <Link
+                                        href={href as string}
+                                        className="block px-3 py-2 rounded hover:bg-brand-surface hover:text-[#3FB8FF] transition"
+                                    >
                                         {label}
                                     </Link>
                                 </li>

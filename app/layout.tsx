@@ -5,6 +5,7 @@ import Topbar from "@/components/Topbar";
 import Navbar from "@/components/Navbar";
 import { Suspense } from "react";
 import Footer from "@/components/Footer";
+import { Analytics } from "@vercel/analytics/next"
 
 export const metadata: Metadata = {
   title: "TürkiyeDental",
@@ -15,6 +16,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning>
       <body suppressHydrationWarning className="bg-white text-[#213360]">
+
         <Suspense fallback={null}>
           <Topbar />
         </Suspense>
@@ -23,6 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </Suspense>
         <div className="pt-16 sm:pt-28">{children}</div>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );

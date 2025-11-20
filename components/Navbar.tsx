@@ -5,6 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 import Button from "./Button";
 
+const toothIconPath = "M12 2.2c-3.4 0-6 2.6-6 5.8 0 3 .4 5.8.4 8.5 0 1 .7 2 1.7 2.2 1 .2 1.8-.4 2.1-1.6.4-1.7.8-2.9 1.8-2.9s1.4 1.2 1.8 2.9c.3 1.2 1.1 1.8 2.1 1.6s1.7-1.2 1.7-2.2c0-2.7.4-5.5.4-8.5 0-3.2-2.6-5.8-6-5.8Z";
+const toothSmilePath = "M9 8.2c.2-1.5 1.4-2.6 3-2.6s2.8 1.1 3 2.6";
+
 const ToothIcon = (props: SVGProps<SVGSVGElement>) => (
     <svg
         viewBox="0 0 24 24"
@@ -16,13 +19,34 @@ const ToothIcon = (props: SVGProps<SVGSVGElement>) => (
         aria-hidden="true"
         {...props}
     >
-        <path d="M12 2.2c-3.4 0-6 2.6-6 5.8 0 3 .4 5.8.4 8.5 0 1 .7 2 1.7 2.2 1 .2 1.8-.4 2.1-1.6.4-1.7.8-2.9 1.8-2.9s1.4 1.2 1.8 2.9c.3 1.2 1.1 1.8 2.1 1.6s1.7-1.2 1.7-2.2c0-2.7.4-5.5.4-8.5 0-3.2-2.6-5.8-6-5.8Z" />
-        <path d="M9 8.2c.2-1.5 1.4-2.6 3-2.6s2.8 1.1 3 2.6" />
+        <path d={toothIconPath} />
+        <path d={toothSmilePath} />
     </svg>
 );
 
 export default function Navbar() {
     const [open, setOpen] = useState(false);
+
+    const treatments = [
+        { label: "Dental Implants", href: "/treatments/dental-implants" },
+        { label: "All-on-4", href: "/treatments/allon4" },
+        { label: "All-on-6", href: "/treatments/allon6" },
+        { label: "Veneers", href: "/treatments/veneers" },
+        { label: "Zirconium Crowns", href: "/treatments/zirconium-crowns" },
+    ];
+
+    const destinations = [
+        { label: "Istanbul", href: "/destinations/istanbul" },
+        { label: "Antalya", href: "/destinations/antalya" },
+        { label: "Izmir", href: "/destinations/izmir" },
+    ];
+
+    const howItWorks = [
+        { label: "Upload X-ray/Photos (Secure)", href: "/upload" },
+        { label: "Travel Guide", href: "/guides/travel" },
+        { label: "Timeline & Healing", href: "/guides/timeline" },
+        { label: "Warranty & After-care", href: "/guides/warranty" },
+    ];
 
     useEffect(() => {
         document.body.style.overflow = open ? "hidden" : "";
@@ -47,19 +71,13 @@ export default function Navbar() {
                         </span>
 
                         <ul className="absolute left-0 top-full hidden group-hover:block bg-white border rounded-md shadow-md min-w-56 p-2 z-50">
-                            {[
-                                ["Dental Implants", "/treatments/dental-implants"],
-                                ["All-on-4", "/treatments/allon4"],
-                                ["All-on-6", "/treatments/allon6"],
-                                ["Veneers", "/treatments/veneers"],
-                                ["Zirconium Crowns", "/treatments/zirconium-crowns"],
-                            ].map(([label, href]) => (
-                                <li key={href}>
+                            {treatments.map((item) => (
+                                <li key={item.href}>
                                     <Link
-                                        href={href as string}
+                                        href={item.href}
                                         className="block px-3 py-2 rounded hover:bg-brand-surface hover:text-[#3FB8FF] transition"
                                     >
-                                        {label}
+                                        {item.label}
                                     </Link>
                                 </li>
                             ))}
@@ -69,14 +87,10 @@ export default function Navbar() {
                     <li className="relative group">
                         <span className="cursor-default group-hover:text-brand-primary">Destinations</span>
                         <ul className="absolute left-0 mt-2 hidden group-hover:block bg-white border rounded-md shadow-md min-w-40 p-2">
-                            {[
-                                ["Istanbul", "/destinations/istanbul"],
-                                ["Antalya", "/destinations/antalya"],
-                                ["Izmir", "/destinations/izmir"],
-                            ].map(([label, href]) => (
-                                <li key={href}>
-                                    <Link className="block px-3 py-2 rounded hover:bg-brand-surface" href={href as string}>
-                                        {label}
+                            {destinations.map((item) => (
+                                <li key={item.href}>
+                                    <Link className="block px-3 py-2 rounded hover:bg-brand-surface" href={item.href}>
+                                        {item.label}
                                     </Link>
                                 </li>
                             ))}
@@ -88,15 +102,10 @@ export default function Navbar() {
                     <li className="relative group">
                         <span className="cursor-default group-hover:text-brand-primary">How It Works</span>
                         <ul className="absolute left-0 mt-2 hidden group-hover:block bg-white border rounded-md shadow-md min-w-64 p-2">
-                            {[
-                                ["Upload X-ray/Photos (Secure)", "/upload"],
-                                ["Travel Guide", "/guides/travel"],
-                                ["Timeline & Healing", "/guides/timeline"],
-                                ["Warranty & After-care", "/guides/warranty"],
-                            ].map(([label, href]) => (
-                                <li key={href}>
-                                    <Link className="block px-3 py-2 rounded hover:bg-brand-surface" href={href as string}>
-                                        {label}
+                            {howItWorks.map((item) => (
+                                <li key={item.href}>
+                                    <Link className="block px-3 py-2 rounded hover:bg-brand-surface" href={item.href}>
+                                        {item.label}
                                     </Link>
                                 </li>
                             ))}
@@ -139,10 +148,13 @@ export default function Navbar() {
                             <details className="group">
                                 <summary className="py-2 cursor-pointer">Treatments</summary>
                                 <ul className="pl-3 border-l space-y-1">
-                                    <li><Link className="block py-1" href="/treatments/dental-implants" onClick={() => setOpen(false)}>Dental Implants</Link></li>
-                                    <li><Link className="block py-1" href="/treatments/all-on-4" onClick={() => setOpen(false)}>All-on-4 / All-on-6</Link></li>
-                                    <li><Link className="block py-1" href="/treatments/veneers" onClick={() => setOpen(false)}>Veneers</Link></li>
-                                    <li><Link className="block py-1" href="/treatments/zirconium-crowns" onClick={() => setOpen(false)}>Zirconium Crowns</Link></li>
+                                    {treatments.map((item) => (
+                                        <li key={item.href}>
+                                            <Link className="block py-1" href={item.href} onClick={() => setOpen(false)}>
+                                                {item.label}
+                                            </Link>
+                                        </li>
+                                    ))}
                                 </ul>
                             </details>
                         </li>
@@ -151,9 +163,28 @@ export default function Navbar() {
                             <details className="group">
                                 <summary className="py-2 cursor-pointer">Destinations</summary>
                                 <ul className="pl-3 border-l space-y-1">
-                                    <li><Link className="block py-1" href="/destinations/istanbul" onClick={() => setOpen(false)}>Istanbul</Link></li>
-                                    <li><Link className="block py-1" href="/destinations/antalya" onClick={() => setOpen(false)}>Antalya</Link></li>
-                                    <li><Link className="block py-1" href="/destinations/izmir" onClick={() => setOpen(false)}>Izmir</Link></li>
+                                    {destinations.map((item) => (
+                                        <li key={item.href}>
+                                            <Link className="block py-1" href={item.href} onClick={() => setOpen(false)}>
+                                                {item.label}
+                                            </Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </details>
+                        </li>
+
+                        <li>
+                            <details className="group">
+                                <summary className="py-2 cursor-pointer">How It Works</summary>
+                                <ul className="pl-3 border-l space-y-1">
+                                    {howItWorks.map((item) => (
+                                        <li key={item.href}>
+                                            <Link className="block py-1" href={item.href} onClick={() => setOpen(false)}>
+                                                {item.label}
+                                            </Link>
+                                        </li>
+                                    ))}
                                 </ul>
                             </details>
                         </li>

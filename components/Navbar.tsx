@@ -1,9 +1,25 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type SVGProps } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Button from "./Button";
+
+const ToothIcon = (props: SVGProps<SVGSVGElement>) => (
+    <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={1.6}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden="true"
+        {...props}
+    >
+        <path d="M12 2.2c-3.4 0-6 2.6-6 5.8 0 3 .4 5.8.4 8.5 0 1 .7 2 1.7 2.2 1 .2 1.8-.4 2.1-1.6.4-1.7.8-2.9 1.8-2.9s1.4 1.2 1.8 2.9c.3 1.2 1.1 1.8 2.1 1.6s1.7-1.2 1.7-2.2c0-2.7.4-5.5.4-8.5 0-3.2-2.6-5.8-6-5.8Z" />
+        <path d="M9 8.2c.2-1.5 1.4-2.6 3-2.6s2.8 1.1 3 2.6" />
+    </svg>
+);
 
 export default function Navbar() {
     const [open, setOpen] = useState(false);
@@ -104,7 +120,7 @@ export default function Navbar() {
                     onClick={() => setOpen(v => !v)}
                 >
                     <span className="sr-only">Toggle menu</span>
-                    <i className="fa-solid fa-tooth text-xl"></i>
+                    <ToothIcon className="h-5 w-5" />
                 </button>
             </nav>
 

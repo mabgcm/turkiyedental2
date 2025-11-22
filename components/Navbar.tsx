@@ -32,7 +32,7 @@ export default function Navbar() {
         { label: "All-on-4", href: "/treatments/allon4" },
         { label: "All-on-6", href: "/treatments/allon6" },
         { label: "Veneers", href: "/treatments/veneers" },
-        { label: "Zirconium Crowns", href: "/treatments/zirconium-crowns" },
+        { label: "Dental Crowns", href: "/treatments/dental-crowns" },
     ];
 
     const destinations = [

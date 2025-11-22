@@ -26,11 +26,10 @@ function IconTwitterX(props: React.SVGProps<SVGSVGElement>) {
         </svg>
     );
 }
-function IconWhatsApp(props: React.SVGProps<SVGSVGElement>) {
+function IconPhone(props: React.SVGProps<SVGSVGElement>) {
     return (
         <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
-            <path d="M20.5 3.5A11 11 0 0 0 3.4 20l-1 3.6 3.7-1A11 11 0 0 0 21 12a11 11 0 0 0-.5-8.5zM12 20.1a8.1 8.1 0 1 1 0-16.2 8.1 8.1 0 0 1 0 16.2z" />
-            <path d="M16.9 14.7c-.2-.1-1.4-.7-1.5-.7-.2-.1-.3-.1-.5.1l-.7.9c-.1.1-.3.1-.5 0a6.3 6.3 0 0 1-3-2.6c-.2-.3 0-.4.1-.5l.4-.4.2-.4c.1-.1 0-.3 0-.4l-.7-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.1 0-.4.1-.6.3-.2.3-.8.8-.8 2s.8 2.3.9 2.5c.1.2 1.7 2.8 4.2 3.8 2.5 1 2.5.7 3 .7s1.6-.7 1.8-1.4c.2-.6.2-1.2.1-1.3 0-.1-.2-.2-.3-.2z" />
+            <path d="M5.1 3.3c.4-.6 1.1-.9 1.8-.8l2.2.4c.6.1 1 .6 1.1 1.2l.3 1.8c.1.6-.2 1.3-.7 1.6l-1 .7c.9 1.7 2.2 3 3.9 3.9l.7-1c.4-.5 1-.7 1.6-.7l1.8.3c.6.1 1.1.5 1.2 1.1l.4 2.2c.1.7-.2 1.4-.8 1.8-.8.6-1.9 1-3.4 1-3 0-7.3-4.2-7.3-7.3 0-1.5.4-2.6 1-3.4z" />
         </svg>
     );
 }
@@ -55,7 +54,7 @@ export default function Topbar() {
 
     return (
         <div className="fixed top-0 inset-x-0 z-[60] hidden sm:block bg-white">
-            <div className="mx-auto max-w-6xl px-4 h-11 flex items-center justify-between border-b">
+            <div className="mx-auto max-w-6xl px-4 h-11 flex items-center justify-center gap-6 border-b">
                 {/* Left */}
                 <ul className="flex flex-wrap items-center gap-4 text-[14px] text-brand-secondary">
                     {/* 24/7 */}
@@ -90,26 +89,12 @@ export default function Topbar() {
                         )}
                     </li>
 
-                    {/* WhatsApp */}
+                    {/* Phone */}
                     <li className="flex items-center gap-1">
-                        <IconWhatsApp className="h-4 w-4 fill-[#25D366]" />
-                        <a href="https://wa.me/905555555555" target="_blank" rel="noopener" className="hover:underline">
-                            WhatsApp: +90 555 555 55 55
+                        <IconPhone className="h-4 w-4 fill-[#25D366]" />
+                        <a href="tel:+14372662552" className="hover:underline">
+                            Call: +1 437 266 2552
                         </a>
-                    </li>
-
-                    {/* Locations */}
-                    <li className="hidden md:flex items-center gap-1">
-                        <span>📍</span>
-                        <span>Locations: Istanbul • Antalya • Izmir</span>
-                    </li>
-
-                    {/* Hours */}
-                    <li className="hidden md:flex items-center gap-1">
-                        <span>⏰</span>
-                        <Link href="/contact-us" className="hover:underline">
-                            Mon–Sat: 09:00–19:00 (TRT)
-                        </Link>
                     </li>
 
                     {/* For Clinics */}

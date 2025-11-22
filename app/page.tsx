@@ -11,37 +11,37 @@ const treatments: TreatmentItem[] = [
   {
     title: "Dental Implants",
     href: "/treatments/dental-implants",
-    image: { src: "/images/preventive.jpg", alt: "Dental implants" },
+    image: { src: "/images/full-mouth.jpg", alt: "Dental implants" },
     excerpt:
-      "Considering an implant? We review bone quality, materials, healing time and alternatives so you decide with confidence.",
+      "Clear answers on cost, safety, pain, and timelines so you can choose implants with confidence.",
   },
   {
-    title: "Crowns & Bridges",
-    href: "/treatments/crowns-bridges",
-    image: { src: "/images/full-mouth.jpg", alt: "Crowns and bridges" },
+    title: "Dental Crowns",
+    href: "/treatments/dental-crowns",
+    image: { src: "/images/preventive.jpg", alt: "Dental crowns" },
     excerpt:
-      "Zirconia or e.max? Single crown or bridge? We explain options, lab quality, and long-term maintenance.",
+      "When to crown, when not to, material choices (zirconia, porcelain, metal), and how to avoid overtreatment.",
   },
   {
-    title: "Veneers / Smile Makeover",
-    href: "/treatments/veneers-smile",
-    image: { src: "/images/smile.jpeg", alt: "Veneers" },
+    title: "Veneers",
+    href: "/treatments/veneers",
+    image: { src: "/images/veneers.png", alt: "Veneers" },
     excerpt:
-      "Do you really need veneers? We compare minimally invasive options like aligners, bonding and whitening.",
+      "Pros, downsides, costs, longevity, and whether veneers or more conservative options fit your smile goals.",
   },
   {
-    title: "Teeth Whitening",
-    href: "/treatments/teeth-whitening",
-    image: { src: "/images/preventive.jpg", alt: "Teeth whitening" },
+    title: "All-on-4",
+    href: "/treatments/allon4",
+    image: { src: "/images/allon4.jpeg", alt: "All-on-4 implants" },
     excerpt:
-      "Learn about in-office vs home kits, sensitivity risk, and when whitening is (or isn’t) a good idea.",
+      "Full-arch fixed solutions: indications, travel timelines, provisional teeth, and long-term maintenance.",
   },
   {
-    title: "Full-Arch / All-on-4",
-    href: "/treatments/full-arch-all-on-4",
-    image: { src: "/images/full-mouth.jpg", alt: "All-on-4" },
+    title: "All-on-6",
+    href: "/treatments/allon6",
+    image: { src: "/images/allon6.jpeg", alt: "All-on-6 implants" },
     excerpt:
-      "Big decision, big value in a second opinion. We review plan, implants/abutments, provisional wear, travel timing and costs.",
+      "Compare All-on-6 to other full-arch options, understand costs, healing, and how to read a treatment quote.",
   },
 ];
 

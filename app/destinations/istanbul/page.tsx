@@ -18,16 +18,14 @@ export default function IstanbulPage() {
         highlight="ISTANBUL"
         subtitle="A clear, clinic-independent guide for patients from the USA and Canada researching dental care abroad."
       />
-      <p className="text-center text-sm md:text-base text-[#1b76d1] font-semibold">
-        Start your free, clinic-independent second opinion.
-      </p>
+
 
       <section className="space-y-4">
         <SectionHeader
           variant="section"
-          align="left"
+          align="center"
           title="City Overview"
-          highlight="Overview"
+          highlight="City"
           subtitle=""
         />
         <p className="text-gray-700 leading-relaxed">
@@ -55,7 +53,7 @@ export default function IstanbulPage() {
       <section className="space-y-4">
         <SectionHeader
           variant="section"
-          align="left"
+          align="center"
           title="Treatment Quality & Dentist Qualifications"
           highlight="Quality"
           subtitle=""
@@ -77,7 +75,7 @@ export default function IstanbulPage() {
       <section className="space-y-4">
         <SectionHeader
           variant="section"
-          align="left"
+          align="center"
           title="Popular Treatments in Istanbul"
           highlight="Treatments"
           subtitle=""
@@ -106,7 +104,7 @@ export default function IstanbulPage() {
       <section className="space-y-4">
         <SectionHeader
           variant="section"
-          align="left"
+          align="center"
           title="Advantages of Choosing Istanbul"
           highlight="Advantages"
           subtitle=""
@@ -123,9 +121,9 @@ export default function IstanbulPage() {
       <section className="space-y-4">
         <SectionHeader
           variant="section"
-          align="left"
+          align="center"
           title="Things to Keep in Mind"
-          highlight="Honest Notes"
+          highlight="Keep in Mind"
           subtitle=""
         />
         <ul className="list-disc pl-5 text-gray-700 space-y-2">
@@ -139,9 +137,9 @@ export default function IstanbulPage() {
       <section className="space-y-4">
         <SectionHeader
           variant="section"
-          align="left"
+          align="center"
           title="Price Expectations (General Türkiye Averages)"
-          highlight="Pricing"
+          highlight="(General Türkiye Averages)"
           subtitle=""
         />
         <ul className="list-disc pl-5 text-gray-700 space-y-2">
@@ -157,7 +155,7 @@ export default function IstanbulPage() {
       <section className="space-y-4">
         <SectionHeader
           variant="section"
-          align="left"
+          align="center"
           title="Travel & Logistics"
           highlight="Travel"
           subtitle=""
@@ -182,7 +180,7 @@ export default function IstanbulPage() {
       <section className="space-y-4">
         <SectionHeader
           variant="section"
-          align="left"
+          align="center"
           title="Safety & Patient Experience"
           highlight="Safety"
           subtitle=""
@@ -197,7 +195,7 @@ export default function IstanbulPage() {
       <section className="space-y-4">
         <SectionHeader
           variant="section"
-          align="left"
+          align="center"
           title="Istanbul FAQs"
           highlight="FAQs"
           subtitle=""

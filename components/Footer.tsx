@@ -54,10 +54,10 @@ export default function Footer() {
                             <Phone className="h-5 w-5 text-[#1b76d1] mt-0.5" />
                             <span>+1 437 266 2552</span>
                         </li>
-                        {/* <li className="flex items-start gap-3">
+                        <li className="flex items-start gap-3">
                             <MapPin className="h-5 w-5 text-[#1b76d1] mt-0.5" />
-                            <span>• NY•ON•BC•LA•TX•FL•IL•AZ</span>
-                        </li> */}
+                            <span>New York • Los Angeles • Chicago • Toronto • Vancouver • Miami</span>
+                        </li>
                     </ul>
                 </div>
 

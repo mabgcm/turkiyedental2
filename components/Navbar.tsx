@@ -37,8 +37,6 @@ export default function Navbar() {
 
     const destinations = [
         { label: "Istanbul", href: "/destinations/istanbul" },
-        { label: "Antalya", href: "/destinations/antalya" },
-        { label: "Izmir", href: "/destinations/izmir" },
     ];
 
     const howItWorks = [
@@ -86,10 +84,13 @@ export default function Navbar() {
 
                     <li className="relative group">
                         <span className="cursor-default group-hover:text-brand-primary">Destinations</span>
-                        <ul className="absolute left-0 mt-2 hidden group-hover:block bg-white border rounded-md shadow-md min-w-40 p-2">
+                        <ul className="absolute left-0 top-full hidden group-hover:block bg-white border rounded-md shadow-md min-w-40 p-2 z-50">
                             {destinations.map((item) => (
                                 <li key={item.href}>
-                                    <Link className="block px-3 py-2 rounded hover:bg-brand-surface" href={item.href}>
+                                    <Link
+                                        href={item.href}
+                                        className="block px-3 py-2 rounded hover:bg-brand-surface hover:text-[#3FB8FF] transition"
+                                    >
                                         {item.label}
                                     </Link>
                                 </li>

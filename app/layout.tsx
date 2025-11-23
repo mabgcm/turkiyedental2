@@ -1,7 +1,6 @@
 // app/layout.tsx
 import type { Metadata } from "next";
 import "@/styles/globals.css";
-import Topbar from "@/components/Topbar";
 import Navbar from "@/components/Navbar";
 import { Suspense } from "react";
 import Footer from "@/components/Footer";
@@ -18,7 +17,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body suppressHydrationWarning className="bg-white text-[#213360]">
 
         <Suspense fallback={null}>
-          <Topbar />
         </Suspense>
         <Suspense fallback={null}>
           <Navbar />

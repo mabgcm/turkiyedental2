@@ -46,17 +46,17 @@ export default function Footer() {
                     <ul className="space-y-3 text-gray-600 text-sm md:text-base">
                         <li className="flex items-start gap-3">
                             <Mail className="h-5 w-5 text-[#1b76d1] mt-0.5" />
-                            <a href="mailto:info@turkiyedental.com" className="hover:text-[#1b76d1]">
-                                info@turkiyedental.com
+                            <a href="mailto:dentalclinicturkiye@gmail.com" className="hover:text-[#1b76d1]">
+                                dentalclinicturkiye@gmail.com
                             </a>
                         </li>
                         <li className="flex items-start gap-3">
                             <Phone className="h-5 w-5 text-[#1b76d1] mt-0.5" />
-                            <span>+1 437 266 2552</span>
+                            <a href="tel:+14372662552">+1 437 266 2552</a>
                         </li>
                         <li className="flex items-start gap-3">
                             <MapPin className="h-5 w-5 text-[#1b76d1] mt-0.5" />
-                            <span>New York • Los Angeles • Chicago • Toronto • Vancouver • Miami</span>
+                            <span>New York • Toronto</span>
                         </li>
                     </ul>
                 </div>

@@ -16,6 +16,8 @@ export default function StartPage() {
     const [fileNames, setFileNames] = useState("No file chosen");
     const [sending, setSending] = useState(false);
     const [error, setError] = useState<string | null>(null);
+    const [showMedical, setShowMedical] = useState(false);
+    const [showTravel, setShowTravel] = useState(false);
 
     const onFiles: React.ChangeEventHandler<HTMLInputElement> = (e) => {
         const arr = e.target.files ? Array.from(e.target.files) : [];
@@ -127,112 +129,158 @@ export default function StartPage() {
                                 <span className="text-sm text-gray-500">{fileNames}</span>
                             </div>
                         </div>
+
+                        <div className="mt-6 flex flex-wrap gap-3">
+                            <button
+                                type="submit"
+                                disabled={sending}
+                                className="inline-flex items-center justify-center rounded-full bg-[#21CDC0] px-5 py-2.5 text-sm font-semibold text-white shadow hover:bg-[#1BB5A9] transition disabled:opacity-60"
+                            >
+                                {sending ? "Sending..." : "Send Now"}
+                            </button>
+                            {!showMedical && (
+                                <button
+                                    type="button"
+                                    onClick={() => setShowMedical(true)}
+                                    className="inline-flex items-center justify-center rounded-full border border-[#1b76d1]/40 px-5 py-2.5 text-sm font-semibold text-[#1b76d1] hover:bg-[#e9f4ff] transition"
+                                >
+                                    Add Medical Details
+                                </button>
+                            )}
+                        </div>
                     </div>
 
                     {/* MEDICAL */}
-                    <div>
-                        <div className="mb-3">
-                            <h2 className="text-xl font-semibold text-[#2B3A55]">Optional Medical Data</h2>
-                            <p className="text-sm text-gray-600">More context = more precise second opinions.</p>
+                    {showMedical && (
+                        <div>
+                            <div className="mb-3">
+                                <h2 className="text-xl font-semibold text-[#2B3A55]">Optional Medical Data</h2>
+                                <p className="text-sm text-gray-600">More context = more precise second opinions.</p>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div className="md:col-span-2 flex flex-col gap-1">
+                                    <label htmlFor="chronic" className="text-sm font-medium text-gray-700">1) Chronic illnesses / medications / HbA1c</label>
+                                    <textarea id="chronic" name="chronic" rows={3} className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3FB8FF]" />
+                                    <small className="text-xs text-gray-500">For implants, HbA1c &lt; 7.0% is generally recommended.</small>
+                                </div>
+
+                                <div className="flex flex-col gap-1">
+                                    <label htmlFor="oral-issues" className="text-sm font-medium text-gray-700">2) Oral pain / bleeding / gum disease</label>
+                                    <textarea id="oral-issues" name="oral_issues" rows={3} className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3FB8FF]" />
+                                </div>
+
+                                <div className="flex flex-col gap-1">
+                                    <label htmlFor="mobile-teeth" className="text-sm font-medium text-gray-700">3) Wobbly (mobile) teeth — which ones?</label>
+                                    <textarea id="mobile-teeth" name="mobile_teeth" rows={3} className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3FB8FF]" />
+                                </div>
+
+                                <div className="flex flex-col gap-1">
+                                    <label htmlFor="missing-duration" className="text-sm font-medium text-gray-700">4) Missing teeth duration</label>
+                                    <input id="missing-duration" name="missing_duration" className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3FB8FF]" />
+                                </div>
+
+                                <div className="flex flex-col gap-1">
+                                    <label htmlFor="smoking" className="text-sm font-medium text-gray-700">5) Smoking</label>
+                                    <input id="smoking" name="smoking" className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3FB8FF]" />
+                                </div>
+
+                                <div className="md:col-span-2 flex flex-col gap-1">
+                                    <label htmlFor="medications" className="text-sm font-medium text-gray-700">Daily medications & dose</label>
+                                    <textarea id="medications" name="medications" rows={3} className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3FB8FF]" />
+                                </div>
+
+                                <div className="md:col-span-2 flex flex-col gap-1">
+                                    <label htmlFor="medical-conditions" className="text-sm font-medium text-gray-700">Medical conditions</label>
+                                    <textarea id="medical-conditions" name="medical_conditions" rows={3} className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3FB8FF]" />
+                                </div>
+
+                                <div className="md:col-span-2 flex flex-col gap-1">
+                                    <label htmlFor="allergies" className="text-sm font-medium text-gray-700">Allergies</label>
+                                    <textarea id="allergies" name="allergies" rows={2} className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3FB8FF]" />
+                                </div>
+
+                                <div className="flex flex-col gap-1">
+                                    <label htmlFor="last-gp" className="text-sm font-medium text-gray-700">Last GP appointment</label>
+                                    <input id="last-gp" name="last_gp" type="date" className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3FB8FF]" />
+                                </div>
+
+                                <div className="flex flex-col gap-1">
+                                    <label htmlFor="last-blood-test" className="text-sm font-medium text-gray-700">Last blood test</label>
+                                    <input id="last-blood-test" name="last_blood_test" type="date" className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3FB8FF]" />
+                                </div>
+
+                                <div className="md:col-span-2 flex flex-col gap-1">
+                                    <label htmlFor="surgeries" className="text-sm font-medium text-gray-700">Recent surgeries</label>
+                                    <textarea id="surgeries" name="surgeries" rows={2} className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3FB8FF]" />
+                                </div>
+
+                                <div className="md:col-span-2 flex flex-col gap-1">
+                                    <label htmlFor="insurance" className="text-sm font-medium text-gray-700">Insurance</label>
+                                    <textarea id="insurance" name="insurance" rows={2} className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3FB8FF]" />
+                                </div>
+                            </div>
+
+                            <div className="mt-6 flex flex-wrap gap-3">
+                                <button
+                                    type="submit"
+                                    disabled={sending}
+                                    className="inline-flex items-center justify-center rounded-full bg-[#21CDC0] px-5 py-2.5 text-sm font-semibold text-white shadow hover:bg-[#1BB5A9] transition disabled:opacity-60"
+                                >
+                                    {sending ? "Sending..." : "Send Now"}
+                                </button>
+                                {!showTravel && (
+                                    <button
+                                        type="button"
+                                        onClick={() => setShowTravel(true)}
+                                        className="inline-flex items-center justify-center rounded-full border border-[#1b76d1]/40 px-5 py-2.5 text-sm font-semibold text-[#1b76d1] hover:bg-[#e9f4ff] transition"
+                                    >
+                                        Add Travel Details
+                                    </button>
+                                )}
+                            </div>
                         </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div className="md:col-span-2 flex flex-col gap-1">
-                                <label htmlFor="chronic" className="text-sm font-medium text-gray-700">1) Chronic illnesses / medications / HbA1c</label>
-                                <textarea id="chronic" name="chronic" rows={3} className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3FB8FF]" />
-                                <small className="text-xs text-gray-500">For implants, HbA1c &lt; 7.0% is generally recommended.</small>
-                            </div>
-
-                            <div className="flex flex-col gap-1">
-                                <label htmlFor="oral-issues" className="text-sm font-medium text-gray-700">2) Oral pain / bleeding / gum disease</label>
-                                <textarea id="oral-issues" name="oral_issues" rows={3} className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3FB8FF]" />
-                            </div>
-
-                            <div className="flex flex-col gap-1">
-                                <label htmlFor="mobile-teeth" className="text-sm font-medium text-gray-700">3) Wobbly (mobile) teeth — which ones?</label>
-                                <textarea id="mobile-teeth" name="mobile_teeth" rows={3} className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3FB8FF]" />
-                            </div>
-
-                            <div className="flex flex-col gap-1">
-                                <label htmlFor="missing-duration" className="text-sm font-medium text-gray-700">4) Missing teeth duration</label>
-                                <input id="missing-duration" name="missing_duration" className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3FB8FF]" />
-                            </div>
-
-                            <div className="flex flex-col gap-1">
-                                <label htmlFor="smoking" className="text-sm font-medium text-gray-700">5) Smoking</label>
-                                <input id="smoking" name="smoking" className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3FB8FF]" />
-                            </div>
-
-                            <div className="md:col-span-2 flex flex-col gap-1">
-                                <label htmlFor="medications" className="text-sm font-medium text-gray-700">Daily medications & dose</label>
-                                <textarea id="medications" name="medications" rows={3} className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3FB8FF]" />
-                            </div>
-
-                            <div className="md:col-span-2 flex flex-col gap-1">
-                                <label htmlFor="medical-conditions" className="text-sm font-medium text-gray-700">Medical conditions</label>
-                                <textarea id="medical-conditions" name="medical_conditions" rows={3} className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3FB8FF]" />
-                            </div>
-
-                            <div className="md:col-span-2 flex flex-col gap-1">
-                                <label htmlFor="allergies" className="text-sm font-medium text-gray-700">Allergies</label>
-                                <textarea id="allergies" name="allergies" rows={2} className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3FB8FF]" />
-                            </div>
-
-                            <div className="flex flex-col gap-1">
-                                <label htmlFor="last-gp" className="text-sm font-medium text-gray-700">Last GP appointment</label>
-                                <input id="last-gp" name="last_gp" type="date" className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3FB8FF]" />
-                            </div>
-
-                            <div className="flex flex-col gap-1">
-                                <label htmlFor="last-blood-test" className="text-sm font-medium text-gray-700">Last blood test</label>
-                                <input id="last-blood-test" name="last_blood_test" type="date" className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3FB8FF]" />
-                            </div>
-
-                            <div className="md:col-span-2 flex flex-col gap-1">
-                                <label htmlFor="surgeries" className="text-sm font-medium text-gray-700">Recent surgeries</label>
-                                <textarea id="surgeries" name="surgeries" rows={2} className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3FB8FF]" />
-                            </div>
-
-                            <div className="md:col-span-2 flex flex-col gap-1">
-                                <label htmlFor="insurance" className="text-sm font-medium text-gray-700">Insurance</label>
-                                <textarea id="insurance" name="insurance" rows={2} className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3FB8FF]" />
-                            </div>
-                        </div>
-                    </div>
+                    )}
 
                     {/* TRAVEL */}
-                    <div>
-                        <div className="mb-3">
-                            <h2 className="text-xl font-semibold text-[#2B3A55]">Optional Travel Data</h2>
-                            <p className="text-sm text-gray-600">If you have preferences, we’ll align schedules/logistics.</p>
-                        </div>
+                    {showTravel && (
+                        <div>
+                            <div className="mb-3">
+                                <h2 className="text-xl font-semibold text-[#2B3A55]">Optional Travel Data</h2>
+                                <p className="text-sm text-gray-600">If you have preferences, we’ll align schedules/logistics.</p>
+                            </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <div className="md:col-span-3 flex flex-col gap-1">
-                                <label htmlFor="travel-dates" className="text-sm font-medium text-gray-700">Do you have dates in mind?</label>
-                                <input id="travel-dates" name="travel_dates" className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3FB8FF]" />
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div className="md:col-span-3 flex flex-col gap-1">
+                                    <label htmlFor="travel-dates" className="text-sm font-medium text-gray-700">Do you have dates in mind?</label>
+                                    <input id="travel-dates" name="travel_dates" className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3FB8FF]" />
+                                </div>
+                                <div className="flex flex-col gap-1">
+                                    <label htmlFor="city" className="text-sm font-medium text-gray-700">Current city</label>
+                                    <input id="city" name="city" className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3FB8FF]" />
+                                </div>
+                                <div className="flex flex-col gap-1">
+                                    <label htmlFor="postcode" className="text-sm font-medium text-gray-700">Postcode</label>
+                                    <input id="postcode" name="postcode" className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3FB8FF]" />
+                                </div>
+                                <div className="flex flex-col gap-1">
+                                    <label htmlFor="departure-airport" className="text-sm font-medium text-gray-700">Departure airport</label>
+                                    <input id="departure-airport" name="departure_airport" className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3FB8FF]" />
+                                </div>
                             </div>
-                            <div className="flex flex-col gap-1">
-                                <label htmlFor="city" className="text-sm font-medium text-gray-700">Current city</label>
-                                <input id="city" name="city" className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3FB8FF]" />
-                            </div>
-                            <div className="flex flex-col gap-1">
-                                <label htmlFor="postcode" className="text-sm font-medium text-gray-700">Postcode</label>
-                                <input id="postcode" name="postcode" className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3FB8FF]" />
-                            </div>
-                            <div className="flex flex-col gap-1">
-                                <label htmlFor="departure-airport" className="text-sm font-medium text-gray-700">Departure airport</label>
-                                <input id="departure-airport" name="departure_airport" className="w-full rounded-lg border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#3FB8FF]" />
+
+                            <div className="mt-6 flex flex-wrap gap-3">
+                                <button
+                                    type="submit"
+                                    disabled={sending}
+                                    className="inline-flex items-center justify-center rounded-full bg-[#21CDC0] px-5 py-2.5 text-sm font-semibold text-white shadow hover:bg-[#1BB5A9] transition disabled:opacity-60"
+                                >
+                                    {sending ? "Sending..." : "Send Now"}
+                                </button>
                             </div>
                         </div>
-                    </div>
-
-                    <div className="pt-2">
-                        <button type="submit" disabled={sending} className="w-full bg-[#21CDC0] hover:bg-[#1BB5A9] text-white font-semibold rounded-full py-3 transition disabled:opacity-60">
-                            {sending ? "Sending..." : "Get Free Second Opinion"}
-                        </button>
-                        {error && <div className="text-red-600 text-sm mt-3">{error}</div>}
-                    </div>
+                    )}
+                    {error && <div className="text-red-600 text-sm">{error}</div>}
                 </form>
             </section>
         </main>

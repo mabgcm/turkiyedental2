@@ -37,6 +37,8 @@ export default function Navbar() {
 
     const destinations = [
         { label: "Istanbul", href: "/destinations/istanbul" },
+        { label: "Antalya", href: "/destinations/antalya" },
+        { label: "Izmir", href: "/destinations/izmir" },
     ];
 
     const howItWorks = [

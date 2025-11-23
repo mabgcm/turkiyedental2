@@ -4,49 +4,47 @@ import Image from "next/image";
 import CtaToStart from "@/components/CtaToStart";
 
 export const metadata = {
-  title: "Dental Treatment in Istanbul: What Patients Should Know | TürkiyeDental",
+  title: "Dental Treatment in Izmir: What Patients Should Know | TürkiyeDental",
   description:
-    "Neutral, clinic-independent guidance for USA and Canada patients considering dental care in Istanbul.",
+    "Neutral, clinic-independent guidance for USA and Canada patients considering dental care in Izmir.",
 };
 
-export default function IstanbulPage() {
+export default function IzmirPage() {
   return (
     <main className="max-w-5xl mx-auto px-4 md:px-6 py-12 space-y-12">
       <SectionHeader
         variant="page"
         align="center"
-        title="Dental Treatment in ISTANBUL: What Patients Should Know"
-        highlight="ISTANBUL"
+        title="Dental Treatment in IZMIR: What Patients Should Know"
+        highlight="IZMIR"
         subtitle="A clear, clinic-independent guide for patients from the USA and Canada researching dental care abroad."
       />
       <div className="flex justify-center">
         <CtaToStart />
       </div>
 
-
       <section className="space-y-4">
         <SectionHeader
           variant="section"
           align="center"
           title="City Overview"
-          highlight="City"
+          highlight="Overview"
           subtitle=""
         />
         <p className="text-gray-700 leading-relaxed">
-          Istanbul sits at the crossroads of Europe and Asia, straddling the Bosphorus Strait. As
-          Türkiye’s largest city, it blends historic districts, modern business hubs, and coastal
-          views. Its scale and connectivity make it a major entry point for dental travelers seeking
-          choice and convenience.
+          Izmir is a major Aegean coastal city in western Türkiye. Known for its seaside promenades
+          and nearby resort towns, it offers a calmer pace than Istanbul while still providing modern
+          amenities and medical services.
         </p>
         <p className="text-gray-700 leading-relaxed">
-          Dental tourism here is driven by a wide range of clinics, competitive pricing, and extensive
-          flight options. The vibe is dynamic and busy, with both lively urban areas and calmer
-          neighborhoods where patients often stay during recovery.
+          Dental travelers choose Izmir for its balance of clinic options, coastal setting, and
+          relaxed recovery environment. The vibe is more laid-back, with walkable waterfront areas and
+          easy access to quieter neighborhoods.
         </p>
         <div className="relative h-56 md:h-72 overflow-hidden rounded-2xl">
           <Image
-            src="/images/istanbul-old-town.jpg"
-            alt="Istanbul cityscape at sunset"
+            src="/images/izmir-coast.jpg"
+            alt="Izmir seaside promenade"
             fill
             sizes="(min-width:1024px) 70vw, 100vw"
             className="object-cover"
@@ -63,16 +61,15 @@ export default function IstanbulPage() {
           subtitle=""
         />
         <p className="text-gray-700 leading-relaxed">
-          In reputable Istanbul clinics, standards align with national regulations, focusing on
-          sterilization, traceable materials, and documented workflows. Dentists typically complete a
-          5-year dental degree, with many pursuing postgraduate training or international
-          certifications. Digital tools—CBCT imaging, intraoral scanners, and CAD/CAM milling—are
-          commonly used for implants, crowns, and smile design.
+          Reputable Izmir clinics follow Türkiye’s sterilization and material traceability standards.
+          Dentists complete a 5-year dental degree and many add postgraduate training or
+          internationally recognized courses. Digital tools—CBCT imaging, intraoral scanning, CAD/CAM
+          milling—are common for implants, crowns, and smile design.
         </p>
         <p className="text-gray-700 leading-relaxed">
-          Compared to the USA/Canada, many Istanbul clinics deliver value through lower operating
-          costs while using recognized implant and ceramic brands. Quality varies by clinic, so
-          verifying materials, lab partners, and clinician credentials remains essential.
+          Compared with the USA/Canada, lower operating costs help clinics offer value while still
+          using recognized implant and ceramic brands. As always, outcomes depend on the individual
+          clinic, lab partner, and clinician experience.
         </p>
       </section>
 
@@ -80,7 +77,7 @@ export default function IstanbulPage() {
         <SectionHeader
           variant="section"
           align="center"
-          title="Popular Treatments in Istanbul"
+          title="Popular Treatments in Izmir"
           highlight="Treatments"
           subtitle=""
         />
@@ -91,34 +88,25 @@ export default function IstanbulPage() {
           <li>Full-mouth rehabilitations combining implants, crowns, and bite correction.</li>
         </ul>
         <p className="text-gray-700 leading-relaxed">
-          Istanbul is preferred for these treatments due to wide clinician choice, lab capacity for
-          complex work, and flexible scheduling for international patients.
+          Izmir is preferred by patients who want experienced clinicians and labs in a calmer coastal
+          setting, with easier navigation than Türkiye’s largest cities.
         </p>
-        <div className="relative h-56 md:h-72 overflow-hidden rounded-2xl">
-          <Image
-            src="/images/istanbul-turkey.jpg"
-            alt="Istanbul cityscape at sunset"
-            fill
-            sizes="(min-width:1024px) 70vw, 100vw"
-            className="object-cover"
-          />
-        </div>
       </section>
 
       <section className="space-y-4">
         <SectionHeader
           variant="section"
           align="center"
-          title="Advantages of Choosing Istanbul"
+          title="Advantages of Choosing Izmir"
           highlight="Advantages"
           subtitle=""
         />
         <ul className="list-disc pl-5 text-gray-700 space-y-2">
-          <li>Large pool of clinics and specialists, offering varied materials and workflows.</li>
-          <li>Two major airports (IST and SAW) with frequent one-stop flights from North America.</li>
-          <li>Established dental labs experienced with international and full-arch cases.</li>
-          <li>Accommodation options across budgets; quieter districts available for recovery.</li>
-          <li>Access to historic sights and waterfront areas for light activities between appointments.</li>
+          <li>Coastal, relaxed environment that many find comfortable for recovery.</li>
+          <li>Range of clinics and labs experienced with international cases.</li>
+          <li>Direct access to resort areas (Çeşme, Alaçatı) for light downtime after treatment.</li>
+          <li>Airport (ADB) close to the city; shorter transfers compared to larger metros.</li>
+          <li>Walkable waterfront districts and quieter neighborhoods to stay in.</li>
         </ul>
       </section>
 
@@ -127,14 +115,14 @@ export default function IstanbulPage() {
           variant="section"
           align="center"
           title="Things to Keep in Mind"
-          highlight="Keep in Mind"
+          highlight="Honest Notes"
           subtitle=""
         />
         <ul className="list-disc pl-5 text-gray-700 space-y-2">
-          <li>Traffic can be heavy; plan extra time for clinic visits.</li>
-          <li>Quality varies—verify implant/crown brands, lab partners, and follow-up protocols.</li>
-          <li>Busy seasons can affect appointment availability and hotel prices.</li>
-          <li>Some areas are crowded; pick calmer neighborhoods if you prefer a quieter recovery.</li>
+          <li>Clinic choice is smaller than Istanbul, so verify availability and lab partners early.</li>
+          <li>Summer tourism can affect hotel prices in nearby resort areas.</li>
+          <li>Some neighborhoods are very busy; choose lodging that suits your desired noise level.</li>
+          <li>Quality varies—confirm implant/crown brands, maintenance plans, and follow-up protocols.</li>
         </ul>
       </section>
 
@@ -143,7 +131,7 @@ export default function IstanbulPage() {
           variant="section"
           align="center"
           title="Price Expectations (General Türkiye Averages)"
-          highlight="(General Türkiye Averages)"
+          highlight="Pricing"
           subtitle=""
         />
         <ul className="list-disc pl-5 text-gray-700 space-y-2">
@@ -165,15 +153,15 @@ export default function IstanbulPage() {
           subtitle=""
         />
         <ul className="list-disc pl-5 text-gray-700 space-y-2">
-          <li>Airports: Istanbul Airport (IST) on the European side; Sabiha Gökçen (SAW) on the Asian side.</li>
-          <li>Flights: One-stop routes from NYC, Toronto, Chicago, LA, Vancouver; durations ~10–15 hours.</li>
-          <li>Hotels: Wide range; common patient areas include Beşiktaş, Şişli, Nişantaşı, Karaköy, and Kadıköy.</li>
-          <li>Transport: Taxis, ride-share, metro, ferries; allow extra time for traffic to appointments.</li>
+          <li>Airport: Izmir Adnan Menderes (ADB), ~20–30 minutes from many city districts.</li>
+          <li>Flights: Typically one-stop from North America via Istanbul or European hubs; durations ~12–16 hours.</li>
+          <li>Hotels: Options from budget to upscale; common patient areas include Alsancak, Konak, Karşıyaka, and Bornova.</li>
+          <li>Transport: Taxis, ride-share, metro, ferries; traffic is lighter than Istanbul but plan for peak times.</li>
         </ul>
         <div className="relative h-56 md:h-72 overflow-hidden rounded-2xl">
           <Image
-            src="/images/istanbul-travel.jpeg"
-            alt="Istanbul cityscape at sunset"
+            src="/images/izmir-travel.jpg"
+            alt="Izmir waterfront at sunset"
             fill
             sizes="(min-width:1024px) 70vw, 100vw"
             className="object-cover"
@@ -190,17 +178,18 @@ export default function IstanbulPage() {
           subtitle=""
         />
         <p className="text-gray-700 leading-relaxed">
-          Tourist and medical areas are generally safe with standard precautions. Reputable clinics follow modern
-          sterilization and cross-infection protocols and often provide English-speaking coordinators. Always ask for
-          proof of material brands, sterilization routines, and post-care plans.
+          Tourist and medical areas in Izmir are generally safe with standard precautions. Reputable
+          clinics follow modern sterilization and cross-infection protocols and often provide
+          English-speaking coordinators. Ask for proof of material brands, sterilization routines,
+          and post-care plans.
         </p>
       </section>
 
       <section className="space-y-4">
         <SectionHeader
           variant="section"
-          align="center"
-          title="Istanbul FAQs"
+          align="left"
+          title="Izmir FAQs"
           highlight="FAQs"
           subtitle=""
         />
@@ -210,16 +199,16 @@ export default function IstanbulPage() {
             <p>Often 7–10 days for surgery and immediate checks; a follow-up visit months later for final crowns if using a two-stage plan.</p>
           </div>
           <div>
-            <p className="font-semibold text-[#1b2a57]">Is English commonly spoken in clinics?</p>
-            <p>Many coordinators and dentists in reputable clinics speak English; confirm this before scheduling.</p>
+            <p className="font-semibold text-[#1b2a57]">Is English spoken in clinics?</p>
+            <p>Many coordinators and dentists in reputable clinics speak English; confirm before scheduling.</p>
           </div>
           <div>
-            <p className="font-semibold text-[#1b2a57]">Are prices fixed?</p>
-            <p>Quotes are usually fixed once the plan is agreed. Clarify what is included—temporaries, scans, follow-ups, night guard.</p>
+            <p className="font-semibold text-[#1b2a57]">Are costs different from Istanbul?</p>
+            <p>Pricing is broadly similar; some patients find accommodation and local costs slightly lower in Izmir.</p>
           </div>
           <div>
-            <p className="font-semibold text-[#1b2a57]">Is Istanbul safe for recovery?</p>
-            <p>Most patients choose central but quieter districts; standard travel precautions apply, and clinics can advise on pharmacies and after-hours support.</p>
+            <p className="font-semibold text-[#1b2a57]">Is Izmir suitable for recovery?</p>
+            <p>The coastal setting and calmer pace suit many patients; choose lodging near the waterfront or quieter districts if you prefer less noise.</p>
           </div>
           <div>
             <p className="font-semibold text-[#1b2a57]">Do I need a companion?</p>
@@ -237,7 +226,8 @@ export default function IstanbulPage() {
           subtitle=""
         />
         <p className="text-gray-700">
-          Upload your x-rays, scans, and existing quotes. We’ll provide an unbiased review so you can decide confidently—clinic choice is always yours.
+          Upload your x-rays, scans, and existing quotes. We’ll provide an unbiased review so you can
+          decide confidently—clinic choice is always yours.
         </p>
         <Link
           href="/start"

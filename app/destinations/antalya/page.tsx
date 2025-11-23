@@ -4,49 +4,47 @@ import Image from "next/image";
 import CtaToStart from "@/components/CtaToStart";
 
 export const metadata = {
-  title: "Dental Treatment in Istanbul: What Patients Should Know | TürkiyeDental",
+  title: "Dental Treatment in Antalya: What Patients Should Know | TürkiyeDental",
   description:
-    "Neutral, clinic-independent guidance for USA and Canada patients considering dental care in Istanbul.",
+    "Neutral, clinic-independent guidance for USA and Canada patients considering dental care in Antalya.",
 };
 
-export default function IstanbulPage() {
+export default function AntalyaPage() {
   return (
     <main className="max-w-5xl mx-auto px-4 md:px-6 py-12 space-y-12">
       <SectionHeader
         variant="page"
         align="center"
-        title="Dental Treatment in ISTANBUL: What Patients Should Know"
-        highlight="ISTANBUL"
+        title="Dental Treatment in ANTALYA: What Patients Should Know"
+        highlight="ANTALYA"
         subtitle="A clear, clinic-independent guide for patients from the USA and Canada researching dental care abroad."
       />
       <div className="flex justify-center">
         <CtaToStart />
       </div>
 
-
       <section className="space-y-4">
         <SectionHeader
           variant="section"
           align="center"
           title="City Overview"
-          highlight="City"
+          highlight="Overview"
           subtitle=""
         />
         <p className="text-gray-700 leading-relaxed">
-          Istanbul sits at the crossroads of Europe and Asia, straddling the Bosphorus Strait. As
-          Türkiye’s largest city, it blends historic districts, modern business hubs, and coastal
-          views. Its scale and connectivity make it a major entry point for dental travelers seeking
-          choice and convenience.
+          Antalya is a major resort city on Türkiye’s Mediterranean coast, known for beaches, historic
+          old town areas, and modern tourism infrastructure. It offers a relaxed recovery setting with
+          easy access to hotels and seaside promenades.
         </p>
         <p className="text-gray-700 leading-relaxed">
-          Dental tourism here is driven by a wide range of clinics, competitive pricing, and extensive
-          flight options. The vibe is dynamic and busy, with both lively urban areas and calmer
-          neighborhoods where patients often stay during recovery.
+          Dental travelers choose Antalya for its combination of clinic options, resort amenities, and
+          calmer pace compared to larger metros. Many patients pair treatment with light coastal
+          downtime between appointments.
         </p>
         <div className="relative h-56 md:h-72 overflow-hidden rounded-2xl">
           <Image
-            src="/images/istanbul-old-town.jpg"
-            alt="Istanbul cityscape at sunset"
+            src="/images/antalya-coast.jpg"
+            alt="Antalya coastline"
             fill
             sizes="(min-width:1024px) 70vw, 100vw"
             className="object-cover"
@@ -63,16 +61,15 @@ export default function IstanbulPage() {
           subtitle=""
         />
         <p className="text-gray-700 leading-relaxed">
-          In reputable Istanbul clinics, standards align with national regulations, focusing on
-          sterilization, traceable materials, and documented workflows. Dentists typically complete a
-          5-year dental degree, with many pursuing postgraduate training or international
-          certifications. Digital tools—CBCT imaging, intraoral scanners, and CAD/CAM milling—are
-          commonly used for implants, crowns, and smile design.
+          Reputable Antalya clinics follow national sterilization and material traceability standards.
+          Dentists complete a 5-year dental degree, with many pursuing postgraduate courses or
+          international certifications. Digital tools—CBCT imaging, intraoral scanners, and CAD/CAM
+          milling—are commonly used for implants, crowns, and smile design.
         </p>
         <p className="text-gray-700 leading-relaxed">
-          Compared to the USA/Canada, many Istanbul clinics deliver value through lower operating
-          costs while using recognized implant and ceramic brands. Quality varies by clinic, so
-          verifying materials, lab partners, and clinician credentials remains essential.
+          Compared with the USA/Canada, lower operating costs allow competitive pricing while still
+          using recognized implant and ceramic brands. Outcomes depend on the individual clinic, lab,
+          and clinician experience, so verification remains important.
         </p>
       </section>
 
@@ -80,7 +77,7 @@ export default function IstanbulPage() {
         <SectionHeader
           variant="section"
           align="center"
-          title="Popular Treatments in Istanbul"
+          title="Popular Treatments in Antalya"
           highlight="Treatments"
           subtitle=""
         />
@@ -91,34 +88,25 @@ export default function IstanbulPage() {
           <li>Full-mouth rehabilitations combining implants, crowns, and bite correction.</li>
         </ul>
         <p className="text-gray-700 leading-relaxed">
-          Istanbul is preferred for these treatments due to wide clinician choice, lab capacity for
-          complex work, and flexible scheduling for international patients.
+          Antalya is preferred by patients who want a resort setting, modern tourism services, and
+          clinics experienced with international cases.
         </p>
-        <div className="relative h-56 md:h-72 overflow-hidden rounded-2xl">
-          <Image
-            src="/images/istanbul-turkey.jpg"
-            alt="Istanbul cityscape at sunset"
-            fill
-            sizes="(min-width:1024px) 70vw, 100vw"
-            className="object-cover"
-          />
-        </div>
       </section>
 
       <section className="space-y-4">
         <SectionHeader
           variant="section"
           align="center"
-          title="Advantages of Choosing Istanbul"
+          title="Advantages of Choosing Antalya"
           highlight="Advantages"
           subtitle=""
         />
         <ul className="list-disc pl-5 text-gray-700 space-y-2">
-          <li>Large pool of clinics and specialists, offering varied materials and workflows.</li>
-          <li>Two major airports (IST and SAW) with frequent one-stop flights from North America.</li>
-          <li>Established dental labs experienced with international and full-arch cases.</li>
-          <li>Accommodation options across budgets; quieter districts available for recovery.</li>
-          <li>Access to historic sights and waterfront areas for light activities between appointments.</li>
+          <li>Resort environment with many hotel options suitable for recovery.</li>
+          <li>International airport (AYT) with seasonal direct flights and frequent connections via Istanbul.</li>
+          <li>Clinics and labs accustomed to serving dental tourists.</li>
+          <li>Easy access to beaches and calmer districts for low-stress downtime.</li>
+          <li>Tourist infrastructure (transfers, hotels, pharmacies) in close reach of clinics.</li>
         </ul>
       </section>
 
@@ -127,14 +115,14 @@ export default function IstanbulPage() {
           variant="section"
           align="center"
           title="Things to Keep in Mind"
-          highlight="Keep in Mind"
+          highlight="Honest Notes"
           subtitle=""
         />
         <ul className="list-disc pl-5 text-gray-700 space-y-2">
-          <li>Traffic can be heavy; plan extra time for clinic visits.</li>
-          <li>Quality varies—verify implant/crown brands, lab partners, and follow-up protocols.</li>
-          <li>Busy seasons can affect appointment availability and hotel prices.</li>
-          <li>Some areas are crowded; pick calmer neighborhoods if you prefer a quieter recovery.</li>
+          <li>High season can raise hotel prices; book early for preferred areas.</li>
+          <li>Clinic variety is smaller than Istanbul; verify availability and lab partners in advance.</li>
+          <li>Resort areas can be busy in summer—choose quieter neighborhoods if you prefer less noise.</li>
+          <li>Confirm materials, follow-up plans, and warranty details before committing.</li>
         </ul>
       </section>
 
@@ -143,7 +131,7 @@ export default function IstanbulPage() {
           variant="section"
           align="center"
           title="Price Expectations (General Türkiye Averages)"
-          highlight="(General Türkiye Averages)"
+          highlight="Pricing"
           subtitle=""
         />
         <ul className="list-disc pl-5 text-gray-700 space-y-2">
@@ -165,15 +153,15 @@ export default function IstanbulPage() {
           subtitle=""
         />
         <ul className="list-disc pl-5 text-gray-700 space-y-2">
-          <li>Airports: Istanbul Airport (IST) on the European side; Sabiha Gökçen (SAW) on the Asian side.</li>
-          <li>Flights: One-stop routes from NYC, Toronto, Chicago, LA, Vancouver; durations ~10–15 hours.</li>
-          <li>Hotels: Wide range; common patient areas include Beşiktaş, Şişli, Nişantaşı, Karaköy, and Kadıköy.</li>
-          <li>Transport: Taxis, ride-share, metro, ferries; allow extra time for traffic to appointments.</li>
+          <li>Airport: Antalya Airport (AYT), ~20–40 minutes from many hotel districts.</li>
+          <li>Flights: Seasonal directs from some hubs; common one-stop routes via Istanbul or European hubs (~12–16 hours total from North America).</li>
+          <li>Hotels: Wide range from resort to budget; patients often stay in Lara, Konyaaltı, or Kaleiçi for access and amenities.</li>
+          <li>Transport: Taxis, ride-share, trams/buses; resort shuttles common in high season.</li>
         </ul>
         <div className="relative h-56 md:h-72 overflow-hidden rounded-2xl">
           <Image
-            src="/images/istanbul-travel.jpeg"
-            alt="Istanbul cityscape at sunset"
+            src="/images/antalya-travel.jpg"
+            alt="Antalya harbor at sunset"
             fill
             sizes="(min-width:1024px) 70vw, 100vw"
             className="object-cover"
@@ -190,9 +178,10 @@ export default function IstanbulPage() {
           subtitle=""
         />
         <p className="text-gray-700 leading-relaxed">
-          Tourist and medical areas are generally safe with standard precautions. Reputable clinics follow modern
-          sterilization and cross-infection protocols and often provide English-speaking coordinators. Always ask for
-          proof of material brands, sterilization routines, and post-care plans.
+          Tourist and medical areas in Antalya are generally safe with standard precautions. Reputable
+          clinics follow modern sterilization and cross-infection protocols and often provide
+          English-speaking coordinators. Ask for proof of material brands, sterilization routines,
+          and post-care plans.
         </p>
       </section>
 
@@ -200,7 +189,7 @@ export default function IstanbulPage() {
         <SectionHeader
           variant="section"
           align="center"
-          title="Istanbul FAQs"
+          title="Antalya FAQs"
           highlight="FAQs"
           subtitle=""
         />
@@ -210,16 +199,16 @@ export default function IstanbulPage() {
             <p>Often 7–10 days for surgery and immediate checks; a follow-up visit months later for final crowns if using a two-stage plan.</p>
           </div>
           <div>
-            <p className="font-semibold text-[#1b2a57]">Is English commonly spoken in clinics?</p>
-            <p>Many coordinators and dentists in reputable clinics speak English; confirm this before scheduling.</p>
+            <p className="font-semibold text-[#1b2a57]">Is English spoken in clinics?</p>
+            <p>Many coordinators and dentists in reputable clinics speak English; confirm before scheduling.</p>
           </div>
           <div>
-            <p className="font-semibold text-[#1b2a57]">Are prices fixed?</p>
-            <p>Quotes are usually fixed once the plan is agreed. Clarify what is included—temporaries, scans, follow-ups, night guard.</p>
+            <p className="font-semibold text-[#1b2a57]">Are costs different from Istanbul?</p>
+            <p>Pricing is broadly similar; some patients find hotel and local costs manageable, especially outside peak season.</p>
           </div>
           <div>
-            <p className="font-semibold text-[#1b2a57]">Is Istanbul safe for recovery?</p>
-            <p>Most patients choose central but quieter districts; standard travel precautions apply, and clinics can advise on pharmacies and after-hours support.</p>
+            <p className="font-semibold text-[#1b2a57]">Is Antalya suitable for recovery?</p>
+            <p>The resort setting and beachside areas can be comfortable for recovery; choose lodging that matches your noise and activity preferences.</p>
           </div>
           <div>
             <p className="font-semibold text-[#1b2a57]">Do I need a companion?</p>
@@ -237,7 +226,8 @@ export default function IstanbulPage() {
           subtitle=""
         />
         <p className="text-gray-700">
-          Upload your x-rays, scans, and existing quotes. We’ll provide an unbiased review so you can decide confidently—clinic choice is always yours.
+          Upload your x-rays, scans, and existing quotes. We’ll provide an unbiased review so you can
+          decide confidently—clinic choice is always yours.
         </p>
         <Link
           href="/start"

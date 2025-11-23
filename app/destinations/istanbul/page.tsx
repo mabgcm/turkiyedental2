@@ -41,25 +41,14 @@ export default function IstanbulPage() {
           flight options. The vibe is dynamic and busy, with both lively urban areas and calmer
           neighborhoods where patients often stay during recovery.
         </p>
-        <div className="grid gap-4 md:grid-cols-2">
-          <div className="relative h-56 md:h-64 overflow-hidden rounded-2xl">
-            <Image
-              src="/images/istanbul-bosphorus.jpg"
-              alt="Bosphorus view in Istanbul"
-              fill
-              sizes="(min-width:1024px) 50vw, 100vw"
-              className="object-cover"
-            />
-          </div>
-          <div className="relative h-56 md:h-64 overflow-hidden rounded-2xl">
-            <Image
-              src="/images/istanbul-old-town.jpg"
-              alt="Historic area of Istanbul"
-              fill
-              sizes="(min-width:1024px) 50vw, 100vw"
-              className="object-cover"
-            />
-          </div>
+        <div className="relative h-56 md:h-72 overflow-hidden rounded-2xl">
+          <Image
+            src="/images/istanbul-old-town.jpg"
+            alt="Istanbul cityscape at sunset"
+            fill
+            sizes="(min-width:1024px) 70vw, 100vw"
+            className="object-cover"
+          />
         </div>
       </section>
 
@@ -103,6 +92,15 @@ export default function IstanbulPage() {
           Istanbul is preferred for these treatments due to wide clinician choice, lab capacity for
           complex work, and flexible scheduling for international patients.
         </p>
+        <div className="relative h-56 md:h-72 overflow-hidden rounded-2xl">
+          <Image
+            src="/images/istanbul-turkey.jpg"
+            alt="Istanbul cityscape at sunset"
+            fill
+            sizes="(min-width:1024px) 70vw, 100vw"
+            className="object-cover"
+          />
+        </div>
       </section>
 
       <section className="space-y-4">
@@ -172,7 +170,7 @@ export default function IstanbulPage() {
         </ul>
         <div className="relative h-56 md:h-72 overflow-hidden rounded-2xl">
           <Image
-            src="/images/istanbul-travel.jpg"
+            src="/images/istanbul-travel.jpeg"
             alt="Istanbul cityscape at sunset"
             fill
             sizes="(min-width:1024px) 70vw, 100vw"

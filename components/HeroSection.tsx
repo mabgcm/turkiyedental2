@@ -9,7 +9,7 @@ export default function HeroSection() {
             {/* Sol taraf: görsel */}
             <div className="flex-1 mt-1 md:mt-0 relative z-10">
                 <Image
-                    src="/img/sliding.png"  // 👈 leading slash
+                    src="/img/slider.jpg"  // 👈 leading slash
                     alt="Happy patients smiling after treatment"
                     width={550}
                     height={520}

@@ -160,11 +160,11 @@ export default function AntalyaPage() {
         </ul>
         <div className="relative h-56 md:h-72 overflow-hidden rounded-2xl">
           <Image
-            src="/images/antalya-travel.jpg"
+            src="/images/antalya-travel.jpeg"
             alt="Antalya harbor at sunset"
             fill
             sizes="(min-width:1024px) 70vw, 100vw"
-            className="object-cover"
+            className="object-cover object-[50%_60%]"
           />
         </div>
       </section>

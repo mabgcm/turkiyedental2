@@ -50,6 +50,7 @@ export default function ReviewModerationPage() {
                 const pending = await getPendingReviews();
                 setReviews(pending);
             } catch (err) {
+                console.error("Error loading pending reviews:", err);
                 setGlobalError("Failed to load pending reviews.");
             } finally {
                 setLoadingReviews(false);

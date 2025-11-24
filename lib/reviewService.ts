@@ -60,7 +60,9 @@ export const getApprovedReviewsByClinic = async (clinicId: string): Promise<Revi
  * Get all pending reviews for moderation ordered by newest first.
  */
 export const getPendingReviews = async (): Promise<Review[]> => {
-    const q = query(reviewsCollection, where("status", "==", "pending"), orderBy("createdAt", "desc"));
+    const q = query(reviewsCollection, where("status", "==", "pending"),
+        // orderBy("createdAt", "desc")
+    );
     const snapshot = await getDocs(q);
     return snapshot.docs.map(mapReview);
 };

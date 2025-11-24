@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs, query, where } from "firebase/firestore";
 import ReviewForm from "@/components/reviews/ReviewForm";
 import ReviewList from "@/components/reviews/ReviewList";
 import { db } from "@/lib/firebase";
@@ -23,10 +23,26 @@ const clinicsCollection = collection(db, "clinics");
  * Fetch a single clinic by slug from Firestore.
  */
 const fetchClinicBySlug = async (slug: string): Promise<ClinicDoc | null> => {
+    // First try to find by slug field.
     const q = query(clinicsCollection, where("slug", "==", slug));
     const snapshot = await getDocs(q);
-    if (snapshot.empty) return null;
-    const docSnap = snapshot.docs[0];
+    if (!snapshot.empty) {
+        const docSnap = snapshot.docs[0];
+        const data = docSnap.data() as Partial<ClinicDoc>;
+        return {
+            id: data.id ?? docSnap.id,
+            name: data.name ?? "Clinic",
+            slug: data.slug ?? slug,
+            city: data.city ?? "",
+            country: data.country ?? "",
+            avgRating: data.avgRating ?? null,
+            reviewCount: data.reviewCount ?? 0,
+        };
+    }
+
+    // Fallback: if slug matches the document id (e.g., when slug field is missing), fetch by id.
+    const docSnap = await getDoc(doc(clinicsCollection, slug));
+    if (!docSnap.exists()) return null;
     const data = docSnap.data() as Partial<ClinicDoc>;
     return {
         id: data.id ?? docSnap.id,

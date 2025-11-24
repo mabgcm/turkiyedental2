@@ -29,6 +29,15 @@ export default function ClinicReviewsPageClient({ slug }: Props) {
         const fetchData = async () => {
             setLoading(true);
             setError(null);
+
+            if (!slug || typeof slug !== "string") {
+                setError("Invalid clinic slug.");
+                setClinic(null);
+                setReviews([]);
+                setLoading(false);
+                return;
+            }
+
             try {
                 // Load clinic using slug as document ID
                 const clinicRef = doc(db, "clinics", slug);

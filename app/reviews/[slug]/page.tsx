@@ -51,26 +51,36 @@ export default function ClinicReviewsDetailPage({ params }: PageProps) {
         const load = async () => {
             setLoadingClinic(true);
             setError(null);
-            const clinicData = await fetchClinicBySlug(params.slug);
-            if (cancelled) return;
-            if (!clinicData) {
-                setClinic(null);
-                setLoadingClinic(false);
-                return;
-            }
-            setClinic(clinicData);
-            setLoadingClinic(false);
-
-            setLoadingReviews(true);
             try {
-                const approved = await getApprovedReviewsByClinic(clinicData.id);
+                const clinicData = await fetchClinicBySlug(params.slug);
                 if (cancelled) return;
-                setReviews(approved);
+
+                if (!clinicData) {
+                    setClinic(null);
+                    return;
+                }
+
+                setClinic(clinicData);
+
+                setLoadingReviews(true);
+                try {
+                    const approved = await getApprovedReviewsByClinic(clinicData.id);
+                    if (cancelled) return;
+                    setReviews(approved);
+                } catch (err) {
+                    console.error("Failed to load reviews:", err);
+                    if (cancelled) return;
+                    setError("Failed to load reviews.");
+                } finally {
+                    if (!cancelled) setLoadingReviews(false);
+                }
             } catch (err) {
+                console.error("Failed to load clinic:", err);
                 if (cancelled) return;
-                setError("Failed to load reviews.");
+                setError("Failed to load clinic.");
+                setClinic(null);
             } finally {
-                if (!cancelled) setLoadingReviews(false);
+                if (!cancelled) setLoadingClinic(false);
             }
         };
         load();

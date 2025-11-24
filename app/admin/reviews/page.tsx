@@ -62,8 +62,11 @@ export default function ReviewModerationPage() {
     const handleSignIn = async () => {
         try {
             await signInWithPopup(auth, new GoogleAuthProvider());
-        } catch {
-            setGlobalError("Sign-in failed. Please try again.");
+        } catch (error: any) {
+            console.error("SIGN-IN ERROR (admin reviews):", error);
+            const message = `${error?.code ?? "unknown"} - ${error?.message ?? "Sign-in failed"}`;
+            setGlobalError(message);
+            alert(message);
         }
     };
 

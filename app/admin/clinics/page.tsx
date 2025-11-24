@@ -62,8 +62,11 @@ export default function AdminClinicsPage() {
     const handleSignIn = async () => {
         try {
             await signInWithPopup(auth, new GoogleAuthProvider());
-        } catch {
-            setError("Sign-in failed. Please try again.");
+        } catch (error: any) {
+            console.error("SIGN-IN ERROR (admin clinics):", error);
+            const message = `${error?.code ?? "unknown"} - ${error?.message ?? "Sign-in failed"}`;
+            setError(message);
+            alert(message);
         }
     };
 

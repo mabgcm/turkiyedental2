@@ -26,6 +26,8 @@ export interface Clinic {
     slug: string;
     city: string;
     country: string;
+    avgRating?: number | null;
+    reviewCount?: number | null;
     addressLine1?: string;
     addressLine2?: string;
     phone?: string;
@@ -38,8 +40,8 @@ export interface Clinic {
     ratingSummary?: Ratings & {
         reviewCount: number;
     };
-    createdAt?: Timestamp;
-    updatedAt?: Timestamp;
+    createdAt?: any;
+    updatedAt?: any;
 }
 
 export interface UserProfile {

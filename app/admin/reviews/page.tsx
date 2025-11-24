@@ -7,8 +7,7 @@ import ReviewList from "@/components/reviews/ReviewList";
 import { auth } from "@/lib/firebase";
 import { getPendingReviews, updateReviewStatus } from "@/lib/reviewService";
 import { type Review } from "@/types/review";
-
-const ADMIN_EMAILS = ["admin@example.com"];
+import { isAdminUser } from "@/lib/admin";
 
 type ActionState = {
     loading: boolean;
@@ -32,7 +31,7 @@ export default function ReviewModerationPage() {
     const [actions, setActions] = useState<Record<string, ActionState>>({});
     const [globalError, setGlobalError] = useState<string | null>(null);
 
-    const isAdmin = useMemo(() => (user?.email ? ADMIN_EMAILS.includes(user.email) : false), [user]);
+    const isAdmin = useMemo(() => isAdminUser(user), [user]);
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (current) => {

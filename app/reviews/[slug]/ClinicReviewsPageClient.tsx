@@ -48,8 +48,10 @@ export default function ClinicReviewsPageClient({ slug }: Props) {
                 return;
             }
 
+            let clinicId: string | null = null;
+
+            // 1) Load clinic (controls error state)
             try {
-                // Load clinic using slug as document ID
                 const clinicRef = doc(db, "clinics", effectiveSlug);
                 const snap = await getDoc(clinicRef);
                 if (!snap.exists()) {
@@ -57,6 +59,7 @@ export default function ClinicReviewsPageClient({ slug }: Props) {
                         setError("Clinic not found.");
                         setClinic(null);
                         setReviews([]);
+                        setLoading(false);
                     }
                     return;
                 }
@@ -65,21 +68,33 @@ export default function ClinicReviewsPageClient({ slug }: Props) {
                     id: snap.id,
                     ...(snap.data() as Omit<Clinic, "id">),
                 };
+                clinicId = snap.id;
+
                 if (!cancelled) {
                     setClinic(clinicData);
                 }
+            } catch (err) {
+                console.error("Error loading clinic:", err);
+                if (!cancelled) {
+                    setError("Failed to load clinic.");
+                    setLoading(false);
+                }
+                return;
+            }
 
-                // Load approved reviews for this clinic
-                console.log("DEBUG getApprovedReviewsByClinic clinicId:", snap.id);
-                const approved = await getApprovedReviewsByClinic(snap.id);
+            // 2) Load reviews (errors here should not block clinic display)
+            try {
+                if (!clinicId) {
+                    throw new Error("Missing clinicId for reviews load.");
+                }
+                console.log("DEBUG getApprovedReviewsByClinic clinicId:", clinicId);
+                const approved = await getApprovedReviewsByClinic(clinicId);
                 if (!cancelled) {
                     setReviews(approved);
                 }
             } catch (err) {
-                console.error("Error loading clinic page:", err);
-                if (!cancelled) {
-                    setError("Failed to load clinic.");
-                }
+                console.error("Error loading reviews:", err);
+                // do not set error state; show clinic with empty reviews instead
             } finally {
                 if (!cancelled) {
                     setLoading(false);

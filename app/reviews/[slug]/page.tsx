@@ -26,9 +26,11 @@ const fetchClinicBySlug = async (slug: string): Promise<ClinicDoc | null> => {
     // First try to find by slug field.
     const q = query(clinicsCollection, where("slug", "==", slug));
     const snapshot = await getDocs(q);
+    console.log("DEBUG clinic slug query:", slug, "size:", snapshot.size);
     if (!snapshot.empty) {
         const docSnap = snapshot.docs[0];
         const data = docSnap.data() as Partial<ClinicDoc>;
+        console.log("DEBUG clinic doc by slug:", docSnap.id, data);
         return {
             id: data.id ?? docSnap.id,
             name: data.name ?? "Clinic",
@@ -42,8 +44,10 @@ const fetchClinicBySlug = async (slug: string): Promise<ClinicDoc | null> => {
 
     // Fallback: if slug matches the document id (e.g., when slug field is missing), fetch by id.
     const docSnap = await getDoc(doc(clinicsCollection, slug));
+    console.log("DEBUG clinic doc by id fallback exists:", docSnap.exists());
     if (!docSnap.exists()) return null;
     const data = docSnap.data() as Partial<ClinicDoc>;
+    console.log("DEBUG clinic doc by id:", docSnap.id, data);
     return {
         id: data.id ?? docSnap.id,
         name: data.name ?? "Clinic",
@@ -82,6 +86,7 @@ export default function ClinicReviewsDetailPage({ params }: PageProps) {
 
                 if (!clinicData) {
                     setClinic(null);
+                    setError("Clinic not found.");
                     return;
                 }
 

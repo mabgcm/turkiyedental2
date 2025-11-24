@@ -56,6 +56,7 @@ const fetchClinicBySlug = async (slug: string): Promise<ClinicDoc | null> => {
 };
 
 export default function ClinicReviewsDetailPage({ params }: PageProps) {
+    const slug = params?.slug;
     const [clinic, setClinic] = useState<ClinicDoc | null>(null);
     const [reviews, setReviews] = useState<Review[]>([]);
     const [loadingClinic, setLoadingClinic] = useState(true);
@@ -67,8 +68,16 @@ export default function ClinicReviewsDetailPage({ params }: PageProps) {
         const load = async () => {
             setLoadingClinic(true);
             setError(null);
+
+            if (!slug) {
+                setError("Invalid clinic slug.");
+                setClinic(null);
+                setLoadingClinic(false);
+                return;
+            }
+
             try {
-                const clinicData = await fetchClinicBySlug(params.slug);
+                const clinicData = await fetchClinicBySlug(slug);
                 if (cancelled) return;
 
                 if (!clinicData) {

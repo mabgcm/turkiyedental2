@@ -1,0 +1,122 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { doc, getDoc } from "firebase/firestore";
+import ReviewForm from "@/components/reviews/ReviewForm";
+import ReviewList from "@/components/reviews/ReviewList";
+import { db } from "@/lib/firebase";
+import { getApprovedReviewsByClinic } from "@/lib/reviewService";
+import { type Clinic, type Review } from "@/types/review";
+
+type ClinicDoc = Clinic & {
+    avgRating?: number | null;
+    reviewCount?: number | null;
+};
+
+type Props = {
+    slug: string;
+};
+
+export default function ClinicReviewsPageClient({ slug }: Props) {
+    const [clinic, setClinic] = useState<ClinicDoc | null>(null);
+    const [reviews, setReviews] = useState<Review[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        let cancelled = false;
+
+        const fetchData = async () => {
+            setLoading(true);
+            setError(null);
+            try {
+                // Load clinic using slug as document ID
+                const clinicRef = doc(db, "clinics", slug);
+                const snap = await getDoc(clinicRef);
+                if (!snap.exists()) {
+                    if (!cancelled) {
+                        setError("Clinic not found.");
+                        setClinic(null);
+                        setReviews([]);
+                    }
+                    return;
+                }
+
+                const clinicData: ClinicDoc = {
+                    id: snap.id,
+                    ...(snap.data() as Omit<Clinic, "id">),
+                };
+                if (!cancelled) {
+                    setClinic(clinicData);
+                }
+
+                // Load approved reviews for this clinic
+                const approved = await getApprovedReviewsByClinic(snap.id);
+                if (!cancelled) {
+                    setReviews(approved);
+                }
+            } catch (err) {
+                console.error("Error loading clinic page:", err);
+                if (!cancelled) {
+                    setError("Failed to load clinic.");
+                }
+            } finally {
+                if (!cancelled) {
+                    setLoading(false);
+                }
+            }
+        };
+
+        fetchData();
+        return () => {
+            cancelled = true;
+        };
+    }, [slug]);
+
+    const handleSubmitted = async () => {
+        if (!clinic) return;
+        const updated = await getApprovedReviewsByClinic(clinic.id);
+        setReviews(updated);
+    };
+
+    if (loading && !clinic && !error) {
+        return <main className="max-w-4xl mx-auto p-6"><p>Loading clinic...</p></main>;
+    }
+
+    if (error) {
+        return <main className="max-w-4xl mx-auto p-6"><p className="text-red-600">{error}</p></main>;
+    }
+
+    if (!clinic) {
+        return <main className="max-w-4xl mx-auto p-6"><p>Clinic not found.</p></main>;
+    }
+
+    return (
+        <main className="max-w-4xl mx-auto p-6 space-y-6">
+            <header className="space-y-1">
+                <h1 className="text-2xl font-bold">{clinic.name}</h1>
+                <p className="text-sm text-gray-700">
+                    {clinic.city}{clinic.city && clinic.country ? ", " : ""}{clinic.country}
+                </p>
+                <p className="text-sm text-gray-700">
+                    {typeof clinic.avgRating === "number"
+                        ? `Average rating: ${clinic.avgRating.toFixed(1)} / 5`
+                        : "No rating yet"}{" "}
+                    • {clinic.reviewCount ?? 0} reviews
+                </p>
+            </header>
+
+            <section className="space-y-3">
+                <h2 className="text-xl font-semibold">Write a Review</h2>
+                <p className="text-sm text-gray-700">Your review will appear once approved by moderators.</p>
+                <ReviewForm clinicId={clinic.id} onSubmitted={handleSubmitted} />
+            </section>
+
+            <section className="space-y-3">
+                <h2 className="text-xl font-semibold">Patient Reviews</h2>
+                {!reviews.length && <p>No reviews yet for this clinic.</p>}
+                {!!reviews.length && <ReviewList reviews={reviews} />}
+            </section>
+        </main>
+    );
+}

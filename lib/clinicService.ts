@@ -1,5 +1,4 @@
 import {
-    addDoc,
     collection,
     deleteDoc,
     doc,
@@ -7,6 +6,7 @@ import {
     orderBy,
     query,
     serverTimestamp,
+    setDoc,
     updateDoc,
 } from "firebase/firestore";
 import { db } from "@/lib/firebase";
@@ -20,7 +20,7 @@ export const getAllClinics = async (): Promise<Clinic[]> => {
     return snapshot.docs.map((docSnap) => {
         const data = docSnap.data() as Partial<Clinic>;
         return {
-            id: data.id ?? docSnap.id,
+            id: docSnap.id,
             name: data.name ?? "",
             slug: data.slug ?? "",
             city: data.city ?? "",
@@ -36,6 +36,8 @@ export const getAllClinics = async (): Promise<Clinic[]> => {
 export const createClinic = async (
     clinic: Omit<Clinic, "id" | "avgRating" | "reviewCount" | "createdAt" | "updatedAt">,
 ) => {
+    // Use slug as document ID.
+    const clinicRef = doc(clinicsCollection, clinic.slug);
     const payload = {
         ...clinic,
         avgRating: 0,
@@ -43,8 +45,8 @@ export const createClinic = async (
         createdAt: serverTimestamp(),
         updatedAt: serverTimestamp(),
     };
-    const docRef = await addDoc(clinicsCollection, payload);
-    return { id: docRef.id, ...payload };
+    await setDoc(clinicRef, payload);
+    return { id: clinicRef.id, ...payload };
 };
 
 export const updateClinic = async (id: string, data: Partial<Clinic>) => {

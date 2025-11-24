@@ -82,7 +82,7 @@ export default function ClinicsReviewsPage() {
                             </div>
                         </div>
                         <Link
-                            href={`/reviews/${clinic.slug}`}
+                            href={`/reviews/${clinic.id}`}
                             className="inline-block bg-blue-600 text-white px-4 py-2 rounded"
                         >
                             View reviews

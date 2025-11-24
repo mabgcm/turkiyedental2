@@ -43,6 +43,9 @@ export const createReview = async (
  * Get approved reviews for a clinic ordered by newest first.
  */
 export const getApprovedReviewsByClinic = async (clinicId: string): Promise<Review[]> => {
+    if (!clinicId) {
+        throw new Error("getApprovedReviewsByClinic called without clinicId");
+    }
     const q = query(
         reviewsCollection,
         where("clinicId", "==", clinicId),

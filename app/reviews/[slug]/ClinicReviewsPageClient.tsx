@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { useParams } from "next/navigation";
 import { doc, getDoc } from "firebase/firestore";
 import ReviewForm from "@/components/reviews/ReviewForm";
 import ReviewList from "@/components/reviews/ReviewList";
@@ -22,6 +23,15 @@ export default function ClinicReviewsPageClient({ slug }: Props) {
     const [reviews, setReviews] = useState<Review[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const params = useParams();
+
+    const effectiveSlug = useMemo(() => {
+        if (slug) return slug;
+        const fromParams = params?.slug;
+        if (typeof fromParams === "string") return fromParams;
+        if (Array.isArray(fromParams) && fromParams.length > 0) return fromParams[0];
+        return "";
+    }, [params, slug]);
 
     useEffect(() => {
         let cancelled = false;
@@ -30,7 +40,7 @@ export default function ClinicReviewsPageClient({ slug }: Props) {
             setLoading(true);
             setError(null);
 
-            if (!slug || typeof slug !== "string") {
+            if (!effectiveSlug || typeof effectiveSlug !== "string") {
                 setError("Invalid clinic slug.");
                 setClinic(null);
                 setReviews([]);
@@ -40,7 +50,7 @@ export default function ClinicReviewsPageClient({ slug }: Props) {
 
             try {
                 // Load clinic using slug as document ID
-                const clinicRef = doc(db, "clinics", slug);
+                const clinicRef = doc(db, "clinics", effectiveSlug);
                 const snap = await getDoc(clinicRef);
                 if (!snap.exists()) {
                     if (!cancelled) {
@@ -60,6 +70,7 @@ export default function ClinicReviewsPageClient({ slug }: Props) {
                 }
 
                 // Load approved reviews for this clinic
+                console.log("DEBUG getApprovedReviewsByClinic clinicId:", snap.id);
                 const approved = await getApprovedReviewsByClinic(snap.id);
                 if (!cancelled) {
                     setReviews(approved);
@@ -80,7 +91,7 @@ export default function ClinicReviewsPageClient({ slug }: Props) {
         return () => {
             cancelled = true;
         };
-    }, [slug]);
+    }, [effectiveSlug]);
 
     const handleSubmitted = async () => {
         if (!clinic) return;

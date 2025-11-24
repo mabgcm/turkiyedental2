@@ -50,7 +50,7 @@ export const getApprovedReviewsByClinic = async (clinicId: string): Promise<Revi
         reviewsCollection,
         where("clinicId", "==", clinicId),
         where("status", "==", "approved"),
-        orderBy("createdAt", "desc"),
+        // orderBy("createdAt", "desc"),
     );
     const snapshot = await getDocs(q);
     return snapshot.docs.map(mapReview);

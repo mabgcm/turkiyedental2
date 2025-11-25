@@ -29,17 +29,17 @@ export default function AdminDashboardPage() {
     };
 
     if (loadingUser) {
-        return <div className="p-4">Loading...</div>;
+        return <div className="p-6 text-sm text-gray-700">Loading...</div>;
     }
 
     if (!user) {
         return (
-            <div className="p-4 space-y-4">
-                <h1 className="text-2xl font-semibold">Admin Dashboard</h1>
-                <p>You must sign in as admin to access admin tools.</p>
+            <div className="p-6 space-y-4 max-w-xl mx-auto bg-white border border-gray-200 rounded-2xl shadow-sm">
+                <h1 className="text-2xl font-semibold text-brand-secondary">Admin Dashboard</h1>
+                <p className="text-gray-700">You must sign in as admin to access admin tools.</p>
                 <button
                     onClick={handleGoogleLogin}
-                    className="px-4 py-2 rounded bg-black text-white"
+                    className="px-4 py-2 rounded-xl bg-brand-primary text-white hover:bg-brand-primary-dark transition-colors"
                 >
                     Sign in with Google
                 </button>
@@ -49,17 +49,17 @@ export default function AdminDashboardPage() {
 
     if (!isAdmin) {
         return (
-            <div className="p-4">
-                <h1 className="text-2xl font-semibold">Admin Dashboard</h1>
-                <p>Not authorized.</p>
+            <div className="p-6 max-w-xl mx-auto bg-white border border-gray-200 rounded-2xl shadow-sm space-y-2">
+                <h1 className="text-2xl font-semibold text-brand-secondary">Admin Dashboard</h1>
+                <p className="text-gray-700">Not authorized.</p>
             </div>
         );
     }
 
     return (
-        <main className="p-4 space-y-6 max-w-3xl mx-auto">
-            <header>
-                <h1 className="text-3xl font-bold">Admin Dashboard</h1>
+        <main className="p-6 space-y-6 max-w-4xl mx-auto">
+            <header className="space-y-2">
+                <h1 className="text-3xl font-bold text-brand-secondary">Admin Dashboard</h1>
                 <p className="text-sm text-gray-600">
                     Manage clinics, reviews and other admin tools.
                 </p>
@@ -68,7 +68,7 @@ export default function AdminDashboardPage() {
             <section className="grid gap-4 md:grid-cols-2">
                 <Link
                     href="/admin/clinics"
-                    className="border rounded-lg p-4 hover:bg-gray-50 transition"
+                    className="border border-gray-200 rounded-2xl p-4 hover:bg-brand-surface transition shadow-sm bg-white"
                 >
                     <h2 className="font-semibold mb-1">Clinics</h2>
                     <p className="text-sm text-gray-600">
@@ -78,7 +78,7 @@ export default function AdminDashboardPage() {
 
                 <Link
                     href="/admin/reviews"
-                    className="border rounded-lg p-4 hover:bg-gray-50 transition"
+                    className="border border-gray-200 rounded-2xl p-4 hover:bg-brand-surface transition shadow-sm bg-white"
                 >
                     <h2 className="font-semibold mb-1">Reviews</h2>
                     <p className="text-sm text-gray-600">

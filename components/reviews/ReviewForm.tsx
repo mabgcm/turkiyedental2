@@ -131,12 +131,12 @@ export default function ReviewForm({ clinicId, onSubmitted }: ReviewFormProps) {
 
     const ratingField = (name: keyof typeof form, label: string) => (
         <label className="flex flex-col gap-1">
-            <span>{label}</span>
+            <span className="text-sm font-medium text-brand-secondary">{label}</span>
             <select
                 name={name}
                 value={form[name]}
                 onChange={handleChange}
-                className="border rounded px-2 py-1"
+                className="border border-gray-200 rounded-lg px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-brand-ring"
                 required
             >
                 {ratingOptions.map((opt) => (
@@ -148,14 +148,14 @@ export default function ReviewForm({ clinicId, onSubmitted }: ReviewFormProps) {
 
     if (!user) {
         return (
-            <div className="border rounded p-4 space-y-3">
-                <p>You must sign in with Google to leave a review.</p>
+            <div className="border border-gray-200 rounded-2xl p-5 space-y-3 bg-white shadow-sm">
+                <p className="text-sm text-brand-secondary">You must sign in with Google to leave a review.</p>
                 {error && <p className="text-red-600 text-sm">{error}</p>}
                 <button
                     type="button"
                     onClick={handleSignIn}
                     disabled={authLoading}
-                    className="bg-blue-600 text-white px-4 py-2 rounded disabled:opacity-60"
+                    className="inline-flex items-center justify-center rounded-xl bg-brand-primary text-white px-4 py-2 font-medium hover:bg-brand-primary-dark transition-colors disabled:opacity-60"
                 >
                     {authLoading ? "Signing in..." : "Sign in with Google"}
                 </button>
@@ -164,7 +164,7 @@ export default function ReviewForm({ clinicId, onSubmitted }: ReviewFormProps) {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="border rounded p-4 space-y-4">
+        <form onSubmit={handleSubmit} className="border border-gray-200 rounded-2xl p-5 space-y-5 bg-white shadow-sm">
             <div className="grid md:grid-cols-2 gap-4">
                 {ratingField("overallRating", "Overall rating")}
                 {ratingField("doctorStaffRating", "Doctor & staff attitude")}
@@ -175,25 +175,25 @@ export default function ReviewForm({ clinicId, onSubmitted }: ReviewFormProps) {
             </div>
 
             <label className="flex flex-col gap-1">
-                <span>Review title</span>
+                <span className="text-sm font-medium text-brand-secondary">Review title</span>
                 <input
                     type="text"
                     name="title"
                     value={form.title}
                     onChange={handleChange}
-                    className="border rounded px-2 py-1"
+                    className="border border-gray-200 rounded-lg px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-brand-ring"
                     required
                 />
             </label>
 
             <label className="flex flex-col gap-1">
-                <span>Review</span>
+                <span className="text-sm font-medium text-brand-secondary">Review</span>
                 <textarea
                     name="text"
                     value={form.text}
                     onChange={handleChange}
                     minLength={30}
-                    className="border rounded px-2 py-2"
+                    className="border border-gray-200 rounded-lg px-3 py-3 bg-white focus:outline-none focus:ring-2 focus:ring-brand-ring"
                     rows={5}
                     required
                 />
@@ -201,25 +201,25 @@ export default function ReviewForm({ clinicId, onSubmitted }: ReviewFormProps) {
 
             <div className="grid md:grid-cols-2 gap-4">
                 <label className="flex flex-col gap-1">
-                    <span>Visit date</span>
+                    <span className="text-sm font-medium text-brand-secondary">Visit date</span>
                     <input
                         type="date"
                         name="visitDate"
                         value={form.visitDate}
                         onChange={handleChange}
-                        className="border rounded px-2 py-1"
+                        className="border border-gray-200 rounded-lg px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-brand-ring"
                         required
                     />
                 </label>
 
                 <label className="flex flex-col gap-1">
-                    <span>Country of patient</span>
+                    <span className="text-sm font-medium text-brand-secondary">Country of patient</span>
                     <input
                         type="text"
                         name="countryOfPatient"
                         value={form.countryOfPatient}
                         onChange={handleChange}
-                        className="border rounded px-2 py-1"
+                        className="border border-gray-200 rounded-lg px-3 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-brand-ring"
                         required
                     />
                 </label>
@@ -231,7 +231,7 @@ export default function ReviewForm({ clinicId, onSubmitted }: ReviewFormProps) {
             <button
                 type="submit"
                 disabled={submitting}
-                className="bg-blue-600 text-white px-4 py-2 rounded disabled:opacity-60"
+                className="inline-flex items-center justify-center rounded-xl bg-brand-primary text-white px-5 py-2.5 font-medium hover:bg-brand-primary-dark transition-colors disabled:opacity-60"
             >
                 {submitting ? "Submitting..." : "Submit review"}
             </button>

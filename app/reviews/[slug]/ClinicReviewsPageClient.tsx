@@ -132,26 +132,42 @@ export default function ClinicReviewsPageClient({ slug }: Props) {
     }
 
     return (
-        <main className="max-w-4xl mx-auto p-6 space-y-6">
-            <header className="space-y-1">
-                <h1 className="text-2xl font-bold">{clinic.name}</h1>
-                <p className="text-sm text-gray-700">
-                    {clinic.city}{clinic.city && clinic.country ? ", " : ""}{clinic.country}
-                </p>
-                <p className="text-sm text-gray-700">
-                    Average rating: {avgOverall.toFixed(1)} / 5 • {reviewCount} reviews
-                </p>
+        <main className="max-w-5xl mx-auto px-4 py-10 space-y-8">
+            <header className="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 space-y-3">
+                <div className="flex items-start justify-between gap-4 flex-wrap">
+                    <div className="space-y-2">
+                        <p className="text-xs uppercase tracking-[0.12em] text-brand-muted">Clinic</p>
+                        <h1 className="text-3xl font-bold text-brand-secondary">{clinic.name}</h1>
+                        <p className="text-sm text-gray-700">
+                            {clinic.city}{clinic.city && clinic.country ? ", " : ""}{clinic.country}
+                        </p>
+                    </div>
+                    <div className="flex flex-col items-end gap-2 text-sm text-brand-secondary">
+                        <span className="inline-flex items-center gap-2 bg-brand-surface px-3 py-2 rounded-full border border-gray-200">
+                            <span className="text-lg">⭐</span>
+                            <strong className="text-base">{avgOverall.toFixed(1)} / 5</strong>
+                        </span>
+                        <span className="text-gray-600">{reviewCount} {reviewCount === 1 ? "review" : "reviews"}</span>
+                    </div>
+                </div>
             </header>
 
-            <section className="space-y-3">
-                <h2 className="text-xl font-semibold">Write a Review</h2>
-                <p className="text-sm text-gray-700">Your review will appear once approved by moderators.</p>
+            <section className="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 space-y-3">
+                <div className="space-y-1">
+                    <p className="text-xs uppercase tracking-[0.12em] text-brand-muted">Share your experience</p>
+                    <h2 className="text-xl font-semibold text-brand-secondary">Write a Review</h2>
+                    <p className="text-sm text-gray-600">Your review will appear once approved by moderators.</p>
+                </div>
                 <ReviewForm clinicId={clinic.id} onSubmitted={handleSubmitted} />
             </section>
 
             <section className="space-y-3">
-                <h2 className="text-xl font-semibold">Patient Reviews</h2>
-                {!reviews.length && <p>No reviews yet for this clinic.</p>}
+                <h2 className="text-xl font-semibold text-brand-secondary">Patient Reviews</h2>
+                {!reviews.length && (
+                    <p className="text-gray-600 bg-white border border-gray-200 rounded-2xl shadow-sm p-6">
+                        No reviews yet for this clinic.
+                    </p>
+                )}
                 {!!reviews.length && <ReviewList reviews={reviews} />}
             </section>
         </main>

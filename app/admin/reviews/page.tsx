@@ -97,17 +97,17 @@ export default function ReviewModerationPage() {
                 {reviews.map((review) => {
                     const actionState = actions[review.id] || { loading: false };
                     return (
-                        <div key={review.id} className="border rounded p-4 space-y-2">
+                        <div key={review.id} className="border border-gray-200 rounded-2xl p-5 space-y-3 bg-white shadow-sm">
                             <div className="flex justify-between">
                                 <div>
                                     <p className="text-sm text-gray-600">Clinic ID: {review.clinicId}</p>
                                     <p className="text-sm text-gray-600">User ID: {review.userId}</p>
                                 </div>
-                                <p className="font-semibold">Overall: {review.ratings.overall} / 5</p>
+                                <p className="font-semibold text-brand-secondary">Overall: {review.ratings.overall} / 5</p>
                             </div>
-                            <p className="font-semibold">{review.title}</p>
-                            <p>{review.text}</p>
-                            <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-sm">
+                            <p className="font-semibold text-brand-secondary">{review.title}</p>
+                            <p className="text-gray-700">{review.text}</p>
+                            <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-sm text-brand-secondary">
                                 <p>Hygiene: {review.ratings.hygiene}/5</p>
                                 <p>Communication: {review.ratings.communication}/5</p>
                                 <p>Transparency: {review.ratings.transparency}/5</p>
@@ -121,7 +121,7 @@ export default function ReviewModerationPage() {
                             <div className="flex gap-2 pt-2">
                                 <button
                                     type="button"
-                                    className="bg-green-600 text-white px-3 py-1 rounded disabled:opacity-60"
+                                    className="bg-brand-primary text-white px-3 py-1 rounded-xl disabled:opacity-60"
                                     disabled={actionState.loading}
                                     onClick={() => handleAction(review, "approved")}
                                 >
@@ -129,7 +129,7 @@ export default function ReviewModerationPage() {
                                 </button>
                                 <button
                                     type="button"
-                                    className="bg-red-600 text-white px-3 py-1 rounded disabled:opacity-60"
+                                    className="border border-red-200 text-red-700 px-3 py-1 rounded-xl disabled:opacity-60"
                                     disabled={actionState.loading}
                                     onClick={() => handleAction(review, "rejected")}
                                 >
@@ -147,7 +147,7 @@ export default function ReviewModerationPage() {
     return (
         <main className="max-w-5xl mx-auto p-6 space-y-6">
             <header className="space-y-1">
-                <h1 className="text-2xl font-bold">Admin – Review Moderation</h1>
+                <h1 className="text-3xl font-bold text-brand-secondary">Admin – Review Moderation</h1>
                 <p className="text-sm text-gray-700">Approve or reject pending clinic reviews.</p>
             </header>
 
@@ -168,10 +168,10 @@ export default function ReviewModerationPage() {
             ) : !isAdmin ? (
                 <p>Not authorized.</p>
             ) : (
-                <section className="space-y-4">
+                <section className="space-y-4 bg-white border border-gray-200 rounded-2xl shadow-sm p-5">
                     <div className="flex items-center gap-3">
-                        <span className="font-semibold">Filters:</span>
-                        <button className="border px-3 py-1 rounded bg-gray-100">Pending</button>
+                        <span className="font-semibold text-brand-secondary">Filters:</span>
+                        <button className="border border-gray-200 px-3 py-1 rounded-full bg-brand-surface text-sm">Pending</button>
                     </div>
                     {renderPending()}
                 </section>

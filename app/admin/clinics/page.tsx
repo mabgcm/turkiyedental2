@@ -135,14 +135,16 @@ export default function AdminClinicsPage() {
     };
 
     if (loadingUser) {
-        return <main className="max-w-5xl mx-auto p-6"><p>Loading user...</p></main>;
+        return <main className="max-w-5xl mx-auto p-6 text-sm text-gray-700"><p>Loading user...</p></main>;
     }
 
     if (!user) {
         return (
             <main className="max-w-5xl mx-auto p-6 space-y-3">
-                <h1 className="text-2xl font-bold">Admin – Clinics</h1>
-                <p>You must sign in as admin to manage clinics.</p>
+                <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 space-y-2">
+                    <h1 className="text-2xl font-bold text-brand-secondary">Admin – Clinics</h1>
+                    <p className="text-gray-700">You must sign in as admin to manage clinics.</p>
+                </div>
                 <button onClick={handleSignIn} className="bg-blue-600 text-white px-4 py-2 rounded">
                     Sign in with Google
                 </button>
@@ -152,19 +154,19 @@ export default function AdminClinicsPage() {
     }
 
     if (!isAdmin) {
-        return <main className="max-w-5xl mx-auto p-6"><p>Not authorized.</p></main>;
+        return <main className="max-w-5xl mx-auto p-6 text-gray-700"><p>Not authorized.</p></main>;
     }
 
     return (
         <main className="max-w-5xl mx-auto p-6 space-y-6">
             <header className="space-y-1">
-                <h1 className="text-2xl font-bold">Admin – Clinics</h1>
+                <h1 className="text-3xl font-bold text-brand-secondary">Admin – Clinics</h1>
                 <p className="text-sm text-gray-700">Create, edit, or delete clinics. Admin-only.</p>
             </header>
 
-            <section className="space-y-3">
-                <h2 className="text-xl font-semibold">{editingId ? "Edit clinic" : "Create clinic"}</h2>
-                <form onSubmit={handleSubmit} className="space-y-3 border rounded p-4">
+            <section className="space-y-3 bg-white border border-gray-200 rounded-2xl shadow-sm p-5">
+                <h2 className="text-xl font-semibold text-brand-secondary">{editingId ? "Edit clinic" : "Create clinic"}</h2>
+                <form onSubmit={handleSubmit} className="space-y-3">
                     <label className="block">
                         <span className="block text-sm font-medium">Name</span>
                         <input
@@ -213,14 +215,14 @@ export default function AdminClinicsPage() {
                         <button
                             type="submit"
                             disabled={saving}
-                            className="bg-green-600 text-white px-4 py-2 rounded disabled:opacity-60"
+                            className="bg-brand-primary text-white px-4 py-2 rounded-xl disabled:opacity-60"
                         >
                             {saving ? "Saving..." : editingId ? "Update clinic" : "Create clinic"}
                         </button>
                         {editingId && (
                             <button
                                 type="button"
-                                className="border px-3 py-2 rounded"
+                                className="border border-gray-200 px-3 py-2 rounded-xl"
                                 onClick={() => {
                                     setEditingId(null);
                                     setForm(initialForm);
@@ -235,41 +237,41 @@ export default function AdminClinicsPage() {
                 </form>
             </section>
 
-            <section className="space-y-3">
-                <h2 className="text-xl font-semibold">Clinic list</h2>
+            <section className="space-y-3 bg-white border border-gray-200 rounded-2xl shadow-sm p-5">
+                <h2 className="text-xl font-semibold text-brand-secondary">Clinic list</h2>
                 {loadingClinics ? (
                     <p>Loading clinics...</p>
                 ) : (
                     <div className="space-y-3">
                         {!clinics.length && <p>No clinics found.</p>}
                         {clinics.length > 0 && (
-                            <table className="w-full text-sm border">
-                                <thead className="bg-gray-100">
+                            <table className="w-full text-sm border border-gray-200 rounded-2xl overflow-hidden">
+                                <thead className="bg-brand-surface">
                                     <tr>
-                                        <th className="text-left p-2 border-b">Name</th>
-                                        <th className="text-left p-2 border-b">Slug</th>
-                                        <th className="text-left p-2 border-b">City</th>
-                                        <th className="text-left p-2 border-b">Country</th>
-                                        <th className="text-left p-2 border-b">Avg Rating</th>
-                                        <th className="text-left p-2 border-b">Reviews</th>
-                                        <th className="text-left p-2 border-b">Actions</th>
+                                        <th className="text-left p-2 border-b border-gray-200">Name</th>
+                                        <th className="text-left p-2 border-b border-gray-200">Slug</th>
+                                        <th className="text-left p-2 border-b border-gray-200">City</th>
+                                        <th className="text-left p-2 border-b border-gray-200">Country</th>
+                                        <th className="text-left p-2 border-b border-gray-200">Avg Rating</th>
+                                        <th className="text-left p-2 border-b border-gray-200">Reviews</th>
+                                        <th className="text-left p-2 border-b border-gray-200">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {clinics.map((clinic) => (
                                         <tr key={clinic.id}>
-                                            <td className="p-2 border-b">{clinic.name}</td>
-                                            <td className="p-2 border-b">{clinic.slug}</td>
-                                            <td className="p-2 border-b">{clinic.city}</td>
-                                            <td className="p-2 border-b">{clinic.country}</td>
-                                            <td className="p-2 border-b">
+                                            <td className="p-2 border-b border-gray-200">{clinic.name}</td>
+                                            <td className="p-2 border-b border-gray-200">{clinic.slug}</td>
+                                            <td className="p-2 border-b border-gray-200">{clinic.city}</td>
+                                            <td className="p-2 border-b border-gray-200">{clinic.country}</td>
+                                            <td className="p-2 border-b border-gray-200">
                                                 {clinic.avgRating != null ? clinic.avgRating.toFixed(1) : "N/A"}
                                             </td>
-                                            <td className="p-2 border-b">{clinic.reviewCount ?? 0}</td>
-                                            <td className="p-2 border-b space-x-2">
+                                            <td className="p-2 border-b border-gray-200">{clinic.reviewCount ?? 0}</td>
+                                            <td className="p-2 border-b border-gray-200 space-x-2">
                                                 <button
                                                     type="button"
-                                                    className="text-blue-600 underline"
+                                                    className="text-brand-primary underline"
                                                     onClick={() => handleEdit(clinic)}
                                                 >
                                                     Edit

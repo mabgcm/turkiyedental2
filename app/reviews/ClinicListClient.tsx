@@ -62,37 +62,59 @@ export default function ClinicListClient({ clinics }: Props) {
     }, [clinics]);
 
     return (
-        <main className="max-w-5xl mx-auto p-6 space-y-6">
-            <header className="space-y-2">
-                <h1 className="text-2xl font-bold">Clinics &amp; Reviews</h1>
-                <p className="text-gray-700 text-sm">Browse clinics and read patient feedback.</p>
-                <p className="text-sm text-gray-800">
-                    ⭐ {globalAvg.toFixed(1)} / 5 · {totalReviews} {totalReviews === 1 ? "review" : "reviews"}
-                </p>
+        <main className="max-w-6xl mx-auto px-4 py-10 space-y-8">
+            <header className="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 flex flex-col gap-2">
+                <div className="flex flex-col gap-1">
+                    <p className="text-xs uppercase tracking-[0.12em] text-brand-muted">Reviews</p>
+                    <h1 className="text-3xl font-bold text-brand-secondary">Clinics &amp; Reviews</h1>
+                    <p className="text-sm text-gray-600">
+                        Explore clinics, read patient feedback, and share your experience.
+                    </p>
+                </div>
+                <div className="flex flex-wrap items-center gap-3 text-sm text-brand-secondary">
+                    <span className="inline-flex items-center gap-2 bg-brand-surface px-3 py-2 rounded-full border border-gray-200">
+                        <span className="text-lg">⭐</span>
+                        <strong className="text-base">{globalAvg.toFixed(1)} / 5</strong>
+                        <span className="text-gray-600">Global average</span>
+                    </span>
+                    <span className="inline-flex items-center gap-2 bg-brand-surface px-3 py-2 rounded-full border border-gray-200">
+                        <span className="text-lg">📝</span>
+                        <strong className="text-base">{totalReviews}</strong>
+                        <span className="text-gray-600">{totalReviews === 1 ? "review" : "reviews"}</span>
+                    </span>
+                </div>
             </header>
 
-            {clinics.length === 0 && <p>No clinics have been added yet.</p>}
+            {clinics.length === 0 && (
+                <p className="text-center text-gray-600">No clinics have been added yet.</p>
+            )}
 
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
                 {clinics.map((clinic) => {
                     const s = stats[clinic.id] ?? { avgOverall: 0, reviewCount: 0 };
                     return (
-                        <article key={clinic.id} className="border rounded p-4 space-y-2">
-                            <div className="flex items-center justify-between">
-                                <div>
-                                    <h2 className="text-lg font-semibold">{clinic.name}</h2>
-                                    <p className="text-sm text-gray-700">
+                        <article
+                            key={clinic.id}
+                            className="bg-white border border-gray-200 rounded-2xl shadow-sm p-5 flex flex-col gap-4 hover:shadow-md transition-shadow"
+                        >
+                            <div className="flex items-start justify-between gap-3">
+                                <div className="space-y-1">
+                                    <h2 className="text-lg font-semibold text-brand-secondary">{clinic.name}</h2>
+                                    <p className="text-sm text-gray-600">
                                         {clinic.city}{clinic.city && clinic.country ? ", " : ""}{clinic.country}
                                     </p>
                                 </div>
-                                <div className="text-right text-sm text-gray-700">
-                                    <p>{`${s.avgOverall.toFixed(1)} / 5`}</p>
-                                    <p>{s.reviewCount > 0 ? `Based on ${s.reviewCount} reviews` : "0 reviews yet"}</p>
+                                <div className="text-right text-sm text-brand-secondary">
+                                    <p className="font-semibold">{s.avgOverall.toFixed(1)} / 5</p>
+                                    <p className="text-gray-600">
+                                        {s.reviewCount > 0 ? `Based on ${s.reviewCount} reviews` : "0 reviews yet"}
+                                    </p>
                                 </div>
                             </div>
+
                             <Link
                                 href={`/reviews/${clinic.slug}`}
-                                className="inline-block bg-blue-600 text-white px-4 py-2 rounded"
+                                className="inline-flex w-fit items-center justify-center rounded-xl bg-brand-primary text-white px-4 py-2 font-medium hover:bg-brand-primary-dark transition-colors"
                             >
                                 View reviews
                             </Link>

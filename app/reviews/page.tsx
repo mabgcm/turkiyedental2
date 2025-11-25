@@ -4,17 +4,21 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/lib/firebase";
+import { getApprovedReviewsByClinic } from "@/lib/reviewService";
 import { type Clinic } from "@/types/review";
 
-type ClinicListItem = Pick<Clinic, "id" | "name" | "slug" | "city" | "country"> & {
-    avgRating?: number | null;
-    reviewCount?: number;
+type ClinicListItem = Pick<Clinic, "id" | "name" | "slug" | "city" | "country">;
+
+type Stats = {
+    avgOverall: number;
+    reviewCount: number;
 };
 
 const clinicsCollection = collection(db, "clinics");
 
 export default function ClinicsReviewsPage() {
     const [clinics, setClinics] = useState<ClinicListItem[]>([]);
+    const [stats, setStats] = useState<Record<string, Stats>>({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
@@ -26,15 +30,14 @@ export default function ClinicsReviewsPage() {
                 const snapshot = await getDocs(clinicsCollection);
                 const data: ClinicListItem[] = snapshot.docs.map((docSnap) => {
                     const docData = docSnap.data() as Partial<ClinicListItem>;
-                    return {
+                    const mapped = {
                         id: docData.id ?? docSnap.id,
                         name: docData.name ?? "Clinic",
                         slug: docData.slug ?? docSnap.id,
                         city: docData.city ?? "",
                         country: docData.country ?? "",
-                        avgRating: docData.avgRating ?? null,
-                        reviewCount: docData.reviewCount ?? 0,
                     };
+                    return mapped;
                 });
                 setClinics(data);
             } catch (err) {
@@ -47,6 +50,40 @@ export default function ClinicsReviewsPage() {
         loadClinics();
     }, []);
 
+    useEffect(() => {
+        let cancelled = false;
+        const loadStats = async () => {
+            const entries: [string, Stats][] = [];
+            for (const clinic of clinics) {
+                try {
+                    const reviews = await getApprovedReviewsByClinic(clinic.id);
+                    const reviewCount = reviews.length;
+                    if (reviewCount === 0) {
+                        entries.push([clinic.id, { avgOverall: 0, reviewCount: 0 }]);
+                        continue;
+                    }
+                    const sum = reviews.reduce((acc, r) => acc + r.ratings.overall, 0);
+                    const avgOverall = sum / reviewCount;
+                    entries.push([clinic.id, { avgOverall, reviewCount }]);
+                } catch (err) {
+                    console.error("[ReviewsList] Failed to load stats for clinic", clinic.id, err);
+                    entries.push([clinic.id, { avgOverall: 0, reviewCount: 0 }]);
+                }
+            }
+            if (!cancelled) {
+                const map: Record<string, Stats> = {};
+                entries.forEach(([id, value]) => { map[id] = value; });
+                setStats(map);
+            }
+        };
+
+        if (clinics.length > 0) {
+            loadStats();
+        }
+
+        return () => { cancelled = true; };
+    }, [clinics]);
+
     return (
         <main className="max-w-5xl mx-auto p-6 space-y-6">
             <header className="space-y-2">
@@ -58,37 +95,32 @@ export default function ClinicsReviewsPage() {
             {error && <p className="text-red-600">{error}</p>}
             {!loading && !error && clinics.length === 0 && <p>No clinics have been added yet.</p>}
 
-            <div className="grid gap-4">
-                {clinics.map((clinic) => (
-                    <article key={clinic.id} className="border rounded p-4 space-y-2">
-                        <div className="flex items-center justify-between">
-                            <div>
-                                <h2 className="text-lg font-semibold">{clinic.name}</h2>
-                                <p className="text-sm text-gray-700">
-                                    {clinic.city}{clinic.city && clinic.country ? ", " : ""}{clinic.country}
-                                </p>
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                {clinics.map((clinic) => {
+                    const s = stats[clinic.id] ?? { avgOverall: 0, reviewCount: 0 };
+                    return (
+                        <article key={clinic.id} className="border rounded p-4 space-y-2">
+                            <div className="flex items-center justify-between">
+                                <div>
+                                    <h2 className="text-lg font-semibold">{clinic.name}</h2>
+                                    <p className="text-sm text-gray-700">
+                                        {clinic.city}{clinic.city && clinic.country ? ", " : ""}{clinic.country}
+                                    </p>
+                                </div>
+                                <div className="text-right text-sm text-gray-700">
+                                    <p>{`${s.avgOverall.toFixed(1)} / 5`}</p>
+                                    <p>{s.reviewCount > 0 ? `Based on ${s.reviewCount} reviews` : "0 reviews yet"}</p>
+                                </div>
                             </div>
-                            <div className="text-right text-sm text-gray-700">
-                                <p>
-                                    {clinic.avgRating != null
-                                        ? `${clinic.avgRating.toFixed(1)} / 5`
-                                        : "No rating yet"}
-                                </p>
-                                <p>
-                                    {clinic.reviewCount && clinic.reviewCount > 0
-                                        ? `Based on ${clinic.reviewCount} reviews`
-                                        : "0 reviews yet"}
-                                </p>
-                            </div>
-                        </div>
-                        <Link
-                            href={`/reviews/${clinic.id}`}
-                            className="inline-block bg-blue-600 text-white px-4 py-2 rounded"
-                        >
-                            View reviews
-                        </Link>
-                    </article>
-                ))}
+                            <Link
+                                href={`/reviews/${clinic.slug}`}
+                                className="inline-block bg-blue-600 text-white px-4 py-2 rounded"
+                            >
+                                View reviews
+                            </Link>
+                        </article>
+                    );
+                })}
             </div>
         </main>
     );

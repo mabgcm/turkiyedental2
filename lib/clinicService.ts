@@ -19,17 +19,19 @@ export const getAllClinics = async (): Promise<Clinic[]> => {
     const snapshot = await getDocs(q);
     return snapshot.docs.map((docSnap) => {
         const data = docSnap.data() as Partial<Clinic>;
-        return {
+        const mapped = {
             id: docSnap.id,
             name: data.name ?? "",
             slug: data.slug ?? "",
             city: data.city ?? "",
             country: data.country ?? "",
-            avgRating: data.avgRating ?? 0,
-            reviewCount: data.reviewCount ?? 0,
+            avgRating: data.avgRating,
+            reviewCount: data.reviewCount,
             createdAt: data.createdAt,
             updatedAt: data.updatedAt,
         };
+        console.log("[getAllClinics] clinic doc", docSnap.id, mapped);
+        return mapped;
     });
 };
 

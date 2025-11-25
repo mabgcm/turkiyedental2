@@ -33,6 +33,11 @@ export default function ClinicReviewsPageClient({ slug }: Props) {
         return "";
     }, [params, slug]);
 
+    const reviewCount = reviews.length;
+    const avgOverall = reviewCount
+        ? reviews.reduce((sum, r) => sum + (r.ratings?.overall ?? 0), 0) / reviewCount
+        : 0;
+
     useEffect(() => {
         let cancelled = false;
 
@@ -134,10 +139,7 @@ export default function ClinicReviewsPageClient({ slug }: Props) {
                     {clinic.city}{clinic.city && clinic.country ? ", " : ""}{clinic.country}
                 </p>
                 <p className="text-sm text-gray-700">
-                    {typeof clinic.avgRating === "number"
-                        ? `Average rating: ${clinic.avgRating.toFixed(1)} / 5`
-                        : "No rating yet"}{" "}
-                    • {clinic.reviewCount ?? 0} reviews
+                    Average rating: {avgOverall.toFixed(1)} / 5 • {reviewCount} reviews
                 </p>
             </header>
 

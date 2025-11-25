@@ -2,6 +2,7 @@ import {
     addDoc,
     collection,
     doc,
+    getDoc,
     getDocs,
     orderBy,
     query,
@@ -60,7 +61,9 @@ export const getApprovedReviewsByClinic = async (clinicId: string): Promise<Revi
  * Get all pending reviews for moderation ordered by newest first.
  */
 export const getPendingReviews = async (): Promise<Review[]> => {
-    const q = query(reviewsCollection, where("status", "==", "pending"),
+    const q = query(
+        reviewsCollection,
+        where("status", "==", "pending"),
         // orderBy("createdAt", "desc")
     );
     const snapshot = await getDocs(q);
@@ -76,6 +79,14 @@ export const updateReviewStatus = async (reviewId: string, status: ReviewStatus)
         status,
         updatedAt: serverTimestamp(),
     });
+
+    const snap = await getDoc(reviewRef);
+    if (snap.exists()) {
+        const reviewData = snap.data() as Partial<Review>;
+        if (reviewData.clinicId) {
+            await recalculateClinicStats(reviewData.clinicId);
+        }
+    }
 };
 
 /**
@@ -88,4 +99,46 @@ export const addClinicReply = async (reviewId: string, replyText: string) => {
         clinicReplyAt: serverTimestamp(),
         updatedAt: serverTimestamp(),
     });
+};
+
+/**
+ * Recompute average rating and review count for a clinic based on approved reviews.
+ */
+export const recalculateClinicStats = async (clinicId: string) => {
+    console.log("[recalculateClinicStats] called with clinicId:", clinicId);
+    if (!clinicId) {
+        throw new Error("recalculateClinicStats called without clinicId");
+    }
+
+    const approvedQuery = query(
+        reviewsCollection,
+        where("clinicId", "==", clinicId),
+        where("status", "==", "approved"),
+    );
+
+    const snapshot = await getDocs(approvedQuery);
+    const reviewCount = snapshot.size;
+    console.log("[recalculateClinicStats] approved reviews count for clinic", clinicId, "=>", reviewCount);
+
+    let avgRating = 0;
+    if (reviewCount > 0) {
+        let sum = 0;
+        snapshot.forEach((docSnap) => {
+            const data = docSnap.data() as Review;
+            console.log("[recalculateClinicStats] review doc:", docSnap.id, data);
+            sum += data.ratings.overall;
+        });
+        avgRating = sum / reviewCount;
+    }
+
+    console.log("[recalculateClinicStats] computed stats for", clinicId, "=> avgRating:", avgRating, "reviewCount:", reviewCount);
+
+    const clinicRef = doc(db, "clinics", clinicId);
+    console.log("[recalculateClinicStats] updating clinic doc path:", clinicRef.path);
+    await updateDoc(clinicRef, {
+        avgRating,
+        reviewCount,
+        updatedAt: serverTimestamp(),
+    });
+    console.log("[recalculateClinicStats] update complete");
 };

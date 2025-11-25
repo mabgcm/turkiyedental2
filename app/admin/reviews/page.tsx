@@ -5,7 +5,7 @@ import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup, type User } fr
 import { Timestamp } from "firebase/firestore";
 import ReviewList from "@/components/reviews/ReviewList";
 import { auth } from "@/lib/firebase";
-import { getPendingReviews, updateReviewStatus } from "@/lib/reviewService";
+import { getPendingReviews, recalculateClinicStats, updateReviewStatus } from "@/lib/reviewService";
 import { type Review } from "@/types/review";
 import { isAdminUser } from "@/lib/admin";
 
@@ -70,16 +70,21 @@ export default function ReviewModerationPage() {
         }
     };
 
-    const handleAction = async (reviewId: string, status: "approved" | "rejected") => {
-        setActions((prev) => ({ ...prev, [reviewId]: { loading: true } }));
+    const handleAction = async (review: Review, status: "approved" | "rejected") => {
+        setActions((prev) => ({ ...prev, [review.id]: { loading: true } }));
         try {
-            await updateReviewStatus(reviewId, status);
-            setReviews((prev) => prev.filter((r) => r.id !== reviewId));
-        } catch {
-            setActions((prev) => ({ ...prev, [reviewId]: { loading: false, error: "Update failed" } }));
+            console.log("[AdminReviews] Action clicked:", status, review.id, "clinicId:", review.clinicId);
+            await updateReviewStatus(review.id, status);
+            console.log("[AdminReviews] Status updated, calling recalc for clinic:", review.clinicId);
+            await recalculateClinicStats(review.clinicId);
+            console.log("[AdminReviews] Recalc done for clinic:", review.clinicId);
+            setReviews((prev) => prev.filter((r) => r.id !== review.id));
+        } catch (err) {
+            console.error("[AdminReviews] Update/recalc failed:", err);
+            setActions((prev) => ({ ...prev, [review.id]: { loading: false, error: "Update failed" } }));
             return;
         }
-        setActions((prev) => ({ ...prev, [reviewId]: { loading: false } }));
+        setActions((prev) => ({ ...prev, [review.id]: { loading: false } }));
     };
 
     const renderPending = () => {
@@ -118,7 +123,7 @@ export default function ReviewModerationPage() {
                                     type="button"
                                     className="bg-green-600 text-white px-3 py-1 rounded disabled:opacity-60"
                                     disabled={actionState.loading}
-                                    onClick={() => handleAction(review.id, "approved")}
+                                    onClick={() => handleAction(review, "approved")}
                                 >
                                     {actionState.loading ? "Processing..." : "Approve"}
                                 </button>
@@ -126,7 +131,7 @@ export default function ReviewModerationPage() {
                                     type="button"
                                     className="bg-red-600 text-white px-3 py-1 rounded disabled:opacity-60"
                                     disabled={actionState.loading}
-                                    onClick={() => handleAction(review.id, "rejected")}
+                                    onClick={() => handleAction(review, "rejected")}
                                 >
                                     {actionState.loading ? "Processing..." : "Reject"}
                                 </button>

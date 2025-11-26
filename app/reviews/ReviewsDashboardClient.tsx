@@ -29,6 +29,7 @@ export default function ReviewsDashboardClient({ clinics }: Props) {
     const [statsReady, setStatsReady] = useState(false);
     const [user, setUser] = useState<User | null>(null);
     const [modalClinic, setModalClinic] = useState<Clinic | null>(null);
+    const [searchTerm, setSearchTerm] = useState("");
 
     const renderBar = (label: string, value: number) => {
         const percent = Math.max(0, Math.min(5, value)) / 5 * 100;
@@ -74,6 +75,18 @@ export default function ReviewsDashboardClient({ clinics }: Props) {
         if (activeCity === "All") return clinics;
         return clinics.filter((c) => c.city === activeCity);
     }, [activeCity, clinics]);
+
+    const visibleClinics = useMemo(() => {
+        const term = searchTerm.trim().toLowerCase();
+        if (!term) return clinicsByCity;
+        return clinicsByCity.filter((clinic) => clinic.name.toLowerCase().includes(term));
+    }, [clinicsByCity, searchTerm]);
+
+    useEffect(() => {
+        if (openClinicId && !visibleClinics.some((c) => c.id === openClinicId)) {
+            setOpenClinicId(null);
+        }
+    }, [openClinicId, visibleClinics]);
 
     const cityCounts = useMemo(() => {
         const map: Record<string, number> = { All: clinics.length };
@@ -157,6 +170,19 @@ export default function ReviewsDashboardClient({ clinics }: Props) {
                     <p className="text-sm text-gray-600">Browse clinics and read patient feedback by city.</p>
                 </header>
 
+                <div className="bg-white border border-gray-200 shadow-sm rounded-2xl p-3">
+                    <label className="text-xs uppercase tracking-[0.1em] text-brand-muted mb-2 block">
+                        Search clinics
+                    </label>
+                    <input
+                        type="text"
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        placeholder="Type a clinic name..."
+                        className="w-full rounded-xl border border-gray-200 px-4 py-2 text-sm text-brand-secondary focus:outline-none focus:ring-2 focus:ring-brand-primary/60 bg-brand-surface"
+                    />
+                </div>
+
                 <nav className="flex items-center gap-3 overflow-x-auto bg-white rounded-2xl px-4 py-3 border border-gray-200 shadow-sm">
                     {cities.map((city) => {
                         const active = activeCity === city;
@@ -182,10 +208,10 @@ export default function ReviewsDashboardClient({ clinics }: Props) {
                 </nav>
 
                 <section className="bg-white rounded-2xl border border-gray-200 divide-y divide-gray-200 shadow-sm">
-                    {clinicsByCity.length === 0 && (
-                        <div className="px-4 py-6 text-sm text-gray-600">No clinics found for this city.</div>
+                    {visibleClinics.length === 0 && (
+                        <div className="px-4 py-6 text-sm text-gray-600">No clinics match your filters.</div>
                     )}
-                    {clinicsByCity.map((clinic) => {
+                    {visibleClinics.map((clinic) => {
                         const stat = statsMap[clinic.id] ?? {
                             avgOverall: 0,
                             reviewCount: 0,

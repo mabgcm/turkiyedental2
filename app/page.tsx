@@ -70,12 +70,12 @@ const faqItems: FaqItem[] = [
 
 export default function HomePage() {
   return (
-    <main className="relative min-h-screen overflow-hidden">
+    <main className="relative min-h-screen overflow-hidden bg-brand-surface">
       <HeroSection />
-      <div style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "100%", marginTop: "2px" }}>
+      <div className="flex justify-center items-center w-full mt-2">
         <CtaToStart />
       </div>
-      <section className="max-w-5xl mx-auto px-4 py-12">
+      <section className="max-w-6xl mx-auto px-4 py-14 space-y-6">
         <SectionHeader
           variant="section"
           align="center"
@@ -86,7 +86,7 @@ export default function HomePage() {
         />
         <TreatmentCards items={treatments} className="py-1 md:py-1" />
       </section>
-      <section className="max-w-5xl mx-auto px-4 py-12">
+      <section className="max-w-6xl mx-auto px-4 py-14 space-y-10">
         <SectionHeader
           variant="section"
           align="center"
@@ -95,16 +95,20 @@ export default function HomePage() {
           subtitleColor="text-[#000000]"
           subtitle="Patient-first advice, clinic-independent reviews, and clarity you can rely on."
         />
-        <WhyUs />
-        <div className="py-16">
-          <SectionHeader
-            variant="section"
-            align="center"
-            title="Questions? We’ve Got Answers."
-            highlight="Questions?"
-            subtitleColor="text-[#000000]"
-            subtitle=""
-          />
+        <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-10">
+          <WhyUs />
+        </div>
+        <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-10 space-y-6">
+          <div className="text-center">
+            <SectionHeader
+              variant="section"
+              align="center"
+              title="Questions? We’ve Got Answers."
+              highlight="Questions?"
+              subtitleColor="text-[#000000]"
+              subtitle=""
+            />
+          </div>
           <FAQ items={faqItems} />
         </div>
       </section>

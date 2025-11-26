@@ -15,6 +15,24 @@ const formatDate = (value: Timestamp) => {
     }
 };
 
+const renderBar = (label: string, value: number) => {
+    const percent = Math.max(0, Math.min(5, value)) / 5 * 100;
+    return (
+        <div className="space-y-1">
+            <div className="flex justify-between text-xs text-brand-secondary">
+                <span>{label}</span>
+                <span>{value.toFixed(1)}</span>
+            </div>
+            <div className="h-2 rounded-full bg-gray-200 overflow-hidden">
+                <div
+                    className="h-full bg-amber-400"
+                    style={{ width: `${percent}%` }}
+                />
+            </div>
+        </div>
+    );
+};
+
 export default function ReviewList({ reviews }: ReviewListProps) {
     if (!reviews.length) {
         return <p className="text-gray-600">No reviews yet for this clinic.</p>;
@@ -44,6 +62,15 @@ export default function ReviewList({ reviews }: ReviewListProps) {
                         <p>Transparency: {review.ratings.transparency}/5</p>
                         <p>Treatment quality: {review.ratings.treatmentQuality}/5</p>
                         <p>Staff attitude: {review.ratings.staffAttitude}/5</p>
+                    </div>
+
+                    <div className="grid sm:grid-cols-2 gap-3 text-xs">
+                        {renderBar("Hygiene", review.ratings.hygiene)}
+                        {renderBar("Communication", review.ratings.communication)}
+                        {renderBar("Transparency", review.ratings.transparency)}
+                        {renderBar("Treatment quality", review.ratings.treatmentQuality)}
+                        {renderBar("Staff attitude", review.ratings.staffAttitude)}
+                        {renderBar("Overall", review.ratings.overall)}
                     </div>
 
                     {review.reply && (

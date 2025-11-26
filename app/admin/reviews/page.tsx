@@ -1,12 +1,13 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup, type User } from "firebase/auth";
+import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut, type User } from "firebase/auth";
 import { Timestamp } from "firebase/firestore";
 import { auth } from "@/lib/firebase";
 import { getPendingReviews, recalculateClinicStats, updateReviewStatus } from "@/lib/reviewService";
 import { type Review } from "@/types/review";
 import { isAdminUser } from "@/lib/admin";
+import AdminWord from "@/components/admin/AdminWord";
 
 type ActionState = {
     loading: boolean;
@@ -66,6 +67,14 @@ export default function ReviewModerationPage() {
             const message = `${error?.code ?? "unknown"} - ${error?.message ?? "Sign-in failed"}`;
             setGlobalError(message);
             alert(message);
+        }
+    };
+
+    const handleHiddenLogout = async () => {
+        try {
+            await signOut(auth);
+        } catch (error) {
+            console.error("Hidden logout failed:", error);
         }
     };
 
@@ -157,7 +166,9 @@ export default function ReviewModerationPage() {
         <main className="min-h-screen bg-brand-surface">
             <div className="max-w-6xl mx-auto p-6 space-y-6">
                 <header className="bg-white border border-gray-200 rounded-2xl shadow-sm p-5 space-y-2">
-                    <h1 className="text-3xl font-bold text-brand-secondary">Admin – Review Moderation</h1>
+                    <h1 className="text-3xl font-bold text-brand-secondary">
+                        <AdminWord onLogout={handleHiddenLogout} onLogin={handleSignIn} /> – Review Moderation
+                    </h1>
                     <p className="text-sm text-gray-700">Approve or reject pending clinic reviews.</p>
                 </header>
 

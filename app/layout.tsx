@@ -21,7 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Suspense fallback={null}>
           <Navbar />
         </Suspense>
-        <div className="pt-16 sm:pt-28">{children}</div>
+        <div className="pt-20 sm:pt-20">{children}</div>
         <Footer />
         <Analytics />
       </body>

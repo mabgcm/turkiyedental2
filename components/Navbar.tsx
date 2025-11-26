@@ -5,22 +5,19 @@ import Image from "next/image";
 import Link from "next/link";
 import Button from "./Button";
 
-const toothIconPath = "M12 2.2c-3.4 0-6 2.6-6 5.8 0 3 .4 5.8.4 8.5 0 1 .7 2 1.7 2.2 1 .2 1.8-.4 2.1-1.6.4-1.7.8-2.9 1.8-2.9s1.4 1.2 1.8 2.9c.3 1.2 1.1 1.8 2.1 1.6s1.7-1.2 1.7-2.2c0-2.7.4-5.5.4-8.5 0-3.2-2.6-5.8-6-5.8Z";
-const toothSmilePath = "M9 8.2c.2-1.5 1.4-2.6 3-2.6s2.8 1.1 3 2.6";
-
-const ToothIcon = (props: SVGProps<SVGSVGElement>) => (
+const MenuIcon = (props: SVGProps<SVGSVGElement>) => (
     <svg
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
-        strokeWidth={1.6}
+        strokeWidth={1.8}
         strokeLinecap="round"
-        strokeLinejoin="round"
         aria-hidden="true"
         {...props}
     >
-        <path d={toothIconPath} />
-        <path d={toothSmilePath} />
+        <line x1="4" y1="7" x2="20" y2="7" />
+        <line x1="4" y1="12" x2="20" y2="12" />
+        <line x1="4" y1="17" x2="16" y2="17" />
     </svg>
 );
 
@@ -54,7 +51,7 @@ export default function Navbar() {
     }, [open]);
 
     return (
-        <header className="fixed w-full top-0 sm:top-11 z-50 bg-white/90 backdrop-blur border-b shadow-sm">
+        <header className="fixed w-full top-0 z-50 bg-white/90 backdrop-blur border-b shadow-sm">
             <nav className="mx-auto max-w-6xl px-4 h-16 flex items-center justify-between">
                 {/* Logo */}
                 <Link href="/" className="flex items-center">
@@ -127,14 +124,14 @@ export default function Navbar() {
                 {/* Mobile trigger */}
                 <button
                     className="md:hidden inline-flex items-center justify-center rounded-full border border-[#213360]/40 p-2 text-[#213360] hover:bg-[#F5F7FB] hover:text-[#21CDC0] transition"
-                    aria-expanded={open}
-                    aria-controls="mobile-menu"
-                    onClick={() => setOpen(v => !v)}
-                >
-                    <span className="sr-only">Toggle menu</span>
-                    <ToothIcon className="h-5 w-5" />
-                </button>
-            </nav>
+                aria-expanded={open}
+                aria-controls="mobile-menu"
+                onClick={() => setOpen(v => !v)}
+            >
+                <span className="sr-only">Toggle menu</span>
+                <MenuIcon className="h-5 w-5" />
+            </button>
+        </nav>
 
             {/* Mobile panel */}
             {/* MOBİL MENÜ - akordeon grid */}
@@ -149,7 +146,10 @@ export default function Navbar() {
 
                         <li>
                             <details className="group">
-                                <summary className="py-2 cursor-pointer">Treatments</summary>
+                                <summary className="py-2 cursor-pointer flex items-center gap-2 list-none [&::-webkit-details-marker]:hidden">
+                                    <span className="text-brand-secondary">{">"}</span>
+                                    <span>Treatments</span>
+                                </summary>
                                 <ul className="pl-3 border-l space-y-1">
                                     {treatments.map((item) => (
                                         <li key={item.href}>
@@ -164,7 +164,10 @@ export default function Navbar() {
 
                         <li>
                             <details className="group">
-                                <summary className="py-2 cursor-pointer">Destinations</summary>
+                                <summary className="py-2 cursor-pointer flex items-center gap-2 list-none [&::-webkit-details-marker]:hidden">
+                                    <span className="text-brand-secondary">{">"}</span>
+                                    <span>Destinations</span>
+                                </summary>
                                 <ul className="pl-3 border-l space-y-1">
                                     {destinations.map((item) => (
                                         <li key={item.href}>
@@ -179,7 +182,10 @@ export default function Navbar() {
 
                         <li>
                             <details className="group">
-                                <summary className="py-2 cursor-pointer">How It Works</summary>
+                                <summary className="py-2 cursor-pointer flex items-center gap-2 list-none [&::-webkit-details-marker]:hidden">
+                                    <span className="text-brand-secondary">{">"}</span>
+                                    <span>How It Works</span>
+                                </summary>
                                 <ul className="pl-3 border-l space-y-1">
                                     {howItWorks.map((item) => (
                                         <li key={item.href}>

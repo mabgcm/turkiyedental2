@@ -1,11 +1,12 @@
 "use client";
 
 import { useEffect, useMemo, useState, type FormEvent } from "react";
-import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup, type User } from "firebase/auth";
+import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut, type User } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 import { isAdminUser } from "@/lib/admin";
 import { createClinic, deleteClinic, getAllClinics, updateClinic } from "@/lib/clinicService";
 import { type Clinic } from "@/types/review";
+import AdminWord from "@/components/admin/AdminWord";
 
 type FormState = {
     name: string;
@@ -134,6 +135,14 @@ export default function AdminClinicsPage() {
         }
     };
 
+    const handleHiddenLogout = async () => {
+        try {
+            await signOut(auth);
+        } catch (error) {
+            console.error("Hidden logout failed:", error);
+        }
+    };
+
     if (loadingUser) {
         return <main className="max-w-5xl mx-auto p-6 text-sm text-gray-700"><p>Loading user...</p></main>;
     }
@@ -142,7 +151,9 @@ export default function AdminClinicsPage() {
         return (
             <main className="max-w-5xl mx-auto p-6 space-y-3">
                 <div className="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 space-y-2">
-                    <h1 className="text-2xl font-bold text-brand-secondary">Admin – Clinics</h1>
+                    <h1 className="text-2xl font-bold text-brand-secondary">
+                        <AdminWord onLogout={handleHiddenLogout} onLogin={handleSignIn} /> – Clinics
+                    </h1>
                     <p className="text-gray-700">You must sign in as admin to manage clinics.</p>
                 </div>
                 <button onClick={handleSignIn} className="bg-blue-600 text-white px-4 py-2 rounded">
@@ -160,7 +171,9 @@ export default function AdminClinicsPage() {
     return (
         <main className="max-w-5xl mx-auto p-6 space-y-6">
             <header className="space-y-1">
-                <h1 className="text-3xl font-bold text-brand-secondary">Admin – Clinics</h1>
+                <h1 className="text-3xl font-bold text-brand-secondary">
+                    <AdminWord onLogout={handleHiddenLogout} onLogin={handleSignIn} /> – Clinics
+                </h1>
                 <p className="text-sm text-gray-700">Create, edit, or delete clinics. Admin-only.</p>
             </header>
 

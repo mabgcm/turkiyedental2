@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup, type User } from "firebase/auth";
+import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut, type User } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 import { isAdminUser } from "@/lib/admin";
+import AdminWord from "@/components/admin/AdminWord";
 
 export default function AdminDashboardPage() {
     const [user, setUser] = useState<User | null>(null);
@@ -28,6 +29,14 @@ export default function AdminDashboardPage() {
         }
     };
 
+    const handleHiddenLogout = async () => {
+        try {
+            await signOut(auth);
+        } catch (error) {
+            console.error("Hidden logout failed:", error);
+        }
+    };
+
     if (loadingUser) {
         return <div className="p-6 text-sm text-gray-700">Loading...</div>;
     }
@@ -35,7 +44,9 @@ export default function AdminDashboardPage() {
     if (!user) {
         return (
             <div className="p-6 space-y-4 max-w-xl mx-auto bg-white border border-gray-200 rounded-2xl shadow-sm">
-                <h1 className="text-2xl font-semibold text-brand-secondary">Admin Dashboard</h1>
+                <h1 className="text-2xl font-semibold text-brand-secondary">
+                    <AdminWord onLogout={handleHiddenLogout} onLogin={handleGoogleLogin} /> Dashboard
+                </h1>
                 <p className="text-gray-700">You must sign in as admin to access admin tools.</p>
                 <button
                     onClick={handleGoogleLogin}
@@ -50,7 +61,9 @@ export default function AdminDashboardPage() {
     if (!isAdmin) {
         return (
             <div className="p-6 max-w-xl mx-auto bg-white border border-gray-200 rounded-2xl shadow-sm space-y-2">
-                <h1 className="text-2xl font-semibold text-brand-secondary">Admin Dashboard</h1>
+                <h1 className="text-2xl font-semibold text-brand-secondary">
+                    <AdminWord onLogout={handleHiddenLogout} onLogin={handleGoogleLogin} /> Dashboard
+                </h1>
                 <p className="text-gray-700">Not authorized.</p>
             </div>
         );
@@ -59,7 +72,9 @@ export default function AdminDashboardPage() {
     return (
         <main className="p-6 space-y-6 max-w-4xl mx-auto">
             <header className="space-y-2">
-                <h1 className="text-3xl font-bold text-brand-secondary">Admin Dashboard</h1>
+                <h1 className="text-3xl font-bold text-brand-secondary">
+                    <AdminWord onLogout={handleHiddenLogout} onLogin={handleGoogleLogin} /> Dashboard
+                </h1>
                 <p className="text-sm text-gray-600">
                     Manage clinics, reviews and other admin tools.
                 </p>

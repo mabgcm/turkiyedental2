@@ -41,10 +41,34 @@ export default function ReviewsDashboardClient({ clinics }: Props) {
                 </div>
                 <div className="h-2 rounded-full bg-gray-200 overflow-hidden">
                     <div
-                        className="h-full bg-amber-400"
+                        className="h-full bg-emerald-500"
                         style={{ width: `${percent}%` }}
                     />
                 </div>
+            </div>
+        );
+    };
+
+    const renderStars = (label: string, value: number) => {
+        const clamped = Math.max(0, Math.min(5, value));
+        const fullStars = Math.floor(clamped);
+        const hasHalf = clamped - fullStars >= 0.5;
+        const empty = 5 - fullStars - (hasHalf ? 1 : 0);
+        return (
+            <div className="flex items-center justify-between text-xs text-brand-secondary">
+                <span className="font-semibold">{label}</span>
+                <span className="inline-flex items-center gap-1">
+                    <span className="flex">
+                        {Array.from({ length: fullStars }).map((_, idx) => (
+                            <span key={`full-${idx}`} className="text-brand-primary">★</span>
+                        ))}
+                        {hasHalf && <span className="text-brand-primary/70">★</span>}
+                        {Array.from({ length: empty }).map((_, idx) => (
+                            <span key={`empty-${idx}`} className="text-gray-300">★</span>
+                        ))}
+                    </span>
+                    <span className="text-gray-600">{clamped.toFixed(1)}</span>
+                </span>
             </div>
         );
     };
@@ -230,35 +254,15 @@ export default function ReviewsDashboardClient({ clinics }: Props) {
                                     onClick={() => setOpenClinicId((prev) => (prev === clinic.id ? null : clinic.id))}
                                     className="flex items-center justify-between px-4 py-3 hover:bg-brand-surface transition"
                                 >
-                                    <div className="flex items-center gap-3">
-                                        <div className="h-9 w-9 rounded-full bg-brand-surface text-brand-secondary flex items-center justify-center text-sm font-semibold border border-gray-200">
-                                            {clinic.name.charAt(0).toUpperCase()}
+                                <div className="flex items-center gap-3">
+                                    <div className="h-9 w-9 rounded-full bg-brand-surface text-brand-secondary flex items-center justify-center text-sm font-semibold border border-gray-200">
+                                        {clinic.name.charAt(0).toUpperCase()}
                                         </div>
                                         <div className="text-left">
                                             <p className="text-sm font-semibold text-brand-secondary">{clinic.name}</p>
                                             <p className="text-xs text-gray-600">
                                                 {clinic.city}{clinic.city && clinic.country ? ", " : ""}{clinic.country}
                                             </p>
-                                            <div className="flex flex-wrap gap-1 mt-1 text-[11px]">
-                                                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-brand-surface text-brand-secondary border border-gray-200">
-                                                    ⭐ {stat.avgOverall.toFixed(1)}
-                                                </span>
-                                                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-brand-surface text-brand-secondary border border-gray-200">
-                                                    Hygiene: {stat.reviewCount > 0 ? stat.avgHygiene.toFixed(1) : "–"}
-                                                </span>
-                                                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-brand-surface text-brand-secondary border border-gray-200">
-                                                    Comm: {stat.reviewCount > 0 ? stat.avgCommunication.toFixed(1) : "–"}
-                                                </span>
-                                                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-brand-surface text-brand-secondary border border-gray-200">
-                                                    Transparency: {stat.reviewCount > 0 ? stat.avgTransparency.toFixed(1) : "–"}
-                                                </span>
-                                                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-brand-surface text-brand-secondary border border-gray-200">
-                                                    Quality: {stat.reviewCount > 0 ? stat.avgTreatmentQuality.toFixed(1) : "–"}
-                                                </span>
-                                                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-brand-surface text-brand-secondary border border-gray-200">
-                                                    Staff: {stat.reviewCount > 0 ? stat.avgStaffAttitude.toFixed(1) : "–"}
-                                                </span>
-                                            </div>
                                         </div>
                                     </div>
                                     <div className="text-right text-sm text-brand-secondary">
@@ -274,6 +278,17 @@ export default function ReviewsDashboardClient({ clinics }: Props) {
                                 </button>
                                 {isOpen && (
                                     <div className="bg-brand-surface px-6 pb-4 pt-2 border-t border-gray-200">
+                                        <p className="text-xs uppercase tracking-[0.12em] text-brand-muted mb-2">
+                                            Clinic scores
+                                        </p>
+                                        <div className="grid sm:grid-cols-2 gap-4 mb-4">
+                                            {renderBar("Overall", stat.avgOverall)}
+                                            {renderBar("Hygiene", stat.avgHygiene)}
+                                            {renderBar("Communication", stat.avgCommunication)}
+                                            {renderBar("Transparency", stat.avgTransparency)}
+                                            {renderBar("Treatment quality", stat.avgTreatmentQuality)}
+                                            {renderBar("Staff attitude", stat.avgStaffAttitude)}
+                                        </div>
                                         {!reviews.length && (
                                             <p className="text-sm text-gray-600">No approved reviews for this clinic.</p>
                                         )}
@@ -298,13 +313,13 @@ export default function ReviewsDashboardClient({ clinics }: Props) {
                                                         <p className="text-sm text-gray-700 leading-relaxed">
                                                             {review.text}
                                                         </p>
-                                                        <div className="grid sm:grid-cols-2 gap-3 text-xs">
-                                                            {renderBar("Hygiene", review.ratings.hygiene)}
-                                                            {renderBar("Communication", review.ratings.communication)}
-                                                            {renderBar("Transparency", review.ratings.transparency)}
-                                                            {renderBar("Treatment quality", review.ratings.treatmentQuality)}
-                                                            {renderBar("Staff attitude", review.ratings.staffAttitude)}
-                                                            {renderBar("Overall", review.ratings.overall)}
+                                                        <div className="grid sm:grid-cols-2 gap-2 border border-gray-200 rounded-xl bg-white px-3 py-2">
+                                                            {renderStars("Overall", review.ratings.overall)}
+                                                            {renderStars("Hygiene", review.ratings.hygiene)}
+                                                            {renderStars("Communication", review.ratings.communication)}
+                                                            {renderStars("Transparency", review.ratings.transparency)}
+                                                            {renderStars("Treatment quality", review.ratings.treatmentQuality)}
+                                                            {renderStars("Staff attitude", review.ratings.staffAttitude)}
                                                         </div>
                                                     </div>
                                                 ))}

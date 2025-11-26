@@ -2,8 +2,11 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup, type User } from "firebase/auth";
 import { getApprovedReviewsByClinic } from "@/lib/reviewService";
+import { auth } from "@/lib/firebase";
 import { type Clinic, type Review } from "@/types/review";
+import ReviewForm from "@/components/reviews/ReviewForm";
 
 type Props = {
     clinics: Clinic[];
@@ -23,8 +26,9 @@ export default function ReviewsDashboardClient({ clinics }: Props) {
     const [activeCity, setActiveCity] = useState<string>("All");
     const [openClinicId, setOpenClinicId] = useState<string | null>(null);
     const [reviewsMap, setReviewsMap] = useState<Record<string, Review[]>>({});
-    const [loadingMap, setLoadingMap] = useState<Record<string, boolean>>({});
     const [statsReady, setStatsReady] = useState(false);
+    const [user, setUser] = useState<User | null>(null);
+    const [modalClinic, setModalClinic] = useState<Clinic | null>(null);
 
     const renderBar = (label: string, value: number) => {
         const percent = Math.max(0, Math.min(5, value)) / 5 * 100;
@@ -42,6 +46,23 @@ export default function ReviewsDashboardClient({ clinics }: Props) {
                 </div>
             </div>
         );
+    };
+
+    useEffect(() => {
+        const unsub = onAuthStateChanged(auth, (current) => setUser(current));
+        return () => unsub();
+    }, []);
+
+    const handleWriteReview = async (clinic: Clinic) => {
+        if (!user) {
+            try {
+                await signInWithPopup(auth, new GoogleAuthProvider());
+            } catch (err) {
+                console.error("[ReviewsDashboard] Sign-in failed:", err);
+            }
+            return;
+        }
+        setModalClinic(clinic);
     };
 
     const cities = useMemo(() => {
@@ -67,7 +88,6 @@ export default function ReviewsDashboardClient({ clinics }: Props) {
         let cancelled = false;
         const loadAll = async () => {
             setStatsReady(false);
-            setLoadingMap({});
             const nextReviews: Record<string, Review[]> = {};
             await Promise.all(
                 clinics.map(async (clinic) => {
@@ -90,10 +110,6 @@ export default function ReviewsDashboardClient({ clinics }: Props) {
         }
         return () => { cancelled = true; };
     }, [clinics]);
-
-    const handleToggleClinic = async (clinicId: string) => {
-        setOpenClinicId((prev) => (prev === clinicId ? null : clinicId));
-    };
 
     const statsMap: Record<string, ClinicStats> = useMemo(() => {
         const result: Record<string, ClinicStats> = {};
@@ -180,13 +196,12 @@ export default function ReviewsDashboardClient({ clinics }: Props) {
                             avgStaffAttitude: 0,
                         };
                         const isOpen = openClinicId === clinic.id;
-                        const loading = loadingMap[clinic.id];
                         const reviews = reviewsMap[clinic.id] ?? [];
                         return (
                             <div key={clinic.id} className="flex flex-col">
                                 <button
                                     type="button"
-                                    onClick={() => handleToggleClinic(clinic.id)}
+                                    onClick={() => setOpenClinicId((prev) => (prev === clinic.id ? null : clinic.id))}
                                     className="flex items-center justify-between px-4 py-3 hover:bg-brand-surface transition"
                                 >
                                     <div className="flex items-center gap-3">
@@ -221,21 +236,22 @@ export default function ReviewsDashboardClient({ clinics }: Props) {
                                         </div>
                                     </div>
                                     <div className="text-right text-sm text-brand-secondary">
-                                        <p className="font-semibold">{stat.avgOverall.toFixed(1)} / 5</p>
+                                        <p className="font-semibold">
+                                            {statsReady ? `${stat.avgOverall.toFixed(1)} / 5` : "…"}
+                                        </p>
                                         <p className="text-gray-600">
-                                            {stat.reviewCount > 0 ? `${stat.reviewCount} reviews` : "No reviews"}
+                                            {statsReady
+                                                ? (stat.reviewCount > 0 ? `${stat.reviewCount} reviews` : "No reviews")
+                                                : "Loading scores..."}
                                         </p>
                                     </div>
                                 </button>
                                 {isOpen && (
                                     <div className="bg-brand-surface px-6 pb-4 pt-2 border-t border-gray-200">
-                                        {loading && (
-                                            <p className="text-sm text-gray-600">Loading reviews...</p>
-                                        )}
-                                        {!loading && reviews.length === 0 && (
+                                        {!reviews.length && (
                                             <p className="text-sm text-gray-600">No approved reviews for this clinic.</p>
                                         )}
-                                        {!loading && reviews.length > 0 && (
+                                        {!!reviews.length && (
                                             <div className="space-y-3">
                                                 {reviews.map((review) => (
                                                     <div
@@ -269,12 +285,13 @@ export default function ReviewsDashboardClient({ clinics }: Props) {
                                             </div>
                                         )}
                                         <div className="mt-3">
-                                            <Link
-                                                href={`/reviews/${clinic.slug}`}
+                                            <button
+                                                type="button"
+                                                onClick={() => handleWriteReview(clinic)}
                                                 className="inline-flex items-center gap-2 text-xs text-brand-secondary hover:text-brand-secondaryDark"
                                             >
-                                                View clinic page →
-                                            </Link>
+                                                {user ? "Write a review →" : "Login to write a review →"}
+                                            </button>
                                         </div>
                                     </div>
                                 )}
@@ -283,6 +300,28 @@ export default function ReviewsDashboardClient({ clinics }: Props) {
                     })}
                 </section>
             </div>
+
+            {modalClinic && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4">
+                    <div className="bg-white rounded-2xl shadow-xl max-w-2xl w-full p-6 relative max-h-[80vh] overflow-y-auto">
+                        <button
+                            type="button"
+                            onClick={() => setModalClinic(null)}
+                            className="absolute top-3 right-3 text-sm text-gray-500 hover:text-gray-700"
+                        >
+                            ✕
+                        </button>
+                        <div className="mb-4">
+                            <p className="text-xs uppercase tracking-[0.12em] text-brand-muted">Write a review</p>
+                            <h3 className="text-xl font-semibold text-brand-secondary">{modalClinic.name}</h3>
+                            <p className="text-sm text-gray-600">
+                                {modalClinic.city}{modalClinic.city && modalClinic.country ? ", " : ""}{modalClinic.country}
+                            </p>
+                        </div>
+                        <ReviewForm clinicId={modalClinic.id} onSubmitted={() => setModalClinic(null)} />
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

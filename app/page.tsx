@@ -1,6 +1,7 @@
 import Link from "next/link";
 import FAQ, { type FaqItem } from "@/components/FAQ";
 import TreatmentCards, { type TreatmentItem } from "@/components/TreatmentCards";
+import BlogSection from "@/components/blog/BlogSection";
 
 const treatments: TreatmentItem[] = [
     {
@@ -231,6 +232,8 @@ export default function HomePage() {
                     <FAQ items={faqItems} />
                 </div>
             </section>
+
+            <BlogSection />
 
             {/* Final CTA */}
             <section className="bg-teal-600 text-white py-12">

@@ -129,20 +129,26 @@ Postcode: ${postcode}
 Departure airport: ${departureAirport}
 `.trim();
 
-        const { transporter, from } = makeTransport();
+        let sent = false;
+        try {
+            const { transporter, from } = makeTransport();
+            await transporter.sendMail({
+                from,
+                to: process.env.GMAIL_TO || process.env.GMAIL_USER,
+                subject: `Second Opinion – ${name} (${requestedTreatment})`,
+                text: summary,
+                html: `<pre style="font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; white-space: pre-wrap">${summary}</pre>`,
+                attachments,
+                ...(email ? { replyTo: email } : {}),
+            });
+            sent = true;
+        } catch (mailErr) {
+            console.warn("Email not sent (missing or invalid mail configuration):", mailErr);
+            // Fall back to success=false but keep request from failing to avoid user-facing 500s.
+            return NextResponse.json({ ok: false, sent: false, error: "Email delivery failed (auth). Please verify mail credentials." }, { status: 200 });
+        }
 
-        await transporter.sendMail({
-            from,
-            to: process.env.GMAIL_TO || process.env.GMAIL_USER,
-            subject: `Second Opinion – ${name} (${requestedTreatment})`,
-            text: summary,
-            html: `<pre style="font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; white-space: pre-wrap">${summary}</pre>`,
-            attachments,
-            // Useful: reply-to user if they provided email
-            ...(email ? { replyTo: email } : {}),
-        });
-
-        return NextResponse.json({ ok: true });
+        return NextResponse.json({ ok: true, sent });
     } catch (err) {
         console.error(err);
         return NextResponse.json({ ok: false, error: "Server error" }, { status: 500 });

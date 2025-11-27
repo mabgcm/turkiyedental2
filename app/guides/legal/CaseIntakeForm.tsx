@@ -28,9 +28,11 @@ export default function CaseIntakeForm() {
         const name = (form.elements.namedItem("name") as HTMLInputElement)?.value.trim();
         const phone = (form.elements.namedItem("phone") as HTMLInputElement)?.value.trim();
         const description = (form.elements.namedItem("issue_description") as HTMLTextAreaElement)?.value.trim();
+        const treatment = (form.elements.namedItem("requested_treatment") as HTMLInputElement)?.value.trim();
 
         if (!name) return setError("Please enter your name.");
         if (!phone) return setError("Please enter your phone number.");
+        if (!treatment) return setError("Please enter the requested treatment.");
         if (!description) return setError("Please describe what went wrong.");
 
         setSending(true);

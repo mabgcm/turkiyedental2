@@ -57,6 +57,18 @@ const faqItems: FaqItem[] = [
         q: "What files should I send?",
         a: "OPG or CBCT (if available), recent photos, and any treatment quotes. More context helps us give clearer guidance.",
     },
+    {
+        q: "What if I already had treatment at another clinic?",
+        a: "We can still review your case. Legal/dispute support is free for patients treated through us; paid options are available for others.",
+    },
+    {
+        q: "Will you help me plan travel and timelines?",
+        a: "Yes. See our travel guide and timeline pages for stay lengths, healing expectations, and what to schedule before booking flights.",
+    },
+    {
+        q: "Do you provide warranty or aftercare?",
+        a: "We don’t provide treatment or warranties. We explain how clinic warranties and aftercare typically work so you know what to ask your provider.",
+    },
 ];
 
 const howItWorksLinks = [
@@ -222,6 +234,8 @@ export default function HomePage() {
                 </div>
             </section>
 
+            <BlogSection />
+
             {/* FAQ */}
             <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-6">
                 <div className="text-center space-y-2">
@@ -232,8 +246,6 @@ export default function HomePage() {
                     <FAQ items={faqItems} />
                 </div>
             </section>
-
-            <BlogSection />
 
             {/* Final CTA */}
             <section className="bg-teal-600 text-white py-12">

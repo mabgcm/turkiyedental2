@@ -36,7 +36,7 @@ export default function Footer() {
                         <li><Link href="/treatments" className="hover:text-[#1b76d1]">Treatments</Link></li>
                         <li><Link href="/about" className="hover:text-[#1b76d1]">About Us</Link></li>
                         <li><Link href="/start" className="hover:text-[#1b76d1]">Get a Second Opinion</Link></li>
-                        <li><Link href="/faq" className="hover:text-[#1b76d1]">FAQ</Link></li>
+                        <li><Link href="/guides/legal" className="hover:text-[#1b76d1]">Legal Guide</Link></li>
                     </ul>
                 </div>
 

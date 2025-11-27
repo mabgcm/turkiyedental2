@@ -136,17 +136,25 @@ Departure airport: ${departureAirport}
 `.trim();
 
         const { transporter, from } = makeTransport();
-        await transporter.sendMail({
-            from,
-            to: process.env.GMAIL_TO || process.env.GMAIL_USER,
-            subject: `Second Opinion – ${name} (${requestedTreatment})`,
-            text: summary,
-            html: `<pre style="font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; white-space: pre-wrap">${summary}</pre>`,
-            attachments,
-            ...(email ? { replyTo: email } : {}),
-        });
-
-        return NextResponse.json({ ok: true, sent: true });
+        try {
+            await transporter.sendMail({
+                from,
+                to: process.env.GMAIL_TO || process.env.GMAIL_USER,
+                subject: `Second Opinion – ${name} (${requestedTreatment})`,
+                text: summary,
+                html: `<pre style="font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; white-space: pre-wrap">${summary}</pre>`,
+                attachments,
+                ...(email ? { replyTo: email } : {}),
+            });
+            return NextResponse.json({ ok: true, sent: true });
+        } catch (mailErr) {
+            console.error("Email delivery failed:", mailErr);
+            return NextResponse.json({
+                ok: false,
+                sent: false,
+                error: "Email delivery failed. Verify GMAIL_USER and GMAIL_APP_PASSWORD (app password) are correct and match the sender account.",
+            }, { status: 200 });
+        }
     } catch (err) {
         console.error(err);
         return NextResponse.json({ ok: false, error: (err as Error).message || "Server error" }, { status: 500 });

@@ -7,7 +7,7 @@ import nodemailer from "nodemailer";
 
 function makeTransport() {
     const user = (process.env.GMAIL_USER || "").trim();
-    const from = (process.env.GMAIL_FROM || process.env.GMAIL_USER || "").trim();
+    const from = user;
     const appPass = (process.env.GMAIL_APP_PASSWORD || "").trim();
 
     if (!user || !appPass) {
@@ -19,7 +19,9 @@ function makeTransport() {
         return {
             from,
             transporter: nodemailer.createTransport({
-                service: "gmail",
+                host: "smtp.gmail.com",
+                port: 465,
+                secure: true,
                 auth: { user, pass: appPass },
             }),
         };

@@ -6,9 +6,13 @@ import nodemailer from "nodemailer";
 
 
 function makeTransport() {
-    const user = process.env.GMAIL_USER!;
-    const from = process.env.GMAIL_FROM || process.env.GMAIL_USER!;
-    const appPass = process.env.GMAIL_APP_PASSWORD;
+    const user = (process.env.GMAIL_USER || "").trim();
+    const from = (process.env.GMAIL_FROM || process.env.GMAIL_USER || "").trim();
+    const appPass = (process.env.GMAIL_APP_PASSWORD || "").trim();
+
+    if (!user || !appPass) {
+        throw new Error("Missing Gmail env: set GMAIL_USER and GMAIL_APP_PASSWORD.");
+    }
 
     if (appPass) {
         // ✅ Gmail via App Password (simple & stable)
@@ -129,28 +133,20 @@ Postcode: ${postcode}
 Departure airport: ${departureAirport}
 `.trim();
 
-        let sent = false;
-        try {
-            const { transporter, from } = makeTransport();
-            await transporter.sendMail({
-                from,
-                to: process.env.GMAIL_TO || process.env.GMAIL_USER,
-                subject: `Second Opinion – ${name} (${requestedTreatment})`,
-                text: summary,
-                html: `<pre style="font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; white-space: pre-wrap">${summary}</pre>`,
-                attachments,
-                ...(email ? { replyTo: email } : {}),
-            });
-            sent = true;
-        } catch (mailErr) {
-            console.warn("Email not sent (missing or invalid mail configuration):", mailErr);
-            // Fall back to success=false but keep request from failing to avoid user-facing 500s.
-            return NextResponse.json({ ok: false, sent: false, error: "Email delivery failed (auth). Please verify mail credentials." }, { status: 200 });
-        }
+        const { transporter, from } = makeTransport();
+        await transporter.sendMail({
+            from,
+            to: process.env.GMAIL_TO || process.env.GMAIL_USER,
+            subject: `Second Opinion – ${name} (${requestedTreatment})`,
+            text: summary,
+            html: `<pre style="font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; white-space: pre-wrap">${summary}</pre>`,
+            attachments,
+            ...(email ? { replyTo: email } : {}),
+        });
 
-        return NextResponse.json({ ok: true, sent });
+        return NextResponse.json({ ok: true, sent: true });
     } catch (err) {
         console.error(err);
-        return NextResponse.json({ ok: false, error: "Server error" }, { status: 500 });
+        return NextResponse.json({ ok: false, error: (err as Error).message || "Server error" }, { status: 500 });
     }
 }

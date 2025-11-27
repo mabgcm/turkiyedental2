@@ -1,76 +1,116 @@
 // app/about/page.tsx
-import SectionHeader from "@/components/SectionHeader";
+import Link from "next/link";
 
-// (Optional) SEO for this page
 export const metadata = {
     title: "About – TürkiyeDental",
     description:
         "TürkiyeDental provides clinic-independent guidance, education, and second opinions to help patients make confident dental decisions.",
 };
 
+const pillars = [
+    {
+        title: "Independent guidance",
+        body: "We’re not a clinic. We’re a clinic-independent partner focused on honest, clear advice so you can decide with confidence.",
+    },
+    {
+        title: "Patient-first clarity",
+        body: "We explain options in plain language—implants, crowns, veneers—so you understand timelines, risks, and realistic outcomes.",
+    },
+    {
+        title: "Trusted clinicians",
+        body: "Second opinions come from experienced clinicians in Türkiye and abroad, using modern materials and labs.",
+    },
+];
+
+const bullets = [
+    "Explain treatment choices (e.g., implants vs. bridges vs. crowns)",
+    "Review quotes and treatment plans for clarity and fairness",
+    "Offer second opinions from trusted clinicians (Türkiye & abroad)",
+    "Share educational resources to help you decide with confidence",
+];
+
 export default function AboutPage() {
-    const headerData = {
-        title: "About TürkiyeDental",
-        subtitle:
-            "We’re not a clinic. We’re your clinic-independent dental guidance partner—offering education, honest advice, and second opinions from trusted clinicians in Türkiye and abroad.",
-        highlight: "TürkiyeDental",
-        subtitleColor: "text-[#000]",
-        variant: "page" as const,
-        align: "center" as const,
-    };
-
     return (
-        <main className="max-w-5xl mx-auto px-4 py-16">
-            {/* PAGE HEADER */}
-            <SectionHeader {...headerData} />
-
-            {/* BODY CONTENT */}
-            <section className="space-y-10 text-gray-700">
-                {/* Who we are */}
-                <div className="bg-white border border-gray-200 rounded-2xl p-6 md:p-8 shadow-sm">
-                    <h2 className="text-2xl font-semibold text-[#1E3A8A] mb-3">Who We Are</h2>
-                    <p className="leading-relaxed">
-                        TürkiyeDental helps patients navigate dental decisions with clarity and confidence.
-                        We review cases, explain options in plain language, and help you request qualified
-                        second opinions—without clinic bias or pressure tactics.
+        <main className="bg-gray-50 text-brand-secondary">
+            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14 space-y-12">
+                {/* Hero */}
+                <section className="text-center space-y-4 max-w-3xl mx-auto">
+                    <p className="text-xs uppercase tracking-[0.14em] text-brand-muted">About</p>
+                    <h1 className="text-3xl sm:text-4xl font-bold">About TürkiyeDental</h1>
+                    <p className="text-lg text-gray-700">
+                        We’re not a clinic. We’re your clinic-independent dental guidance partner—offering education, honest advice,
+                        and second opinions from trusted clinicians in Türkiye and abroad.
                     </p>
-                </div>
+                    <div className="flex flex-wrap justify-center gap-3">
+                        <Link
+                            href="/upload"
+                            className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-teal-600 text-white font-semibold hover:bg-teal-700 transition"
+                        >
+                            Upload Photos &amp; X-Rays
+                        </Link>
+                        <Link
+                            href="/guides/travel"
+                            className="inline-flex items-center justify-center px-4 py-3 text-teal-700 font-semibold hover:text-teal-800 transition"
+                        >
+                            Plan your trip →
+                        </Link>
+                    </div>
+                </section>
+
+                {/* Pillars */}
+                <section className="grid md:grid-cols-3 gap-4">
+                    {pillars.map((item) => (
+                        <div key={item.title} className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 space-y-2">
+                            <h3 className="text-lg font-semibold">{item.title}</h3>
+                            <p className="text-gray-700 text-sm">{item.body}</p>
+                        </div>
+                    ))}
+                </section>
+
+                {/* Who we are */}
+                <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-8 shadow-sm space-y-4">
+                    <h2 className="text-2xl font-semibold text-brand-secondary">Who We Are</h2>
+                    <p className="text-gray-700 leading-relaxed">
+                        TürkiyeDental helps patients navigate dental decisions with clarity and confidence. We review cases, explain options in plain language,
+                        and help you request qualified second opinions—without clinic bias or pressure tactics.
+                    </p>
+                </section>
 
                 {/* What we do */}
-                <div className="bg-white border border-gray-200 rounded-2xl p-6 md:p-8 shadow-sm">
-                    <h2 className="text-2xl font-semibold text-[#1E3A8A] mb-3">What We Do</h2>
-                    <ul className="list-disc pl-5 space-y-2">
-                        <li>Explain treatment choices (e.g., implants vs. bridges vs. crowns)</li>
-                        <li>Review quotes and treatment plans for clarity and fairness</li>
-                        <li>Offer second opinions from trusted clinicians (Türkiye & abroad)</li>
-                        <li>Share educational resources to help you decide with confidence</li>
+                <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-8 shadow-sm space-y-4">
+                    <h2 className="text-2xl font-semibold text-brand-secondary">What We Do</h2>
+                    <ul className="list-disc pl-5 space-y-2 text-gray-700">
+                        {bullets.map((b) => (
+                            <li key={b}>{b}</li>
+                        ))}
                     </ul>
-                </div>
+                </section>
 
-                {/* Why independence matters */}
-                <div className="bg-white border border-gray-200 rounded-2xl p-6 md:p-8 shadow-sm">
-                    <h2 className="text-2xl font-semibold text-[#1E3A8A] mb-3">Why Independence Matters</h2>
-                    <p className="leading-relaxed">
-                        Guidance is most valuable when it’s free from sales goals. Our mission is to
-                        protect your interests—by prioritizing long-term oral health, realistic timelines,
-                        and transparent costs.
+                {/* Independence */}
+                <section className="bg-white border border-gray-200 rounded-2xl p-6 md:p-8 shadow-sm space-y-4">
+                    <h2 className="text-2xl font-semibold text-brand-secondary">Why Independence Matters</h2>
+                    <p className="text-gray-700 leading-relaxed">
+                        Guidance is most valuable when it’s free from sales goals. Our mission is to protect your interests—by prioritizing long-term oral health,
+                        realistic timelines, and transparent costs.
                     </p>
-                </div>
+                </section>
 
                 {/* CTA */}
-                <div className="rounded-2xl p-6 md:p-8 bg-gradient-to-r from-[#3FB8FF] to-[#21CDC0] text-white">
-                    <h3 className="text-xl md:text-2xl font-semibold">Get a Free Second Opinion</h3>
-                    <p className="mt-2 opacity-90">
-                        Share your case and files; we’ll respond with an unbiased overview of options.
-                    </p>
-                    <a
+                <section className="rounded-2xl p-6 md:p-8 bg-gradient-to-r from-[#3FB8FF] to-[#21CDC0] text-white flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                    <div className="space-y-2">
+                        <h3 className="text-xl md:text-2xl font-semibold">Get a Free Second Opinion</h3>
+                        <p className="opacity-90 text-sm md:text-base">
+                            Share your case and files; we’ll respond with an unbiased overview of options.
+                        </p>
+                    </div>
+                    <Link
                         href="/start?from=/about"
-                        className="inline-block mt-4 bg-white text-[#1E3A8A] px-5 py-2 rounded-full font-semibold hover:bg-gray-100 transition"
+                        className="inline-flex items-center justify-center bg-white text-[#1E3A8A] px-5 py-3 rounded-full font-semibold hover:bg-gray-100 transition"
                     >
                         Start the Form
-                    </a>
-                </div>
-            </section>
+                    </Link>
+                </section>
+            </div>
         </main>
     );
 }

@@ -16,15 +16,13 @@ export default function Footer() {
                         Empowering patients with transparent, clinic-independent dental guidance and second opinions worldwide.
                     </p>
                     <div className="flex gap-4 mt-5">
-                        <Link href="#" className="hover:text-[#21CDC0]" aria-label="Facebook">
+                        <Link href="https://www.facebook.com/profile.php?id=61584497004756" className="hover:text-[#21CDC0]" aria-label="Facebook">
                             <Facebook className="h-5 w-5" />
                         </Link>
-                        <Link href="#" className="hover:text-[#21CDC0]" aria-label="Instagram">
+                        {/* <Link href="#" className="hover:text-[#21CDC0]" aria-label="Instagram">
                             <Instagram className="h-5 w-5" />
-                        </Link>
-                        <Link href="#" className="hover:text-[#21CDC0]" aria-label="Twitter">
-                            <Twitter className="h-5 w-5" />
-                        </Link>
+                        </Link> */}
+
                     </div>
                 </div>
 

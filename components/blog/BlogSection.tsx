@@ -2,10 +2,18 @@ import BlogCard, { type BlogCardProps } from "./BlogCard";
 
 const posts: BlogCardProps[] = [
     {
+        title: "The Free Hotel Dental Scam: What Patients Should Know",
+        description: "Spot “free hotel + cheap dental” red flags, and learn how to verify quotes before you travel.",
+        href: "/blog/free-hotel-cheap-dental-scam-guide",
+        date: "Nov 20, 2025",
+        tag: "Safety",
+        image: "/images/scam.png",
+    },
+    {
         title: "Planning your dental trip to Türkiye",
         description: "Align treatment timelines with flights, hotels, and recovery days for a smoother visit.",
         href: "/guides/travel",
-        date: "Mar 16, 2024",
+        date: "Sep 16, 2025",
         tag: "Travel",
         image: "/images/istanbul-travel.jpeg",
     },
@@ -13,7 +21,7 @@ const posts: BlogCardProps[] = [
         title: "Healing timelines by treatment type",
         description: "Stay lengths and healing expectations for veneers, crowns, implants, and full-mouth cases.",
         href: "/guides/timeline",
-        date: "Feb 28, 2024",
+        date: "Feb 24, 2025",
         tag: "Healing",
         image: "/images/allon4.jpeg",
     }

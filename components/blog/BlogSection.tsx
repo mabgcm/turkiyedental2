@@ -2,6 +2,14 @@ import BlogCard, { type BlogCardProps } from "./BlogCard";
 
 const posts: BlogCardProps[] = [
     {
+        title: "How Sleep Quality Influences Oral and Dental Health",
+        description: "See how sleep affects gums, implants, crowns, and healing—plus practical steps to reduce bruxism, dry mouth, and inflammation.",
+        href: "/blog/how-sleep-influences-oral-dental-health",
+        date: "Dec 08, 2025",
+        tag: "Wellness",
+        image: "/images/preventive.jpg",
+    },
+    {
         title: "The Free Hotel Dental Scam: What Patients Should Know",
         description: "Spot “free hotel + cheap dental” red flags, and learn how to verify quotes before you travel.",
         href: "/blog/free-hotel-cheap-dental-scam-guide",

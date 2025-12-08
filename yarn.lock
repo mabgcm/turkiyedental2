@@ -853,29 +853,29 @@
   dependencies:
     "@types/mdx" "^2.0.0"
 
-"@next/env@16.0.1":
-  version "16.0.1"
-  resolved "https://registry.npmjs.org/@next/env/-/env-16.0.1.tgz"
-  integrity sha512-LFvlK0TG2L3fEOX77OC35KowL8D7DlFF45C0OvKMC4hy8c/md1RC4UMNDlUGJqfCoCS2VWrZ4dSE6OjaX5+8mw==
+"@next/env@16.0.8":
+  version "16.0.8"
+  resolved "https://registry.npmjs.org/@next/env/-/env-16.0.8.tgz"
+  integrity sha512-xP4WrQZuj9MdmLJy3eWFHepo+R3vznsMSS8Dy3wdA7FKpjCiesQ6DxZvdGziQisj0tEtCgBKJzjcAc4yZOgLEQ==
 
-"@next/eslint-plugin-next@16.0.1":
-  version "16.0.1"
-  resolved "https://registry.npmjs.org/@next/eslint-plugin-next/-/eslint-plugin-next-16.0.1.tgz"
-  integrity sha512-g4Cqmv/gyFEXNeVB2HkqDlYKfy+YrlM2k8AVIO/YQVEPfhVruH1VA99uT1zELLnPLIeOnx8IZ6Ddso0asfTIdw==
+"@next/eslint-plugin-next@16.0.8":
+  version "16.0.8"
+  resolved "https://registry.npmjs.org/@next/eslint-plugin-next/-/eslint-plugin-next-16.0.8.tgz"
+  integrity sha512-1miV0qXDcLUaOdHridVPCh4i39ElRIAraseVIbb3BEqyZ5ol9sPyjTP/GNTPV5rBxqxjF6/vv5zQTVbhiNaLqA==
   dependencies:
     fast-glob "3.3.1"
 
-"@next/mdx@^16.0.3":
-  version "16.0.3"
-  resolved "https://registry.npmjs.org/@next/mdx/-/mdx-16.0.3.tgz"
-  integrity sha512-uVl2JSEGAjBV+EVnpt1cZN88SK3lJ2n7Fc+iqTsgVx2g9+Y6ru+P6nuUgXd38OHPUIwzL6k2V1u4iV3kwuTySQ==
+"@next/mdx@^16.0.8":
+  version "16.0.8"
+  resolved "https://registry.npmjs.org/@next/mdx/-/mdx-16.0.8.tgz"
+  integrity sha512-GPv0ouRVp6T/qaOZj3LJiiIUFputrHvC/FVgyedbCaIsfbXmfu+Ky24KWWjf6uQSvDWQnQTk3UMSHqHb5UMYLw==
   dependencies:
     source-map "^0.7.0"
 
-"@next/swc-darwin-arm64@16.0.1":
-  version "16.0.1"
-  resolved "https://registry.npmjs.org/@next/swc-darwin-arm64/-/swc-darwin-arm64-16.0.1.tgz"
-  integrity sha512-R0YxRp6/4W7yG1nKbfu41bp3d96a0EalonQXiMe+1H9GTHfKxGNCGFNWUho18avRBPsO8T3RmdWuzmfurlQPbg==
+"@next/swc-darwin-arm64@16.0.8":
+  version "16.0.8"
+  resolved "https://registry.npmjs.org/@next/swc-darwin-arm64/-/swc-darwin-arm64-16.0.8.tgz"
+  integrity sha512-yjVMvTQN21ZHOclQnhSFbjBTEizle+1uo4NV6L4rtS9WO3nfjaeJYw+H91G+nEf3Ef43TaEZvY5mPWfB/De7tA==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -2074,12 +2074,12 @@ escape-string-regexp@^4.0.0:
   resolved "https://registry.npmjs.org/escape-string-regexp/-/escape-string-regexp-4.0.0.tgz"
   integrity sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==
 
-eslint-config-next@16.0.1:
-  version "16.0.1"
-  resolved "https://registry.npmjs.org/eslint-config-next/-/eslint-config-next-16.0.1.tgz"
-  integrity sha512-wNuHw5gNOxwLUvpg0cu6IL0crrVC9hAwdS/7UwleNkwyaMiWIOAwf8yzXVqBBzL3c9A7jVRngJxjoSpPP1aEhg==
+eslint-config-next@^16.0.8:
+  version "16.0.8"
+  resolved "https://registry.npmjs.org/eslint-config-next/-/eslint-config-next-16.0.8.tgz"
+  integrity sha512-8J5cOAboXIV3f8OD6BOyj7Fik6n/as7J4MboiUSExWruf/lCu1OPR3ZVSdnta6WhzebrmAATEmNSBZsLWA6kbg==
   dependencies:
-    "@next/eslint-plugin-next" "16.0.1"
+    "@next/eslint-plugin-next" "16.0.8"
     eslint-import-resolver-node "^0.3.6"
     eslint-import-resolver-typescript "^3.5.2"
     eslint-plugin-import "^2.32.0"
@@ -3944,25 +3944,25 @@ natural-compare@^1.4.0:
   resolved "https://registry.npmjs.org/natural-compare/-/natural-compare-1.4.0.tgz"
   integrity sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==
 
-"next@>= 13", next@16.0.1:
-  version "16.0.1"
-  resolved "https://registry.npmjs.org/next/-/next-16.0.1.tgz"
-  integrity sha512-e9RLSssZwd35p7/vOa+hoDFggUZIUbZhIUSLZuETCwrCVvxOs87NamoUzT+vbcNAL8Ld9GobBnWOA6SbV/arOw==
+next@^16.0.8, "next@>= 13":
+  version "16.0.8"
+  resolved "https://registry.npmjs.org/next/-/next-16.0.8.tgz"
+  integrity sha512-LmcZzG04JuzNXi48s5P+TnJBsTGPJunViNKV/iE4uM6kstjTQsQhvsAv+xF6MJxU2Pr26tl15eVbp0jQnsv6/g==
   dependencies:
-    "@next/env" "16.0.1"
+    "@next/env" "16.0.8"
     "@swc/helpers" "0.5.15"
     caniuse-lite "^1.0.30001579"
     postcss "8.4.31"
     styled-jsx "5.1.6"
   optionalDependencies:
-    "@next/swc-darwin-arm64" "16.0.1"
-    "@next/swc-darwin-x64" "16.0.1"
-    "@next/swc-linux-arm64-gnu" "16.0.1"
-    "@next/swc-linux-arm64-musl" "16.0.1"
-    "@next/swc-linux-x64-gnu" "16.0.1"
-    "@next/swc-linux-x64-musl" "16.0.1"
-    "@next/swc-win32-arm64-msvc" "16.0.1"
-    "@next/swc-win32-x64-msvc" "16.0.1"
+    "@next/swc-darwin-arm64" "16.0.8"
+    "@next/swc-darwin-x64" "16.0.8"
+    "@next/swc-linux-arm64-gnu" "16.0.8"
+    "@next/swc-linux-arm64-musl" "16.0.8"
+    "@next/swc-linux-x64-gnu" "16.0.8"
+    "@next/swc-linux-x64-musl" "16.0.8"
+    "@next/swc-win32-arm64-msvc" "16.0.8"
+    "@next/swc-win32-x64-msvc" "16.0.8"
     sharp "^0.34.4"
 
 node-fetch@^2.6.9, node-fetch@^2.7.0:

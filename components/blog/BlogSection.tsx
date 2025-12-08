@@ -7,7 +7,7 @@ const posts: BlogCardProps[] = [
         href: "/blog/how-sleep-influences-oral-dental-health",
         date: "Dec 08, 2025",
         tag: "Wellness",
-        image: "/images/preventive.jpg",
+        image: "/images/sleep.jpeg",
     },
     {
         title: "The Free Hotel Dental Scam: What Patients Should Know",
@@ -24,14 +24,6 @@ const posts: BlogCardProps[] = [
         date: "Sep 16, 2025",
         tag: "Travel",
         image: "/images/istanbul-travel.jpeg",
-    },
-    {
-        title: "Healing timelines by treatment type",
-        description: "Stay lengths and healing expectations for veneers, crowns, implants, and full-mouth cases.",
-        href: "/guides/timeline",
-        date: "Feb 24, 2025",
-        tag: "Healing",
-        image: "/images/allon4.jpeg",
     }
 ];
 

@@ -57,7 +57,7 @@ export default function SleepOralHealthPage() {
                     </div>
                     <div className="relative h-64 sm:h-80 w-full overflow-hidden rounded-2xl border border-gray-200 shadow-sm">
                         <Image
-                            src="/images/preventive.jpg"
+                            src="/images/sleep.jpeg"
                             alt="Restful sleep supporting oral health"
                             fill
                             className="object-cover"

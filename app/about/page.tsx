@@ -69,7 +69,7 @@ export default function AboutPage() {
                         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900">About TürkiyeDental Guide</h1>
                         <p className="text-base sm:text-lg md:text-xl text-slate-700 leading-relaxed">
                             At TürkiyeDental, our mission is simple: protect international dental patients and strengthen the global reputation of Türkiye’s dental
-                            industry. We are an independent team of dental practitioners, retired judges, active lawyers, consultants, and business professionals.
+                            industry. We are an independent team of dental practitioners, active lawyers, consultants, and business professionals.
                         </p>
                         <p className="text-base sm:text-lg md:text-xl text-slate-700 leading-relaxed">
                             Together, we advocate for transparency, patient safety, and fair practice in an industry millions rely on every year. Our service is completely

@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.turkiyedental.clinic
+
+# Sitemaps
+Sitemap: https://www.turkiyedental.clinic/sitemap.xml

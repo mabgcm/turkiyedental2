@@ -7,7 +7,7 @@ import { getApprovedReviewsByClinic } from "@/lib/reviewService";
 import { type Clinic, type Review } from "@/types/review";
 
 type PageProps = {
-    params: { slug: string };
+    params?: Promise<{ slug: string }>;
 };
 
 type MinimalClinic = Pick<Clinic, "id" | "name" | "slug" | "city" | "country">;
@@ -67,8 +67,16 @@ export default function ClinicDetailPage({ params }: PageProps) {
         let cancelled = false;
 
         const load = async () => {
+            const resolvedParams = params ? await params : null;
+            const slug = resolvedParams?.slug;
+
+            if (!slug) {
+                setLoading(false);
+                return;
+            }
+
             setLoading(true);
-            const clinicData = await fetchClinicBySlug(params.slug);
+            const clinicData = await fetchClinicBySlug(slug);
             if (cancelled) return;
             setClinic(clinicData);
 
@@ -78,11 +86,11 @@ export default function ClinicDetailPage({ params }: PageProps) {
             setLoading(false);
         };
 
-        load();
+        void load();
         return () => {
             cancelled = true;
         };
-    }, [params.slug]);
+    }, [params]);
 
     const averages = useMemo(() => computeAverages(reviews), [reviews]);
 

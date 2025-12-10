@@ -1,9 +1,12 @@
 import ClinicReviewsPageClient from "./ClinicReviewsPageClient";
 
 type PageProps = {
-    params: { slug: string };
+    params?: Promise<{ slug: string }>;
 };
 
-export default function Page({ params }: PageProps) {
-    return <ClinicReviewsPageClient slug={params.slug} />;
+export default async function Page({ params }: PageProps) {
+    const resolved = params ? await params : null;
+    const slug = resolved?.slug ?? "";
+
+    return <ClinicReviewsPageClient slug={slug} />;
 }

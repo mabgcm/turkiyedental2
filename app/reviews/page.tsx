@@ -1,7 +1,5 @@
-import { getAllClinics } from "@/lib/clinicService";
-import ReviewsDashboardClient from "./ReviewsDashboardClient";
+import ReviewsPageClient from "./ReviewsPageClient";
 
-export default async function ReviewsPage() {
-    const clinics = await getAllClinics();
-    return <ReviewsDashboardClient clinics={clinics} />;
+export default function ReviewsPage() {
+    return <ReviewsPageClient />;
 }

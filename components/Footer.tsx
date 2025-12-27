@@ -19,9 +19,9 @@ export default function Footer() {
                         <Link href="https://www.facebook.com/profile.php?id=61584497004756" className="hover:text-[#21CDC0]" aria-label="Facebook">
                             <Facebook className="h-5 w-5" />
                         </Link>
-                        {/* <Link href="#" className="hover:text-[#21CDC0]" aria-label="Instagram">
+                        <Link href="https://www.instagram.com/turkiyedentalguide/" className="hover:text-[#21CDC0]" aria-label="Instagram">
                             <Instagram className="h-5 w-5" />
-                        </Link> */}
+                        </Link>
 
                     </div>
                 </div>

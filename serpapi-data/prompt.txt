@@ -1,0 +1,1 @@
+Fetch Google Maps reviews for this clinic: <paste Google Maps place URL>. Use SerpApi (key already in .env). Keep the last 3 months. Save to serpapi-data with filename prefix <your-prefix>. Update the script constants and run the fetch.

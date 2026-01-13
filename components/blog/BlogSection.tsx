@@ -2,6 +2,14 @@ import BlogCard, { type BlogCardProps } from "./BlogCard";
 
 const posts: BlogCardProps[] = [
     {
+        title: "Caught Between Dental Clinics? How to Find Clarity Before You Decide",
+        description: "Compare conflicting plans, verify diagnostics, and regain confidence before committing to treatment.",
+        href: "/blog/caught-between-dental-clinics",
+        date: "Jan 03, 2026",
+        tag: "Clarity",
+        image: "/images/thornapart.png",
+    },
+    {
         title: "How Sleep Quality Influences Oral and Dental Health",
         description: "See how sleep affects gums, implants, crowns, and healing—plus practical steps to reduce bruxism, dry mouth, and inflammation.",
         href: "/blog/how-sleep-influences-oral-dental-health",

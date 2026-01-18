@@ -1,6 +1,15 @@
+import Link from "next/link";
 import BlogCard, { type BlogCardProps } from "./BlogCard";
 
 const posts: BlogCardProps[] = [
+    {
+        title: "Eating With Temporary Teeth After Dental Implants",
+        description: "What you can eat, what to avoid, and how to stay comfortable while your implants heal.",
+        href: "/blog/eating-with-temporary-teeth-after-dental-implants",
+        date: "Jan 18, 2026",
+        tag: "Implants",
+        image: "/images/eatimplant.png",
+    },
     {
         title: "Caught Between Dental Clinics? How to Find Clarity Before You Decide",
         description: "Compare conflicting plans, verify diagnostics, and regain confidence before committing to treatment.",
@@ -37,17 +46,24 @@ const posts: BlogCardProps[] = [
 
 export default function BlogSection() {
     return (
-        <section className="bg-brand-surface text-brand-secondary">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 space-y-8">
-                <div className="space-y-2 text-center md:text-left">
-                    <p className="text-xs uppercase tracking-[0.14em] text-brand-muted">Expert Insights</p>
-                    <h2 className="text-3xl sm:text-4xl font-bold">Patient Information Center</h2>
-                    <p className="text-gray-700">Plan your treatment, travel, healing, and rights with clear, clinic-independent guidance.</p>
+        <section className="bg-white text-brand-secondary">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 space-y-10">
+                <div className="space-y-2 text-center">
+                    <p className="text-xs uppercase tracking-[0.14em] text-brand-muted">From the blog</p>
+                    <h2 className="text-3xl sm:text-4xl font-bold">Insights for Smarter Dental Choices</h2>
+                    <p className="text-gray-700">
+                        Educational articles on dental treatments, healing, and travel — grounded in real patient experience.
+                    </p>
                 </div>
-                <div className="space-y-6">
-                    {posts.map((post) => (
+                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                    {posts.slice(0, 3).map((post) => (
                         <BlogCard key={post.title} {...post} />
                     ))}
+                </div>
+                <div className="flex justify-center">
+                    <Link href="/blog" className="text-sm font-semibold text-teal-700 hover:text-teal-800 transition">
+                        View all blog posts →
+                    </Link>
                 </div>
             </div>
         </section>

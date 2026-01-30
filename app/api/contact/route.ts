@@ -105,8 +105,29 @@ export async function POST(req: Request) {
                 )
                 : [];
 
+        const packOptions = new Set([
+            "Second Opinion Service",
+            "Clinic Insight Report",
+            "Personalized Treatment Portfolio",
+            "Legal Guidance & Mediation",
+        ]);
+        const isPackInquiry = packOptions.has(requestedTreatment);
+
         // Email body
-        const summary = `
+        const summary = isPackInquiry
+            ? `
+New Pack Inquiry
+
+[Personal]
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Pack Selection: ${requestedTreatment}
+
+[Notes]
+${notes}
+`.trim()
+            : `
 New Second Opinion Request
 
 [Personal]
@@ -144,7 +165,9 @@ ${notes}
             await transporter.sendMail({
                 from,
                 to: process.env.GMAIL_TO || process.env.GMAIL_USER,
-                subject: `Second Opinion – ${name} (${requestedTreatment})`,
+                subject: isPackInquiry
+                    ? `Pack Inquiry – ${name} (${requestedTreatment})`
+                    : `Second Opinion – ${name} (${requestedTreatment})`,
                 text: summary,
                 html: `<pre style="font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; white-space: pre-wrap">${summary}</pre>`,
                 attachments,

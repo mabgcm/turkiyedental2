@@ -9,10 +9,13 @@ export default function ThankView() {
     const router = useRouter();
     const [from, setFrom] = useState<string>("/");
     const [seconds, setSeconds] = useState(5);
+    const [isPackInquiry, setIsPackInquiry] = useState(false);
 
     useEffect(() => {
         const sp = new URLSearchParams(window.location.search);
-        setFrom(sp.get("from") || "/");
+        const fromValue = sp.get("from") || "/";
+        setFrom(fromValue);
+        setIsPackInquiry(fromValue.includes("/pricing/inquiry"));
     }, []);
 
     useEffect(() => {
@@ -28,7 +31,10 @@ export default function ThankView() {
         <main className="max-w-3xl mx-auto px-4 py-16 text-center">
             <h1 className="text-3xl font-bold text-[#2B3A55]">Thank you!</h1>
             <p className="text-gray-700 mt-3">
-                We’ve received your request. Our clinicians will review your details and follow up with an unbiased second opinion.
+                {isPackInquiry
+                    ? "We’ve received your pack inquiry. Our team will follow up with next steps, timelines, and payment details."
+                    : "We’ve received your request. Our clinicians will review your details and follow up with an unbiased second opinion."
+                }
             </p>
 
             <p className="text-gray-500 mt-6">

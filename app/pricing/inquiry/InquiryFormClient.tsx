@@ -61,6 +61,7 @@ export default function InquiryFormClient() {
             <form
                 action="/api/contact"
                 method="post"
+                encType="multipart/form-data"
                 noValidate
                 onSubmit={onSubmit}
                 className="p-6 md:p-8 space-y-8"

@@ -73,7 +73,7 @@ export default function TreatmentsIndex() {
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-6 items-center">
                     <div className="space-y-3">
                         <p className="text-xs uppercase tracking-[0.14em] text-brand-muted">Need a second opinion?</p>
-                        <h2 className="text-2xl sm:text-3xl font-bold">Get a free clinic-independent review</h2>
+                        <h2 className="text-2xl sm:text-3xl font-bold">Get a clinic-independent review</h2>
                         <p className="text-gray-700 text-sm">
                             Upload your photos, X-rays, and quotes. We outline options, timelines, and what to ask—before you commit to any clinic.
                         </p>

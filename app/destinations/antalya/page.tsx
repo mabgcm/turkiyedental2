@@ -183,7 +183,7 @@ export default function AntalyaPage() {
               href="/start"
               className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 text-sm md:text-base font-semibold text-teal-700 shadow-sm hover:bg-teal-50 transition"
             >
-              Start Your Free Review
+              Start Your Review
             </Link>
             <Link
               href="/guides/travel"

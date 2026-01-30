@@ -332,7 +332,7 @@ export default function TimelinePage() {
                                 href="/upload"
                                 className="inline-flex items-center justify-center px-5 py-3 rounded-full bg-white text-teal-700 font-semibold hover:bg-teal-50 transition"
                             >
-                                Send Your Photos for a Free Plan
+                                Send Your Photos for a Plan
                             </Link>
                             <a
                                 href="mailto:dentalclinicturkiye@gmail.com"

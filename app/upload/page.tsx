@@ -37,7 +37,7 @@ export default function UploadPage() {
             <section className="max-w-6xl mx-auto px-4 lg:px-8 pt-10 pb-14">
                 <div className="grid lg:grid-cols-5 gap-8 items-center">
                     <div className="lg:col-span-3 space-y-4">
-                        <p className="text-xs uppercase tracking-[0.16em] text-brand-muted">Free treatment review</p>
+                        <p className="text-xs uppercase tracking-[0.16em] text-brand-muted">Treatment review</p>
                         <h1 className="text-3xl sm:text-4xl font-bold text-brand-secondary">
                             Upload Your Dental Photos & X-Rays
                         </h1>

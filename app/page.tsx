@@ -114,7 +114,7 @@ export default function HomePage() {
                             Clear, unbiased dental guidance for patients traveling to Türkiye
                         </h1>
                         <p className="text-lg text-gray-700">
-                            Get a free review of your photos, X-rays, and quotes. Understand timelines, travel days, aftercare, and your patient rights—without clinic pressure.
+                            Get a review of your photos, X-rays, and quotes. Understand timelines, travel days, aftercare, and your patient rights—without clinic pressure.
                         </p>
                         <div className="flex flex-wrap gap-3">
                             <Link
@@ -251,7 +251,7 @@ export default function HomePage() {
             <section className="bg-teal-600 text-white py-12">
                 <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                     <div className="space-y-2">
-                        <h3 className="text-2xl font-semibold">Ready for a free review?</h3>
+                        <h3 className="text-2xl font-semibold">Ready for a review?</h3>
                         <p className="text-sm text-teal-50">Upload your case to get a clear plan, travel timeline, and aftercare guidance.</p>
                         <p className="text-xs text-teal-50">Legal/dispute support is free for patients treated through us; fees may apply for others.</p>
                     </div>

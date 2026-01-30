@@ -55,7 +55,7 @@ const trustBullets = [
     "Professional team – Dentists, legal experts, industry consultants.",
     "Ethically driven – Protecting patients is our top priority.",
     "Transparent guidance – Honest, clear, and detailed information.",
-    "Free of charge – Our mission is public health, not profit.",
+    "Transparent pricing – Our mission is public health, not profit.",
 ];
 
 export default function AboutPage() {
@@ -78,13 +78,13 @@ export default function AboutPage() {
                     </div>
                     <div className="flex flex-wrap items-center justify-center gap-3">
                         <span className="inline-flex items-center rounded-full bg-teal-50 px-4 py-2 text-sm font-semibold text-teal-700 border border-teal-100">
-                            Service is free of charge
+                            Transparent pricing
                         </span>
                         <Link
                             href="/upload"
                             className="inline-flex items-center rounded-lg bg-teal-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-teal-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
                         >
-                            Get Free Guidance
+                            Get Guidance
                         </Link>
                     </div>
                 </section>

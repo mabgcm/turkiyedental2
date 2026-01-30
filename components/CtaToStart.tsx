@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function CtaToStart({
-    children = "Get Free Second Opinion",
+    children = "Get a Second Opinion",
     className = "inline-block px-6 py-3 bg-[#3FB8FF] text-white font-semibold rounded-full hover:bg-[#2EA3E0] transition-all shadow-md",
 }) {
     const pathname = usePathname();

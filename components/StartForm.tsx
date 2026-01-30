@@ -57,7 +57,7 @@ export default function StartPage() {
     return (
         <main className="max-w-5xl mx-auto px-4 py-10">
             <header className="mb-8">
-                <h1 className="text-3xl font-bold text-[#2B3A55]">Get Your Free Dental Second Opinion</h1>
+                <h1 className="text-3xl font-bold text-[#2B3A55]">Get Your Dental Second Opinion</h1>
                 <p className="text-gray-700 text-lg leading-relaxed max-w-2xl mt-2">
                     Share a few details and your files. Our clinicians will review and send you a personalized, unbiased plan.
                 </p>

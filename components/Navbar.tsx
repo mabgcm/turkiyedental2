@@ -115,7 +115,9 @@ export default function Navbar() {
                         </ul>
                     </li>
 
-                    <li><Link className="hover:text-brand-primary" href="/reviews">Reviews</Link></li>
+                    <li><Link className="hover:text-brand-primary transition" href="/pricing">Pricing</Link></li>
+
+                    {/* <li><Link className="hover:text-brand-primary" href="/reviews">Reviews</Link></li> */}
 
                     <li className="relative group">
                         <span className="cursor-default group-hover:text-brand-primary transition">How It Works</span>
@@ -138,7 +140,7 @@ export default function Navbar() {
 
                     <li>
                         <Button href="/start" size="md" variant="primary">
-                            Get Free Second Opinion
+                            Get a Second Opinion
                         </Button>
                     </li>
                 </ul>
@@ -220,13 +222,14 @@ export default function Navbar() {
                             </details>
                         </li>
 
-                        <li><Link className="block py-2" href="/reviews" onClick={() => setOpen(false)}>Reviews</Link></li>
+                        <li><Link className="block py-2" href="/pricing" onClick={() => setOpen(false)}>Pricing</Link></li>
+                        {/* <li><Link className="block py-2" href="/reviews" onClick={() => setOpen(false)}>Reviews</Link></li> */}
                         <li><Link className="block py-2" href="/about" onClick={() => setOpen(false)}>About</Link></li>
 
                         {/* CTA: Ayrı Button bileşeni */}
                         <li className="pt-1">
                             <Button href="/start" fullWidth>
-                                Get Free Second Opinion
+                                Get a Second Opinion
                             </Button>
                         </li>
                     </ul>

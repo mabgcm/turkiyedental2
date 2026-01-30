@@ -83,7 +83,7 @@ export default function Topbar() {
                                     href="/start"
                                     className="mt-2 inline-flex w-full items-center justify-center rounded-full bg-brand-primary py-2 text-white font-semibold hover:bg-brand-primaryDark"
                                 >
-                                    Get Free Second Opinion
+                                    Get a Second Opinion
                                 </Link>
                             </div>
                         )}

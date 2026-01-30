@@ -87,6 +87,7 @@ export async function POST(req: Request) {
         const city = String(form.get("city") || "");
         const postcode = String(form.get("postcode") || "");
         const departureAirport = String(form.get("departure_airport") || "");
+        const notes = String(form.get("notes") || "");
 
         // Files
         const files = form.getAll("files").filter(Boolean) as File[];
@@ -133,6 +134,9 @@ Dates: ${travelDates}
 City: ${city}
 Postcode: ${postcode}
 Departure airport: ${departureAirport}
+
+[Notes]
+${notes}
 `.trim();
 
         const { transporter, from } = makeTransport();

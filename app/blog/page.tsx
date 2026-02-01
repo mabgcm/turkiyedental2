@@ -5,6 +5,14 @@ import { useMemo, useState } from "react";
 
 const posts = [
     {
+        title: "Dental Scams in Turkey: What Happens When You Choose the Wrong Clinic?",
+        description: "Understand common scam patterns, red flags, and the real consequences of choosing the wrong dental clinic abroad.",
+        href: "/blog/dental-scams-in-turkey-wrong-clinic",
+        date: "Feb 01, 2026",
+        tag: "Safety",
+        image: "/images/scam.jpg",
+    },
+    {
         title: "Eating With Temporary Teeth After Dental Implants",
         description: "What you can eat, what to avoid, and how to stay comfortable while your implants heal.",
         href: "/blog/eating-with-temporary-teeth-after-dental-implants",

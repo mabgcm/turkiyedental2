@@ -10,7 +10,7 @@ const pricingPacks = [
     {
         id: "pack-1",
         label: "Second Opinion Service",
-        price: "$49",
+        price: "$50",
         note: "Per case review",
         lead: "Best for patients who already have a clinic plan and want a fast, unbiased review.",
         bullets: ["Medical accuracy check", "Procedure necessity review", "Alternative options", "Price fairness assessment"],
@@ -18,7 +18,7 @@ const pricingPacks = [
     {
         id: "pack-2",
         label: "Clinic Insight Report",
-        price: "$99",
+        price: "$100",
         note: "For maximum 3 clinics, +$39 for each extra clinic",
         lead: "Ideal when choosing between clinics and you want verified trust signals.",
         bullets: [
@@ -31,7 +31,7 @@ const pricingPacks = [
     {
         id: "pack-3",
         label: "Personalized Treatment Portfolio",
-        price: "$149",
+        price: "$150",
         note: "Per case portfolio",
         lead: "For patients starting from scratch who need options, timelines, and travel-ready clarity.",
         bullets: [
@@ -44,7 +44,7 @@ const pricingPacks = [
     {
         id: "pack-4",
         label: "Legal Guidance & Mediation",
-        price: "$189",
+        price: "$100",
         note: "Initial review",
         lead: "Support for patients who need help after treatment issues or disputes.",
         bullets: ["Document evaluation", "Clinic communication support", "Mediation attempts", "Escalation guidance"],

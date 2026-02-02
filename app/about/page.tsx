@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
     title: "About TürkiyeDental Guide | Independent, Ethical, Patient-First",
     description:
-        "Learn how TürkiyeDental protects international dental patients with unbiased second opinions, clinic insights, personalized portfolios, and legal guidance—free of charge.",
+        "Learn how TürkiyeDental protects international dental patients with unbiased second opinions, clinic insights, personalized portfolios, and legal guidance through fee-based services.",
 };
 
 const services = [
@@ -55,7 +55,7 @@ const trustBullets = [
     "Professional team – Dentists, legal experts, industry consultants.",
     "Ethically driven – Protecting patients is our top priority.",
     "Transparent guidance – Honest, clear, and detailed information.",
-    "Transparent pricing – Our mission is public health, not profit.",
+    "Transparent pricing – Clear fees disclosed upfront.",
 ];
 
 export default function AboutPage() {
@@ -73,7 +73,7 @@ export default function AboutPage() {
                         </p>
                         <p className="text-base sm:text-lg md:text-xl text-slate-700 leading-relaxed">
                             Together, we advocate for transparency, patient safety, and fair practice in an industry millions rely on every year. Our service is completely
-                            free of charge for patients. Our only commitment is to you—your health, your budget, and your peace of mind.
+                            fee-based for patients. Our only commitment is to you—your health, your budget, and your peace of mind.
                         </p>
                     </div>
                     <div className="flex flex-wrap items-center justify-center gap-3">

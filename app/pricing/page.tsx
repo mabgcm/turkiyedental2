@@ -10,6 +10,7 @@ const pricingPacks = [
     {
         id: "pack-1",
         label: "Second Opinion Service",
+        paymentUrl: "https://square.link/u/tvmhlvbJ",
         price: "$50",
         note: "Per case review",
         lead: "Best for patients who already have a clinic plan and want a fast, unbiased review.",
@@ -18,6 +19,7 @@ const pricingPacks = [
     {
         id: "pack-2",
         label: "Clinic Insight Report",
+        paymentUrl: "https://square.link/u/ucGIrusM",
         price: "$100",
         note: "For maximum 3 clinics, +$39 for each extra clinic",
         lead: "Ideal when choosing between clinics and you want verified trust signals.",
@@ -31,6 +33,7 @@ const pricingPacks = [
     {
         id: "pack-3",
         label: "Personalized Treatment Portfolio",
+        paymentUrl: "https://square.link/u/P4d9QRa8",
         price: "$150",
         note: "Per case portfolio",
         lead: "For patients starting from scratch who need options, timelines, and travel-ready clarity.",
@@ -44,6 +47,7 @@ const pricingPacks = [
     {
         id: "pack-4",
         label: "Legal Guidance & Mediation",
+        paymentUrl: "https://square.link/u/AC4n4okR",
         price: "$100",
         note: "Initial review",
         lead: "Support for patients who need help after treatment issues or disputes.",
@@ -95,10 +99,10 @@ export default function PricingPage() {
                             </ul>
                             <div className="pt-2">
                                 <Link
-                                    href={`/pricing/inquiry?pack=${encodeURIComponent(pack.label)}`}
+                                    href={pack.paymentUrl}
                                     className="inline-flex items-center rounded-lg bg-teal-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-teal-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
                                 >
-                                    Request This Pack
+                                    Purchase This Pack
                                 </Link>
                             </div>
                         </article>

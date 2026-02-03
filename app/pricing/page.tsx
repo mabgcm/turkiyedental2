@@ -51,7 +51,7 @@ const pricingPacks = [
         price: "$100",
         note: "Initial review",
         lead: "Support for patients who need help after treatment issues or disputes.",
-        bullets: ["Document evaluation", "Clinic communication support", "Mediation attempts", "Escalation guidance"],
+        bullets: ["Document Evaluation", "Clinic communication support", "Mediation attempts", "Escalation guidance"],
     },
 ];
 

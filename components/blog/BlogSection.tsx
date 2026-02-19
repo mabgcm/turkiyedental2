@@ -3,6 +3,14 @@ import BlogCard, { type BlogCardProps } from "./BlogCard";
 
 const posts: BlogCardProps[] = [
     {
+        title: "Save Your Teeth or Remove Them All?",
+        description: "All-on-4 vs tooth preservation: medical reasons, costs, timelines, and how to choose the right path.",
+        href: "/blog/save-your-teeth-or-remove-them-all",
+        date: "Feb 19, 2026",
+        tag: "Implants",
+        image: "/images/saveorremove.png",
+    },
+    {
         title: "Dental Scams in Turkey: What Happens When You Choose the Wrong Clinic?",
         description: "Understand common scam patterns, red flags, and the real consequences of choosing the wrong dental clinic abroad.",
         href: "/blog/dental-scams-in-turkey-wrong-clinic",

@@ -2,7 +2,7 @@
 
 "use client";
 
-import { Mail, MapPin, Phone, Facebook, Instagram, Twitter } from "lucide-react";
+import { Mail, MapPin, Phone, Facebook, Instagram, Twitter, Youtube } from "lucide-react";
 import Link from "next/link";
 
 export default function Footer() {
@@ -16,11 +16,14 @@ export default function Footer() {
                         Empowering patients with transparent, clinic-independent dental guidance and second opinions worldwide.
                     </p>
                     <div className="flex gap-4 mt-5">
-                        <Link href="https://www.facebook.com/profile.php?id=61584497004756" className="hover:text-[#21CDC0]" aria-label="Facebook">
+                        <Link href="https://www.facebook.com/profile.php?id=61584497004756" className="hover:text-[#21CDC0]" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
                             <Facebook className="h-5 w-5" />
                         </Link>
-                        <Link href="https://www.instagram.com/turkiyedentalguide/" className="hover:text-[#21CDC0]" aria-label="Instagram">
+                        <Link href="https://www.instagram.com/turkiyedentalguide/" className="hover:text-[#21CDC0]" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
                             <Instagram className="h-5 w-5" />
+                        </Link>
+                        <Link href="https://www.youtube.com/@TurkiyeDentalGuide" className="hover:text-[#21CDC0]" aria-label="YouTube" target="_blank" rel="noopener noreferrer">
+                            <Youtube className="h-5 w-5" />
                         </Link>
 
                     </div>
@@ -51,11 +54,11 @@ export default function Footer() {
                         </li>
                         <li className="flex items-start gap-3">
                             <Phone className="h-5 w-5 text-[#1b76d1] mt-0.5" />
-                            <a href="tel:+14372662552">+1 437 266 2552</a>
+                            <a href="tel:+14372662552">+44 790 339 6743</a>
                         </li>
                         <li className="flex items-start gap-3">
                             <MapPin className="h-5 w-5 text-[#1b76d1] mt-0.5" />
-                            <span>New York • Toronto</span>
+                            <span>London • New York • Toronto</span>
                         </li>
                     </ul>
                 </div>

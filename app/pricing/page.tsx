@@ -10,7 +10,7 @@ const pricingPacks = [
     {
         id: "pack-1",
         label: "Second Opinion Service",
-        paymentUrl: "https://square.link/u/tvmhlvbJ",
+        paymentUrl: "/pricing/inquiry",
         price: "CA$67 (US$50)",
         note: "Per case review",
         lead: "Best for patients who already have a clinic plan and want a fast, unbiased review.",
@@ -19,7 +19,7 @@ const pricingPacks = [
     {
         id: "pack-2",
         label: "Clinic Insight Report",
-        paymentUrl: "https://square.link/u/ucGIrusM",
+        paymentUrl: "/pricing/inquiry",
         price: "CA$136 (US$100)",
         note: "For maximum 3 clinics, +$39 for each extra clinic",
         lead: "Ideal when choosing between clinics and you want verified trust signals.",
@@ -33,7 +33,7 @@ const pricingPacks = [
     {
         id: "pack-3",
         label: "Personalized Treatment Portfolio",
-        paymentUrl: "https://square.link/u/P4d9QRa8",
+        paymentUrl: "/pricing/inquiry",
         price: "CA$205 (US$150)",
         note: "Per case portfolio",
         lead: "For patients starting from scratch who need options, timelines, and travel-ready clarity.",
@@ -47,7 +47,7 @@ const pricingPacks = [
     {
         id: "pack-4",
         label: "Legal Guidance & Mediation",
-        paymentUrl: "https://square.link/u/AC4n4okR",
+        paymentUrl: "/pricing/inquiry",
         price: "CA$136  (US$100)",
         note: "Initial review",
         lead: "Support for patients who need help after treatment issues or disputes.",

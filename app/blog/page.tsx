@@ -5,6 +5,14 @@ import { useMemo, useState } from "react";
 
 const posts = [
     {
+        title: "All-On-4 vs. All-On-6: Which Full Mouth Restoration Is Right for You?",
+        description: "Compare All-On-4 and All-On-6 implant restorations, including bone needs, stability, costs, and recovery.",
+        href: "/blog/all-on-4-vs-all-on-6",
+        date: "Feb 21, 2026",
+        tag: "Implants",
+        image: "/images/4vs6.png",
+    },
+    {
         title: "Save Your Teeth or Remove Them All?",
         description: "All-on-4 vs tooth preservation: medical reasons, costs, timelines, and how to choose the right path.",
         href: "/blog/save-your-teeth-or-remove-them-all",

@@ -43,6 +43,15 @@ export default function SaveYourTeethOrRemoveThemAllPage() {
                     <h2 id="what-every-dental-tourist" className="text-xl sm:text-2xl font-semibold text-gray-800">
                         What Every Dental Tourist Must Know Before Choosing All-on-4
                     </h2>
+                    <div className="relative w-full overflow-hidden rounded-2xl border border-gray-200 shadow-sm" style={{ paddingBottom: "56.25%" }}>
+                        <iframe
+                            src="https://www.youtube.com/embed/1u1NRZjTSF4"
+                            title="Save Your Teeth or Remove Them All?"
+                            className="absolute inset-0 h-full w-full"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowFullScreen
+                        />
+                    </div>
                     <div className="space-y-4 text-lg text-gray-700 leading-relaxed">
                         <p>
                             If you've been researching dental implant options, you've probably encountered two dramatically different recommendations from different clinics. One dentist tells you that your teeth can be saved with individual implants and restorations. Another insists that extracting all your teeth and replacing them with All-on-4 implants is your best option.

@@ -165,6 +165,15 @@ export default function AllOn4VsAllOn6Page() {
                                 This comprehensive guide will walk you through everything you need to know about these two transformative treatments. By understanding the key differences, benefits, and considerations of each option, you'll be empowered to have an informed conversation with your dental professional and make the choice that best suits your unique situation.
                             </p>
                         </div>
+                        <div className="relative w-full overflow-hidden rounded-2xl border border-gray-200 shadow-sm" style={{ paddingBottom: "56.25%" }}>
+                            <iframe
+                                src="https://www.youtube.com/embed/w28O8crEuRk"
+                                title="All-On-4 vs. All-On-6: Which Full Mouth Restoration Is Right for You?"
+                                className="absolute inset-0 h-full w-full"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowFullScreen
+                            />
+                        </div>
                     </section>
                 </article>
 

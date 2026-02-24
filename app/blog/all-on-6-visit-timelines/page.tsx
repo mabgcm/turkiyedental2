@@ -144,6 +144,16 @@ export default function AllOn6VisitTimelinesPage() {
                         </ul>
                     </section>
 
+                    <div className="relative w-full overflow-hidden rounded-2xl border border-gray-200 shadow-sm" style={{ paddingBottom: "56.25%" }}>
+                        <iframe
+                            src="https://www.youtube.com/embed/bN1vy59V6UU"
+                            title="The 2-Visit vs 3-Visit Timelines Guide to All-on-6 Treatment Visits"
+                            className="absolute inset-0 h-full w-full"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowFullScreen
+                        />
+                    </div>
+
                     <section className="space-y-4">
                         <div id="introduction" />
                         <div className="space-y-4 text-gray-700 leading-relaxed">

@@ -3,6 +3,14 @@ import BlogCard, { type BlogCardProps } from "./BlogCard";
 
 const posts: BlogCardProps[] = [
     {
+        title: "The 2-Visit vs 3-Visit Timelines Guide to All-on-6 Treatment Visits",
+        description: "Understand All-on-6 visit timelines, healing phases, and planning considerations for international patients.",
+        href: "/blog/all-on-6-visit-timelines",
+        date: "Feb 24, 2026",
+        tag: "Implants",
+        image: "/images/allon6timeline.jpg",
+    },
+    {
         title: "All-On-4 vs. All-On-6: Which Full Mouth Restoration Is Right for You?",
         description: "Compare All-On-4 and All-On-6 implant restorations, including bone needs, stability, costs, and recovery.",
         href: "/blog/all-on-4-vs-all-on-6",

@@ -73,8 +73,8 @@ export default function Topbar() {
                                     </span>
                                     <span className="font-semibold text-brand-secondary">Emergency / Questions</span>
                                 </div>
-                                <a href="tel:+902122222222" className="block font-medium text-brand-primary hover:underline">
-                                    +90 212 222 22 22
+                                <a href="tel:+905518370400" className="block font-medium text-brand-primary hover:underline">
+                                    +90 551 837 04 00
                                 </a>
                                 <p className="text-brand-muted text-[13px] mt-1">
                                     Implants, veneers, All-on-4 için 7/24 koordinatör desteği.
@@ -92,8 +92,8 @@ export default function Topbar() {
                     {/* Phone */}
                     <li className="flex items-center gap-1">
                         <IconPhone className="h-4 w-4 fill-[#25D366]" />
-                        <a href="tel:+14372662552" className="hover:underline">
-                            Call: +1 437 266 2552
+                        <a href="tel:+905518370400" className="hover:underline">
+                            Call: +90 551 837 04 00
                         </a>
                     </li>
 

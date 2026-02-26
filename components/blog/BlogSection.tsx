@@ -3,6 +3,14 @@ import BlogCard, { type BlogCardProps } from "./BlogCard";
 
 const posts: BlogCardProps[] = [
     {
+        title: "The Complete Patient Guide to Dental Bone Grafting",
+        description: "Signs you might need a bone graft, how it is diagnosed, and what to expect in Turkey.",
+        href: "/blog/dental-bone-grafting-patient-guide",
+        date: "Feb 26, 2026",
+        tag: "Implants",
+        image: "/images/bnegraft.jpeg",
+    },
+    {
         title: "The 2-Visit vs 3-Visit Timelines Guide to All-on-6 Treatment Visits",
         description: "Understand All-on-6 visit timelines, healing phases, and planning considerations for international patients.",
         href: "/blog/all-on-6-visit-timelines",

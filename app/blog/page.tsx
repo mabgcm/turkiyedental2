@@ -5,6 +5,14 @@ import { useMemo, useState } from "react";
 
 const posts = [
     {
+        title: "Titanium vs. Zirconium Dental Implants: A Comprehensive Guide for Patients Making an Informed Choice",
+        description: "A full comparison of titanium vs zirconium implants, including aesthetics, biocompatibility, durability, and costs.",
+        href: "/blog/titanium-vs-zirconium-dental-implants",
+        date: "Feb 28, 2026",
+        tag: "Implants",
+        image: "/images/implants.jpeg",
+    },
+    {
         title: "The Complete Patient Guide to Dental Bone Grafting",
         description: "Signs you might need a bone graft, how it is diagnosed, and what to expect in Turkey.",
         href: "/blog/dental-bone-grafting-patient-guide",

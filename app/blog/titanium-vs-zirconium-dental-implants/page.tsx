@@ -253,6 +253,16 @@ export default function TitaniumVsZirconiumDentalImplantsPage() {
                     </ul>
                 </section>
 
+                <div className="relative w-full overflow-hidden rounded-2xl border border-gray-200 shadow-sm" style={{ paddingBottom: "56.25%" }}>
+                    <iframe
+                        src="https://www.youtube.com/embed/5OzM_IAVA3Y"
+                        title="Titanium vs. Zirconium Dental Implants: A Comprehensive Guide for Patients Making an Informed Choice"
+                        className="absolute inset-0 h-full w-full"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                    />
+                </div>
+
                 <article className="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-8 space-y-10">
                     <section className="space-y-4">
                         <h2 id="understanding-implants" className="text-2xl font-semibold">
